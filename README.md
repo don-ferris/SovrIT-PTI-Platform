@@ -42,7 +42,7 @@ The sovereign execution environment that all SovrIT modules run on.
 Core includes:
 
 - **SovrIT SecureNet** — encrypted overlay network and sovereign VPN  
-- **SovrIT Fortitude** — the resilience engine of SovrIT (backups, DR, monitoring, self‑healing, hardware redundancy)  
+- **SovrIT Fortitude** — the resilience engine of SovrIT (backups, disaster recovery, monitoring, self‑healing, hardware redundancy)  
 - Provisioning and hardening  
 - Encrypted storage foundations  
 - LLM‑guided maintenance and household operability  
