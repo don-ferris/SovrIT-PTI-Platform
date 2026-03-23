@@ -55,7 +55,7 @@ Core includes:
 - **SovrIT Ledger** — financial records  
 - **SovrIT Med** — medical records  
 - **SovrIT Legal** — legal and estate records  
-- **SovrIT Handbook** — household documentation and manuals  
+- **SovrIT Handbook** — system documentation and manuals  
 - **SovrIT Notify** — notifications and cross‑system messaging  
 - **SovrIT Carrier** — sovereign voice, text, and messaging  
 
