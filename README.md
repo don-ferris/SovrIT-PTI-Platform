@@ -72,14 +72,14 @@ Core includes:
 ### **Sovereignty by Design**
 Your data, your systems, your rules.
 
-### **Infrastructure‑Grade Reliability**
+### **Enterprise‑Grade Reliability**
 Predictable, quiet, and steady.
 
 ### **Modular, Composable Architecture**
 Each SovrIT module is independent but interoperable.
 
 ### **Human‑Centered Clarity**
-Documentation is written for a spouse/partner to operate confidently.
+Documentation (with annotated screenshots) is written for a non-technical spouse/partner to operate confidently.
 
 ### **Craftsmanship and Transparency**
 Every configuration is intentional, annotated, and inspectable.
@@ -116,7 +116,7 @@ SovrIT is designed to outlive any single device or trend.
 ## 📘 Documentation Standards
 
 - Plain language, short paragraphs, and clear steps  
-- Visuals and diagrams where helpful  
+- Liberal use of Visuals and diagrams 
 - Explanations of *why*, not just *how*  
 - Glossaries for technical terms  
 - Procedures that assume the reader may be stressed or tired  
