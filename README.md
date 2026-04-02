@@ -1,6 +1,6 @@
 # SovrIT PTI 
 
-SovrIT PTI (Personal/Private Technology infrastructure) is a sovereign, self‑hosted personal IT infrastructure platform designed to return control of your digital life to you. Private by default and transparent by design, it replaces reliance on third‑party cloud services with a modular ecosystem you operate yourself — built to be used, understood and maintained by anyone in your home.
+SovrIT PTI (Personal/Private Technology Infrastructure) is a sovereign, self‑hosted personal IT infrastructure platform designed to return control of your digital life to you. Private by default and transparent by design, it replaces reliance on third‑party cloud services with a modular ecosystem you operate yourself — built to be used, understood and maintained by anyone in your home.
 
 This repository defines the SovrIT Platform: the architecture, design philosophy, and long‑term principles that guide the entire SovrIT ecosystem. All SovrIT modules follow the patterns established here.
 
@@ -36,7 +36,7 @@ SovrIT is not a single application. It is the blueprint for a personal digital i
 
 ## 🧩 SovrIT Ecosystem Overview
 
-### **SovrIT Core (runtime substrate)**  
+### SovrIT Core (runtime substrate)
 The sovereign execution environment that all SovrIT modules run on.  
 Core includes:
 
@@ -54,7 +54,7 @@ Core includes:
 - **SovrIT Ledger** — financial records  
 - **SovrIT Med** — medical records  
 - **SovrIT Legal** — legal and estate records  
-- **SovrIT Handbook** — system documentation and manuals  
+- **SovrIT Handbook** — AI/auto-updated system documentation and manuals  
 - **SovrIT Notify** — notifications and cross‑system messaging  
 - **SovrIT Carrier** — sovereign voice, text, and messaging  
 
@@ -116,7 +116,6 @@ SovrIT is designed to outlive any single device or trend.
 
 - Plain language, short paragraphs, and clear steps  
 - Liberal use of Visuals and diagrams 
-- Explanations of *why*, not just *how*  
 - Glossaries for technical terms  
 - Procedures that assume the reader may be stressed or tired  
 - A tone that is calm, respectful, and empowering  
