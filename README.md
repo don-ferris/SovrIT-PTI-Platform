@@ -1,6 +1,6 @@
-# SovrIT PTI (Personal/Private Technology infrastructure)
+# SovrIT PTI 
 
-SovrIT is a sovereign, self‑hosted personal IT infrastructure platform designed to return control of your digital life to you. Private by default and transparent by design, it replaces reliance on third‑party cloud services with a modular ecosystem you operate yourself — built to be used, understood and maintained by anyone in your home.
+SovrIT PTI (Personal/Private Technology infrastructure) is a sovereign, self‑hosted personal IT infrastructure platform designed to return control of your digital life to you. Private by default and transparent by design, it replaces reliance on third‑party cloud services with a modular ecosystem you operate yourself — built to be used, understood and maintained by anyone in your home.
 
 This repository defines the SovrIT Platform: the architecture, design philosophy, and long‑term principles that guide the entire SovrIT ecosystem. All SovrIT modules follow the patterns established here.
 
@@ -12,15 +12,15 @@ For a visual overview of the SovrIT architecture, see **[Architecture.md](Archit
 
 Most personal data today lives inside third‑party clouds you do not control — and is routinely inspected, analyzed, monetized, retained, and used in an attempt to track and manipulate you by the companies that store it, as well as by government agencies that increasingly disregard the spirit and intent of constitutional privacy protections. SovrIT exists to break that dependency by providing a stable, sovereign foundation for identity, authentication, communication, storage, automation, and daily digital routines — engineered and maintained with the same safeguards, discipline, and mission‑critical mindset found in enterprise IT environments.
 
-Self‑hosting isolated services is not enough. True digital sovereignty requires that your data, your communications, and your daily digital operations be protected end‑to‑end. SovrIT establishes patterns for running essential services — authentication and MFA, file storage, document management, financial and health records, messaging, media, and more — with enterprise‑grade security, redundancy, and high availability. These services are encrypted, backed up regularly, and routed through personal, self‑hosted VPNs to ensure absolute privacy. The servers that host them are patched, monitored, and incrementally hardened to defend against ransomware, intrusion attempts, and evolving threats.
+Self‑hosting isolated services is not enough. True digital sovereignty requires that your data, your communications, and your daily digital operations be protected end‑to‑end. SovrIT establishes patterns for running essential services — authentication and MFA, file and photo storage and sharing, document management and editing, financial, health, and legal records, messaging, media, and more — with enterprise‑grade security, redundancy, and high availability. These services are encrypted, backed up regularly, and routed through personal, self‑hosted VPNs to ensure absolute privacy. The servers that host them are patched, monitored, and incrementally hardened regularly to defend against ransomware, intrusion attempts, and evolving threats.
 
-But SovrIT goes further. It provides the architectural patterns and mechanisms needed to bring basic voice and text communication under your control as well. Mobile devices can operate on data‑only plans, with encrypted phone calls, video calls, messages, and email routed through your own sovereign VPN infrastructure — shielded from carriers, ISPs, and any entity that would log, inspect, or monetize your communications.
+But SovrIT goes further. It provides the architectural patterns and mechanisms needed to bring basic voice and text communication under your control as well. Mobile devices can operate on data‑only plans, with encrypted phone calls, video calls, messages, and email routed through your own sovereign VPN infrastructure — shielded from carriers, ISPs, and any entity that would log, inspect, monetize, or surveil your communications.
 
 In essence, SovrIT enables you to become your own ISP and your own mobile carrier — while still paying traditional providers only for the raw bandwidth required to move encrypted data. Your information should belong and be visible only to you — not to the companies that move and store it, nor to the government agencies that oversee them.
 
 ---
 
-## 🧱 What SovrIT (Platform – this repo) Provides
+## 🧱 What This (SovrIT Platform) Repo Provides
 
 - The mission, philosophy, and guiding principles of SovrIT  
 - Architectural patterns for building sovereign, long‑lived services  
