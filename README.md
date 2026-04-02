@@ -1,5 +1,4 @@
-# SovrIT  *(Platform – this repo)*
-**Personal Information Technology Platform**
+# SovrIT PTI (Personal/Private Technology infrastructure)
 
 SovrIT is a sovereign, self‑hosted personal IT infrastructure platform designed to return control of your digital life to you. Private by default and transparent by design, it replaces reliance on third‑party cloud services with a modular ecosystem you operate yourself — built to be used, understood and maintained by anyone in your home.
 
