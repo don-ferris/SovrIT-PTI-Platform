@@ -10,7 +10,7 @@
 
 ## 2. Executive Summary
 ### Objective
-[High-level summary of what we are building and the primary goal.]
+
 
 ### The Problem
 [Describe the pain point. Why does this need to exist? What is broken or missing?]
@@ -125,3 +125,129 @@ The journey to sovereignty is a methodical transition from a fragile digital exi
  * **Phase 9 (SovrIT Sentinel):** Private surveillance that big tech and insurance companies cannot see.
 ### 🛡️ Ownership Starts Here
 By the end of this roadmap, the "Cloud" isn't someone else's computer—it's yours. SovrIT PTI ensures that your data remains where it belongs: under your roof and under your control.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===============================
+===============================
+===============================
+
+
+
+
+
+
+
+
+
+
+
+
+# ProjectPlan.md: SovrIT PTI (Personal Technology Infrastructure)
+
+## 🏛️ Vision & Architectural Pillars
+**SovrIT PTI** is a permanent, sovereign extension of the user's life. It is built on three non-negotiable pillars:
+1. **Zero-Trust Sovereignty:** No third-party (Apple, Google, Insurance Co.) has access to data or metadata.
+2. **Encryption at Rest (The Fortress Protocol):** All data is encrypted via **AES-256-GCM** at the filesystem level. Keys are decoupled from physical hardware, requiring remote mesh-auth or manual passphrases to unlock. If hardware is seized, the data is unreadable noise.
+3. **Operational Continuity (The Krista Test):** The system is documented in a physical, AI-audited **Handbook** ensuring a "Zero-Power" recovery path for family members.
+
+---
+
+## 🗺️ The 10-Phase Roadmap
+
+### Phase 0: The Substrate & Fortress Protocol
+**Goal:** Establish the encrypted mesh and physical data protection.
+* **OS:** [Ubuntu 26.04 LTS](https://ubuntu.com/) Minimal on all nodes.
+* **SecureNet:** [Netbird](https://netbird.io/) P2P mesh overlay; all public ports closed via UFW.
+* **Storage:** [OpenZFS](https://openzfs.org/) with native encryption. Remote key loading via the VPS/Netbird tunnel.
+* **Logbook:** [Dokuwiki](https://www.dokuwiki.org/) (Flat-file) for as-built documentation.
+* **Gateway:** [Caddy](https://caddyserver.com/) for internal mesh SSL and automated proxying.
+
+### Phase 1: Sovereignty Foundation (Identity)
+**Goal:** Centralized, memory-safe identity managed via GitOps.
+* **Core IdP:** [Kanidm](https://kanidm.github.io/kanidm/) (Rust-based) Identity Provider.
+* **MFA:** [WebAuthn](https://webauthn.io/) (Passkeys/Biometrics) for daily use; [Yubikeys](https://www.yubico.com/products/yubikey-5-series/) for physical recovery.
+* **Management:** [Forgejo](https://forgejo.org/) hosted `users.yml` synced via [Ansible](https://www.ansible.com/).
+
+### Phase 2: User Assets & Gateway (Daily Driver)
+**Goal:** The human interface and primary cloud replacement.
+* **Gateway:** [Flame Dashboard](https://github.com/pawelmalak/flame) (Internal Mesh only).
+* **Vault:** [Vaultwarden](https://github.com/dani-garcia/vaultwarden) (SQLite-based Bitwarden API).
+* **Sync:** [Syncthing](https://syncthing.net/) for encrypted P2P file transport.
+* **PIM:** [Radicale](https://radicale.org/) (Flat-file) for private Contacts/Calendars.
+* **Web Office:** [FileBrowser](https://filebrowser.org/) + [OnlyOffice](https://www.onlyoffice.com/) for document management.
+
+### Phase 3: Vital Records (The Searchable Life)
+**Goal:** Digitizing medical, legal, and financial history.
+* **Archive:** [Paperless-ngx](https://docs.paperless-ngx.com/) (SQLite) with OCR indexing.
+* **SpendTracker:** [QuickScan](https://getquickscan.app/) (iOS) ➔ Syncthing ➔ Paperless matching.
+* **Ledger:** [Actual Budget](https://actualbudget.org/) (SQLite) for private finance.
+* **Legacy:** [Aeterna](https://github.com/reallibreboard/aeterna) (Dead Man's Switch) for info handover.
+
+### Phase 4: Sovereign Media & Presence (The iCloud Killer)
+**Goal:** Cancellation of all big-tech media subscriptions.
+* **Photos:** [Immich](https://immich.app/) for auto-backup and local AI facial recognition.
+* **Social:** [GoToSocial](https://gotosocial.org/) (SQLite) for private microblogging.
+* **Visual Blog:** [Pixelfed](https://pixelfed.org/) (Instagram replacement).
+* **Email:** [Stalwart Mail](https://stalwart.io/) (Rust/SQLite) JMAP/IMAP/SMTP server.
+
+### Phase 5: SovrIT Assistant (AI Handbook Auditor)
+**Goal:** A local AI that keeps the documentation and the user in sync.
+* **Brain:** [Ollama](https://ollama.com/) hosting local LLMs (Llama 3 / Llava).
+* **Auditor:** [Playwright](https://playwright.dev/) for automated UI screenshot auditing.
+* **Chat:** [LibreChat](https://www.librechat.ai/) interface for mobile system queries.
+
+### Phase 6: SovrIT Fortitude (Resiliency & Insta-Restore)
+**Goal:** Functional immortality via HA clusters and S3 cold storage.
+* **HA Cluster:** [Proxmox VE](https://www.proxmox.com/) High-Availability environment.
+* **Offsite Vault:** [Kopia](https://kopia.io/) encrypted backups to [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/).
+* **Restore Logic:** [n8n](https://n8n.io/) + Ansible for "couple-click" service rebuilding.
+* **Watchman:** [Uptime Kuma](https://uptime.kuma.pet/) for health monitoring and failover triggers.
+
+### Phase 7: Sovereign Carrier (Communication)
+**Goal:** Own your phone number and unify your messaging.
+* **Voice PBX:** [VitalPBX](https://www.vitalpbx.com/) with SIP-TLS/SRTP encryption.
+* **Messaging:** [Matrix](https://matrix.org/) unified via [Beeper Bridge Manager (bbctl)](https://github.com/beeper/bridge-manager).
+* **Identity:** [JMP.chat](https://jmp.chat/) for portable phone identity via XMPP/Matrix.
+
+### Phase 8: SovrIT Habitat (The Local IoT)
+**Goal:** A home that works without the internet and respects your privacy.
+* **Smart Brain:** [Home Assistant](https://www.home-assistant.io/) (Core VM).
+* **Radios:** [Zigbee](https://csa-iot.org/all-solutions/zigbee/) 3.0 / [Z-Wave](https://z-wavealliance.org/) 800-series (Local only).
+* **Voice:** [Home Assistant Assist](https://www.home-assistant.io/voice_control/) for local voice processing.
+
+### Phase 9: SovrIT Sentinel (Private Surveillance)
+**Goal:** Intelligent monitoring invisible to third parties.
+* **NVR:** [Frigate](https://frigate.video/) with [Local AI Object Detection](https://coral.ai/products/accelerator/).
+* **Cameras:** Non-cloud PoE Hardware (Firewalled via VLAN).
+
+---
+
+## 🛠️ Maintenance & Lifecycle
+1. **The Binder Rule:** Every AI-detected revision change in Phase 5 must be printed and filed in the physical binder.
+2. **The Key Protocol:** ZFS Encryption passphrases must never be stored on the same physical node as the data.
+3. **The Audit:** Monthly "Insta-Restore" tests to verify S3 backup integrity.
