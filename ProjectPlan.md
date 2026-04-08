@@ -1,72 +1,88 @@
-This WILLWIF (What It Looks Like When It’s Finished) defines the end-state for SovrIT PTI. It is the "North Star" for your private technology infrastructure, moving away from fragmented self-hosting toward a unified, enterprise-grade sovereign environment.
+This updated **ProjectPlan.md** now serves as your master blueprint, incorporating the five core pillars of the **SovrIT PTI** architecture exactly as defined.
+```markdown
+# ProjectPlan.md: SovrIT PTI (Personal/Private Technology Infrastructure)
 
-🖥️ The User Experience: "The Command Center"
-When you or your spouse open a browser or a tablet, you are greeted by the SovrIT Dashboard (Flame).
+## 🏛️ The Five Architectural Pillars
+The SovrIT PTI is a permanent, sovereign extension of the user's life, built upon five non-negotiable architectural requirements:
 
-UI: The Flame Main Menu
-Minimalist Landing: A clean, dark-themed interface with high-contrast icons.
+1. **Absolute Sovereignty & Zero-Trust Privacy**: The infrastructure is architected to ensure total data ownership. By eliminating third-party intermediaries and cloud dependencies, the user maintains 100% control over their digital footprint. In a **Zero-Trust** environment, privacy isn't a policy—it’s a technical certainty.
+2. **The Fortress Protocol (Decoupled Encryption at Rest)**: All data is secured using hardware-agnostic, filesystem-level encryption (**AES-256-GCM**). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
+3. **Autonomous Functional Resiliency**: The system is **self-healing**. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate rebuilds or relaunches. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
+4. **Global High Availability & Failover Redundancy**: SovrIT utilizes a geographically distant **VPS Ghost Mirror** to provide **Ultra High Availability**. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft. Your digital life exists everywhere, even when your home node is nowhere.
+5. **Human-Centric Interface Continuity (The Living Handbook)**: The system bridges the gap between complex code and family operability. An **AI-audited Handbook** uses annotated screenshots and real-time UI tracking to ensure that the documentation exactly matches the current state of the software. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the lead architect is unavailable.
 
-Categorized Modules: Services are grouped logically (e.g., Identity, Communications, Vaults, System Health).
+---
 
-Live Status Indicators: Each app icon features a small "Heartbeat" dot (Green/Red) showing real-time availability.
+## 🗺️ The 10-Phase Roadmap
 
-Integrated Search: A central bar that searches not just the web, but your internal documentation (The Handbook).
+### Phase 0: The Substrate (Infrastructure Bootstrap)
+**Goal:** Establish the encrypted mesh and physical data protection.
+* **Home OS:** [Proxmox VE](https://www.proxmox.com/) (Hypervisor for HA clustering).
+* **VPS OS:** [NixOS](https://nixos.org/) (Immutable, reproducible, with native [ZFS Support](https://nixos.wiki/wiki/ZFS)).
+* **SecureNet:** [Netbird](https://netbird.io/) P2P mesh overlay; all public ports closed via UFW.
+* **Logbook:** [Dokuwiki](https://www.dokuwiki.org/) (Flat-file) for as-built documentation.
+* **Gateway:** [Caddy](https://caddyserver.com/) for internal mesh SSL and automated proxying.
 
-"Emergency" Pin: A permanent, red-bordered pin at the top-right labeled "System Recovery" which links directly to the physical binder’s digital twin.
+### Phase 1: Sovereignty Foundation (Identity)
+**Goal:** Centralized, memory-safe identity managed via GitOps.
+* **Core IdP:** [Kanidm](https://kanidm.github.io/kanidm/) (Rust-based) Identity Provider.
+* **MFA:** [WebAuthn](https://webauthn.io/) (Passkeys/Biometrics) for daily use; [Yubikeys](https://www.yubico.com/products/yubikey-5-series/) for physical recovery.
+* **Management:** [Forgejo](https://forgejo.org/) hosted `users.yml` synced via [Ansible](https://www.ansible.com/).
 
-🏗️ Module 1: SovrIT Core (The Substrate)
-This is the invisible engine room. It provides the services that protect and privatize everything else.
+### Phase 2: User Assets & Gateway (Daily Driver)
+**Goal:** The human interface and primary cloud replacement.
+* **Gateway:** [Flame Dashboard](https://github.com/pawelmalak/flame) (Internal Mesh only).
+* **Vault:** [Vaultwarden](https://github.com/dani-garcia/vaultwarden) (Private Bitwarden API).
+* **Sync:** [Syncthing](https://syncthing.net/) for encrypted P2P file transport.
+* **PIM:** [Radicale](https://radicale.org/) (Flat-file) for private Contacts/Calendars.
+* **Web Office:** [FileBrowser](https://filebrowser.org/) + [OnlyOffice](https://www.onlyoffice.com/) for document management.
 
-Functionality & Services
-Sync-in Server: Replacing the bloat of Nextcloud with a high-performance, open-standards file synchronization engine.
+### Phase 3: Vital Records (The Searchable Life)
+**Goal:** Digitizing medical, legal, and financial history.
+* **Archive:** [Paperless-ngx](https://docs.paperless-ngx.com/) (SQLite) with OCR indexing.
+* **SpendTracker:** [QuickScan](https://getquickscan.app/) (iOS) ➔ Syncthing ➔ Paperless matching.
+* **Ledger:** [Actual Budget](https://actualbudget.org/) (SQLite) for private finance.
+* **Legacy:** [Aeterna](https://github.com/reallibreboard/aeterna) (Dead Man's Switch) for info handover.
 
-User Benefit: Instant, background syncing of files across your iPhone 15, iPad Pro, and TrueNAS server with no 3rd-party "eyes" on the metadata.
+### Phase 4: Sovereign Media & Presence (The iCloud Killer)
+**Goal:** Cancellation of all big-tech media subscriptions.
+* **Photos:** [Immich](https://immich.app/) for auto-backup and local AI facial recognition.
+* **Social:** [GoToSocial](https://gotosocial.org/) (SQLite) for private microblogging.
+* **Visual Blog:** [Pixelfed](https://pixelfed.org/) (Instagram replacement).
+* **Email:** [Stalwart Mail](https://stalwart.io/) (Rust/SQLite) JMAP/IMAP/SMTP server.
 
-SovrIT SecureNet (Netbird): A Wireguard-based mesh overlay.
+### Phase 5: SovrIT Assistant (AI Handbook Auditor)
+**Goal:** A local AI that keeps the documentation and the user in sync.
+* **Brain:** [Ollama](https://ollama.com/) hosting local LLMs (Llama 3 / Llava).
+* **Auditor:** [Playwright](https://playwright.dev/) for automated UI screenshot auditing.
+* **Chat:** [LibreChat](https://www.librechat.ai/) interface for mobile system queries.
 
-User Benefit: You access the dashboard from Panama City or Tahiti exactly as if you were on your home Wi-Fi, without opening a single port to the public internet.
+### Phase 6: SovrIT Fortitude (Resiliency & Insta-Restore)
+**Goal:** Functional immortality via HA clusters and S3 cold storage.
+* **Offsite Vault:** [Kopia](https://kopia.io/) encrypted backups to [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/).
+* **Restore Logic:** [n8n](https://n8n.io/) + Ansible for "couple-click" service rebuilding.
+* **Watchman:** [Uptime Kuma](https://uptime.kuma.pet/) for health monitoring and failover triggers.
 
-Sovereign DNS (Pi-hole + Unbound): * User Benefit: Every device on the network has ads and trackers stripped at the root before they even reach the browser.
+### Phase 7: Sovereign Carrier (Communication)
+**Goal:** Own your phone number and unify your messaging.
+* **Voice PBX:** [VitalPBX](https://www.vitalpbx.com/) with SIP-TLS/SRTP encryption.
+* **Messaging:** [Matrix](https://matrix.org/) unified via [Beeper Bridge Manager (bbctl)](https://github.com/beeper/bridge-manager).
+* **Identity:** [JMP.chat](https://jmp.chat/) for portable phone identity via XMPP/Matrix.
 
-Forgejo (The Forge): A lightweight, self-hosted Git platform for your "Infrastructure as Code" and documentation.
+### Phase 8: SovrIT Habitat (The Local IoT)
+**Goal:** A home that works without the internet and respects privacy.
+* **Smart Brain:** [Home Assistant](https://www.home-assistant.io/) (Core VM).
+* **Radios:** [Zigbee](https://csa-iot.org/all-solutions/zigbee/) 3.0 / [Z-Wave](https://z-wavealliance.org/) 800-series (Local only).
+* **Voice:** [Home Assistant Assist](https://www.home-assistant.io/voice_control/) for local voice processing.
 
-Privacy & Data Protection
-Traffic Obfuscation: All outbound traffic from mobile devices is tunneled through the VPS/Home Core, masking your physical location from mobile carriers and ISPs.
+### Phase 9: SovrIT Sentinel (Private Surveillance)
+**Goal:** Intelligent monitoring invisible to third parties.
+* **NVR:** [Frigate](https://frigate.video/) with [Local AI Object Detection](https://coral.ai/products/accelerator/).
+* **Cameras:** Non-cloud PoE Hardware (Firewalled via VLAN).
 
-Zero-Knowledge Storage: Data on the Sync-in Server is encrypted at rest; even a physical seizure of the server yields nothing but "digital noise."
+---
 
-Identity Isolation (Authelia): A single, hardened login screen for every app. One password + one Yubikey tap unlocks the entire ecosystem.
-
-🛡️ The Resiliency Engine (SovrIT Fortitude)
-This is the "Corporate-Grade" layer that ensures the system stays up or can be recovered by a child.
-
-Functionality
-Self-Healing Containers: Using Autoheal to monitor Docker health; if a service hangs, the system automatically restarts it without human intervention.
-
-3-2-1 Backup Strategy: * 3 copies of data (Live, Local Backup, Offsite).
-
-2 different media (NVMe and HDD).
-
-1 offsite (Encrypted "Cold" storage or a secondary mini-PC at a trusted location).
-
-Snapshotting: Filesystem-level snapshots (ZFS) taken every hour. If you accidentally delete a critical folder, you "roll back the clock" in seconds.
-
-What Resiliency Looks Like to the User
-The "Quiet" System: No "Server is down" complaints. If a secondary node fails, the user notices nothing because the high-availability (HA) cluster shifted the load.
-
-The Physical Binder: A physical 3-ring binder sitting on a shelf.
-
-The "Child/Spouse" Test: If the internet goes out, the binder has a tab labeled "No Internet." They flip to it, see a screenshot of the router, a red circle around the power button, and an arrow saying "Push this."
-
-AI Handholding: If a service updates and the UI changes, the AI Assistant proactively sends a message: "I've updated the 'How to Sync' guide in your handbook. Please print the new version (Rev 3.2) when you have a moment."
-
-🧩 The Module Breakdown (WILLWIF Summary)
-Module	Core Service	Primary Sovereign Benefit
-Access	Authelia / Kanidm	Centralized, hardened identity; no Google/Apple login needed.
-Vault	Vaultwarden	Passwords and SSH keys stay off the 3rd-party cloud.
-Carrier	Asterisk / Jami	Encrypted voice/text routed through your own hardware.
-Ledger	Actual Budget	Financial history remains private and local.
-Handbook	Forgejo / Wiki.js	Documentation that is always accurate and spouse-friendly.
-This WILLWIF describes a system that is no longer a "project" but a utility—as reliable as the electricity in your walls, but significantly more private.
-
-How does this end-state align with your vision for the "SovrIT PTI" platform?
+## 🛠️ Maintenance & Lifecycle
+1.  **The Binder Rule:** Every AI-detected revision change in Phase 5 must be printed and filed in the physical binder.
+2.  **The Key Protocol:** ZFS Encryption passphrases must never be stored on the same physical node as the data.
+3.  **The Audit:** Monthly "Insta-Restore" tests to verify S3 backup integrity.
