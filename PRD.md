@@ -1,4 +1,4 @@
-# SovrIT PTI (Personal /Private Technology Infrastructure) - Product Requirements Document
+# SovrIT PTI - Product Requirements Document
 
 ## 1. Header & Metadata
 * **Status:** Draft 
@@ -10,35 +10,131 @@
 
 ## 2. Executive Summary
 ### Objective
+**Mission:** Total Digital Independence
 
-
-### The Problem
-[Describe the pain point. Why does this need to exist? What is broken or missing?]
-
-### Business Value
-[How does this impact the bottom line or user growth? Specify targets, e.g., "Reduce support tickets by 15%".]
+**Vision:** A world where individuals own their data, their history, and their future — with absolute sovereignty and complete privacy.
 
 ---
 
-## 3. Target Audience
-### User Personas
-* **[Persona A]:** [Brief description of user type and their specific need.]
-* **[Persona B]:** [Brief description.]
-
-### User Stories
-| ID | As a... | I want to... | So that... |
-| :--- | :--- | :--- | :--- |
-| US-1 | [User type] | [Action] | [Benefit/Value] |
-| US-2 | [User type] | [Action] | [Benefit/Value] |
+## 3. The Problem: Data Serfdom
+We currently live our digital lives on "rented land." Our family photos, financial and medical records, personal documents, and private communications are stored on servers owned by a handful of huge corporations and subject to their oversight and privacy violations - whether for the purpose of monetization, marketing/manipulation, collaboration with other big corporations, or governmental surveillance and overreach. This isn't just a privacy issue; it’s a dependency issue. If a provider changes their terms, raises prices, or discontinues service, you lose your history and must scramble to find an acceptable replacement. You are a tenant in a digital ecosystem where you don't own the land, the walls, or the locks.
 
 ---
 
-## 4. Functional Requirements
+## 4. The Solution: SovrIT PTI
+**SovrIT PTI (Personal/Private Technology Infrastructure)** is a blueprint for independence. It is a self-hosted "Digital Fortress" built on hardware you own, running software you control. It replaces “the Cloud" with a private, invisible network that is accessible globally — to you, your family, and _no one else._
+
+---
+
+## 5. The Seven Architectural Pillars of SovrIT PTI
+### 1. Absolute Sovereignty & Zero-Trust Privacy
+No third party holds the keys or has access to your data, identity, or mesh network. Where your data passes through servers that are not under your control (e.g. phone calls from a mobile device), they do so in encrypted form.
+### 2. Autonomous Functional Resiliency
+The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate rebuilds or relaunches. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
+### 3. Global High Availability & Failover Redundancy
+SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
+### 4. Invisible Security
+Security is integrated into the user flow via biometrics (FaceID/TouchID), eliminating the friction of traditional passwords. 
+### 5. Sovereign Voice/AI Assistance
+The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
+### 6. Decoupled Encryption at Rest
+All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
+### 7. Operational Continuity - The Living Handbook
+Comprehensive "Human-Centric" documentation ensures the system can be maintained and recovered by anyone in the household. An AI-audited Handbook uses annotated screenshots and real-time UI tracking to ensure that the documentation precisely matches the screen layout,  menus, dialogs, and options that the user sees on-screen. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the family IT person is unavailable.
+
+---
+
+## 6. User Stories
+### 1. The Catastrophe Survivor
+_”As a homeowner who previously lost every physical record and family album during Hurricane Katrina, I want to have my vital data automatically failover to a remote VPS "Ghost Mirror," so that my family’s documentation and history survive even in the event of total local site destruction.”_
+### 2. The Platform Refugee
+_”As a consumer whose primary photo service was sunsetted last year and whose other cloud subscriptions just had substantial price hikes, I want to invest in high-capacity local hardware that I own, so that I can stop being a digital tenant and ensure my services never disappear due to a corporate board’s decision.”_
+### 3. The Ransomware Defender
+_”As a user who saw every important file and family photo encrypted by a ransomware attack ten months ago, I want my system to utilize immutable snapshots and automated "Insta-Restores" from an encrypted S3 vault, so that I can instantly roll back an attack without losing data or paying a criminal.”_
+### 4. The Emergency Access Protocol
+_”As a family member who sat in an emergency room for six hours unable to access a spouse’s medical history because it was locked behind a cloud account I didn't have the password for, I want a physical Operating Manual with annotated screenshots and AI-verified procedures, so that I can immediately retrieve vital life-saving information even if the family IT person is incapacitated.”_
+### 5. The Burglary-Proof Professional
+_”As a business owner whose office was burglarized and server stolen last year—resulting in a public data breach and massive fines because the drives were unencrypted, I want my encryption keys to be decoupled from my hardware, so that if my servers are ever physically removed, the data remains a mathematically unreadable brick.”_
+### 6. The Metadata Privacy Advocate
+_”As an individual who was targeted by identity thieves after a major data broker leaked a profile of my habits and contacts, I want to route all my communications through a private hub I own, so that no third-party carrier can track my location or sell a log of my private interactions.”_
+### 7. The Flood-Proof Habitat
+_”As a homeowner who returned from vacation to a flooded basement because my smart water sensor failed to alert me when its manufacturer's cloud service went down for maintenance, I want my smarthome logic to reside on dedicated, local-only hardware, so that my sensors and automations work 100% of the time, regardless of an internet connection or corporate server status.”_
+### 8. The Coffee Shop Breach Survivor
+_”As a user whose primary credentials were stolen during a “Man-In-The-Middle” attack while I sipped a mochasccino, I want my identity and password vault to be hosted on my own internal fortress and protected by a physical security key, so that my most sensitive data is never exposed on a public-facing corporate server that can be intercepted or spoofed.”_
+### 9. The Private Sentinel
+_”As a resident who is aware that major camera companies have shared customer footage with third parties without consent, I want my surveillance system to process AI detection locally on my own silicon, so that I have total property awareness without giving a corporation a 24/7 window into my home.”_
+### 10. The Permanent Professional
+_”As a remote worker who lost access to critical documents during a massive three-day cloud provider outage, I want to host my collaborative office tools on a local server that mirrors to a global failover node, so that my work remains accessible and private even when the public internet fails.”_
+
+---
+
+## 7. Functional Requirements
 | ID | Feature Name | Priority | Requirement Description |
 | :--- | :--- | :--- | :--- |
-| FR-1 | [Feature] | **P0** | [Must-have functionality] |
-| FR-2 | [Feature] | **P1** | [Should-have functionality] |
-| FR-3 | [Feature] | **P2** | [Nice-to-have / Future polish] |
+| **FR-01** | **Mesh Networking** | High | Establish an encrypted P2P mesh network ([Netbird](https://netbird.io/)) to facilitate secure node communication without public port exposure. |
+| **FR-02** | **Universal Identity** | High | Provide a centralized Identity Provider ([Authentik](https://goauthentik.io/)) for OIDC/SAML authentication across all system modules. |
+| **FR-03** | **Biometric Gatekeeper** | High | Mandate WebAuthn (FaceID/TouchID) as the primary MFA via [Authentik](https://goauthentik.io/) to ensure high security with zero daily user friction. |
+| **FR-04** | **Edge Traffic Control** | High | Implement an edge proxy ([Traefik](https://traefik.io/)) supporting gRPC and automated SSL management for mesh-wide routing. |
+| **FR-05** | **Insta-Restore Engine** | High | Provide a dashboard (n8n/Ansible) to rebuild core services from a clean state using versioned configs and S3 data. |
+| **FR-06** | **Universal Sovereign Search** | High | Deploy a centralized, lightning-fast indexer ([Meilisearch](https://www.meilisearch.com/)) that provides exhaustive, real-time search across mail, messages, files, notes, bookmarks, web history, and more. |
+| **FR-07** | **Local AI Assistant** | High | Replace cloud assistants with local AI ([Ollama](https://ollama.com/), [Whisper](https://github.com/SYSTRAN/faster-whisper), [Piper](https://github.com/rhasspy/piper)) for voice commands, deep context queries, and hands-free data entry. |
+| **FR-08** | **Encrypted Telephony** | High | Utilize SIP-TLS for signaling and SRTP for media to ensure mesh-wide encrypted voice communication. || **FR-07** | **Unified Messenger Hub** | High | Bridge external networks (WhatsApp, Signal, iMessage) into a [Matrix](https://matrix.org/) homeserver using [Mautrix](https://mautrix.net/) bridges to maintain a single local chat history. |
+| **FR-09** | **Integrated Virtual Office** | High | Provide a high-speed file explorer ([FileBrowser](https://filebrowser.org/)) with integrated collaborative document, spreadsheet, and presentation editing ([OnlyOffice](https://www.onlyoffice.com/)). |
+| **FR-10** | **Sovereign Mail Engine** | High | Host a modern, memory-safe email server ([Stalwart](https://stalwart.io/)) to ensure total ownership of personal and professional correspondence. |
+| **FR-11** | **At-Rest Encryption** | High | Secure all user data using filesystem-level encryption ([ZFS](https://openzfs.org/)) with keys decoupled from physical boot media for maximum protection. |
+| **FR-12** | **Immutable Backups** | High | Execute hourly encrypted client-side backups ([Kopia](https://kopia.io/)) to offsite S3-compatible storage to ensure data recoverability. |
+| **FR-13** | **Remote Failover Mirror** | High | Maintain a minimal "Ghost Mirror" on a remote VPS to ensure access to Identity, Password Vault, and Vital Records during local hardware or internet outages. |
+| **FR-14** | **Graceful Power Safety** | High | Integrate UPS monitoring to trigger clean shutdowns of virtual machines and storage pools during sustained power failures. |
+| **FR-15** | **Versioned Infrastructure** | High | Maintain all OS and service configurations (NixOS/Ansible) in a private Git repository (Forgejo) for state reproducibility. |
+| **FR-16** | **Internal Time Server** | High | Integrate UPS monitoring to trigger clean shutdowns of virtual machines and storage pools during sustained power failures. |
+| **FR-17** | **Gateway Dashboard** | High | Maintain a unified web interface (Flame) as the primary entry point for all services, protected by the central IdP. |
+| **FR-18** | **Secure Remote Access** | High | Enable secure, mesh-only management of the Proxmox/NixOS substrate from authorized mobile devices via Netbird. |
+| **FR-19** | **Local Certificate Authority** | High | Implement an internal ACME server (Step-CA or Traefik) to issue trusted SSL certificates for all mesh-only domains. |
+| **FR-20** | **Database Atomic Snapshots** | High | Coordinate ZFS snapshots with database "freeze" commands to ensure backup consistency. |
+| **FR-21** | **Mobile Device Hardening** | High | Ensure mobile clients are configured to route all sovereign traffic through the mesh with "Always-On" VPN logic. |
+| **FR-22** | **Zero-Log Application Config** | Medium | Force containerized applications to log to the central aggregator while disabling identifiable debug logs to local disk. |
+| **FR-23** | **Financial Auditor (Money)** | Medium | Integrate receipt capture ([QuickScan](https://www.quickscanapp.com/)) and OCR ([Paperless-ngx](https://docs.paperless-ngx.com/)) with spending analysis ([Actual Budget](https://actualbudget.org/)), including voice-based transaction logging. |
+| **FR-24** | **Vital Records (Med/Legal)** | Medium | Automate the indexing and OCR of medical and legal documents ([Paperless-ngx](https://docs.paperless-ngx.com/)) for instant retrieval via the universal search interface. |
+| **FR-25** | **AI Photo Management** | Medium | Host a gallery ([Immich](https://immich.app/)) with ML-driven deduplication and automated purging of low-value media (e.g., screenshots, blurry photos, pocket shots) after a set period. |
+| **FR-26** | **End-to-End Notes** | Medium | Provide encrypted note-taking ([Notesnook](https://notesnook.com/)) with local synchronization and automated ingestion into the universal search index. |
+| **FR-27** | **Web Memory & History** | Medium | Index and archive every web page visited ([ArchiveBox](https://archivebox.io/), [Promnesia](https://github.com/karlicoss/promnesia)) to create a private, exhaustive, and searchable history of personal research. |
+| **FR-28** | **Permanent Bookmarking** | Medium | Provide a "Read-it-Later" service ([Readeck](https://readeck.org/)) that archives web content as searchable PDFs and supports Pinterest-style visual pinning. |
+| **FR-29** | **Schedules & People** | Medium | Host synchronized calendars and contact directories via CalDAV/CardDAV ([Radicale](https://radicale.org/)) with native mobile integration. |
+| **FR-30** | **The Living Handbook** | Medium | Maintain internal system documentation in a database-less format ([Dokuwiki](https://www.dokuwiki.org/)) to ensure readability during extreme system degradation. |
+| **FR-31** | **Private Geolocation** | Medium | Host a private location tracking server ([Traccar](https://www.traccar.org/)) and vector tile server ([MapLibre](https://maplibre.org/)) to provide map services without third-party tracking. |
+| **FR-32** | **Smart Home (Habitat)** | Medium | Centrally manage lights, climate, and sensors via a local-only hub ([Home Assistant](https://www.home-assistant.io/)) completely isolated from the public internet. |
+| **FR-33** | **AI Handbook Auditor** | Medium | Employ a local agent to audit service UIs and update the Knowledge Base with annotated screenshots for visual and instructional parity. |
+| **FR-34** | **Network Segmentation** | Medium | Isolate IoT and automation hardware into dedicated VLANs with zero outbound internet access to prevent lateral network attacks. |
+| **FR-35** | **Sovereign Social Feed** | Low | Deploy private social networking and photo sharing ([Pixelfed](https://pixelfed.org/), [GoToSocial](https://gotosocial.org/)) to facilitate communication without metadata harvesting. |
+| **FR-36** | **Media & YouTube Hub** | Low | Provide streaming of movies and music ([Jellyfin](https://jellyfin.org/)) with automated local archiving of relevant YouTube content ([TubeArchivist](https://tubearchivist.com/)). |
+| **FR-37** | **Digital Library (Books)** | Low | Centralize e-books and audiobooks ([Kavita](https://www.kavitareader.com/), [Audiobookshelf](https://www.audiobookshelf.org/)) into a unified, cross-device accessible library. |
+| **FR-38** | **Physical Security (Sentinel)** | Low | Utilize local AI object detection ([Frigate](https://frigate.video/)) for camera feeds to ensure no metadata or video streams are sent to third-party clouds. |
+
+
+---
+
+
+| ID | Feature Name | Priority | Requirement Description |
+| :--- | :--- | :--- | :--- |
+| **FR-23** | **Air-Gapped IoT Radio** | Medium | Utilize local radio protocols (Zigbee/Z-Wave) that are physically incapable of communicating with the public internet. |
+| **FR-24** | **Metadata Isolation** | Medium | Store all communication and media metadata on local, encrypted ZFS pools rather than third-party servers. |
+| **FR-25** | **OCR Record Archive** | Medium | Automatically OCR-index all uploaded PDFs to allow for full-text search of medical, legal, and financial records. |
+| **FR-26** | **Digital Dead-Man Switch** | Medium | Trigger an automated information handover to beneficiaries if a user heartbeat is not detected for 30 days. |
+| **FR-27** | **P2P Asset Sync** | Medium | Facilitate direct, encrypted synchronization of files and photos between mobile devices and the home node. |
+| **FR-28** | **Automated Health Reports** | Medium | Generate weekly system health reports (Disk wear, backup integrity, failed auth attempts) sent via private mesh. |
+| **FR-29** | **Resource Quotas** | Medium | Implement strict CPU/RAM limits for non-critical services to ensure Identity and Resilience services remain responsive. |
+| **FR-30** | **Hardware Wear Monitoring** | Medium | Monitor SSD/NVMe S.M.A.R.T. data and trigger proactive alerts when "Remaining Life" falls below 15%. |
+| **FR-31** | **Snapshot Pruning Logic** | Medium | Implement automated ZFS snapshot thinning (hourly, daily, weekly retention) to optimize disk space. |
+| **FR-32** | **Bandwidth QoS** | Medium | Implement Quality of Service (QoS) rules to prioritize mesh-failover and telephony traffic over media synchronization. |
+| **FR-33** | **Unified Messaging** | Low | Bridge disparate messaging platforms (WhatsApp/Signal/iMessage) into a single, self-hosted Matrix inbox. |
+| **FR-34** | **Local AI NVR** | Low | Utilize local hardware acceleration for object detection; no video metadata may be sent to third-party clouds. |
+| **FR-35** | **Log Aggregation** | Low | Centralize and encrypt logs from all nodes for auditing and troubleshooting without cloud log-analyzers. |
+| **FR-36** | **MFA Recovery Vault** | Low | Establish a physical "Break-Glass" procedure involving paper-stored recovery codes and Yubikeys secured in a physical safe. |
+| **FR-37** | **Encryption Key Rotation** | Low | Support a procedure for rotating ZFS encryption master keys and IdP signing keys without data loss. |
+| **FR-38** | **Encrypted Temp-Sharing** | Low | Provide a mechanism for sharing large files via auto-expiring, password-protected links. |
+| **FR-40** | **Physical Asset Tracking** | Low | Maintain an encrypted inventory of all physical hardware (serial numbers, MAC addresses) within the Handbook. |
+
+
 
 ---
 
@@ -78,285 +174,3 @@
 * **Glossary:** [Definition of internal terms or acronyms]
 
 
-
-
-
-
-
-
-
-===============================
-===============================
-===============================
-
-
-
-
-
-
-
-
-
-
-
-# Executive Summary: The SovrIT Project
-**Mission:** Total Digital Independence
-**Vision:** A world where individuals own their data, their history, and their future — with absolute sovereignty.
-## 1. The Problem: Data Serfdom
-We currently live our digital lives on "rented land." Our family photos, medical records, and private conversations are stored on servers owned by a handful of corporations. This isn't just a privacy issue; it’s a dependency issue. If a provider changes their terms, raises prices, or discontinues the service, you lose your history and must scramble to find an acceptable replacement. You are a tenant in a digital ecosystem where you don't own the dirt, the walls, or the locks.
-## 2. The Solution: SovrIT PTI
-**SovrIT PTI (Personal/Private Technology Infrastructure)** is a blueprint for independence. It is a "Digital Fortress" built on hardware you own, running software you control. It replaces the "Cloud" with a private, invisible network that is accessible globally — to you and only you.
-## 3. The Pillars of Sovereignty
- * **Encryption at Rest:** All data is mathematically unreadable without your specific encryption keys. Even if the physical hardware is seized, the information remains a secret.
- * **Global Redundancy:** SovrIT utilizes a remote VPS acting as a "Ghost Mirror" with automatic failover. If the home system goes offline due to power or internet outages, your critical services and documentation remain live and accessible from anywhere in the world.
- * **Functional Resiliency:** Through automated backups, "One-Click" restorations, and human-centric procedures for when automated disaster recovery isn’t possible, your digital life is impervious to hardware failures, hackers, ransomware, and evolving threats.
- * **The Human Factor:** SovrIT incorporates a physical "Operating Manual" with procedures consisting of always-up-to-date annotated screenshots that anyone can follow — even if the family IT person is unavailable.
-## 4. The 10-Phase Roadmap to Independence
-The journey to sovereignty is a methodical transition from a fragile digital existence to a robust, self-sustaining legacy:
- * **Phase 0 (The Substrate):** Establishing the encrypted mesh and unreadable storage foundation.
- * **Phase 1 (The Gatekeeper):** Centralizing identity with physical security keys and biometrics.
- * **Phase 2 (Daily Essentials):** Migrating files, passwords, and calendars to your private vault.
- * **Phase 3 (The Searchable Life):** Digitizing life’s paper trail into a secure, searchable archive.
- * **Phase 4 (The iCloud Killer):** Local AI photo galleries and private social feeds.
- * **Phase 5 (The Personal AI):** A local AI assistant that audits the system and updates the Operating Manual.
- * **Phase 6 (The Unkillable System):** High-availability clusters and automated cloud-restoration.
- * **Phase 7 (Sovereign Carrier):** Becoming your own phone company with unified messaging.
- * **Phase 8 (SovrIT Habitat):** Local-only home automation that works without an internet connection.
- * **Phase 9 (SovrIT Sentinel):** Private surveillance that big tech and insurance companies cannot see.
-### 🛡️ Ownership Starts Here
-By the end of this roadmap, the "Cloud" isn't someone else's computer—it's yours. SovrIT PTI ensures that your data remains where it belongs: under your roof and under your control.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-===============================
-===============================
-===============================
-
-
-
-
-
-
-
-
-
-
-
-
-# ProjectPlan.md: SovrIT PTI (Personal Technology Infrastructure)
-
-## 🏛️ Vision & Architectural Pillars
-**SovrIT PTI** is a permanent, sovereign extension of the user's life. It is built on three non-negotiable pillars:
-1. **Zero-Trust Sovereignty:** No third-party (Apple, Google, Insurance Co.) has access to data or metadata.
-2. **Encryption at Rest (The Fortress Protocol):** All data is encrypted via **AES-256-GCM** at the filesystem level. Keys are decoupled from physical hardware, requiring remote mesh-auth or manual passphrases to unlock. If hardware is seized, the data is unreadable noise.
-3. **Operational Continuity (The Krista Test):** The system is documented in a physical, AI-audited **Handbook** ensuring a "Zero-Power" recovery path for family members.
-
----
-
-## 🗺️ The 10-Phase Roadmap
-
-### Phase 0: The Substrate & Fortress Protocol
-**Goal:** Establish the encrypted mesh and physical data protection.
-* **OS:** [Ubuntu 26.04 LTS](https://ubuntu.com/) Minimal on all nodes.
-* **SecureNet:** [Netbird](https://netbird.io/) P2P mesh overlay; all public ports closed via UFW.
-* **Storage:** [OpenZFS](https://openzfs.org/) with native encryption. Remote key loading via the VPS/Netbird tunnel.
-* **Logbook:** [Dokuwiki](https://www.dokuwiki.org/) (Flat-file) for as-built documentation.
-* **Gateway:** [Caddy](https://caddyserver.com/) for internal mesh SSL and automated proxying.
-
-### Phase 1: Sovereignty Foundation (Identity)
-**Goal:** Centralized, memory-safe identity managed via GitOps.
-* **Core IdP:** [Kanidm](https://kanidm.github.io/kanidm/) (Rust-based) Identity Provider.
-* **MFA:** [WebAuthn](https://webauthn.io/) (Passkeys/Biometrics) for daily use; [Yubikeys](https://www.yubico.com/products/yubikey-5-series/) for physical recovery.
-* **Management:** [Forgejo](https://forgejo.org/) hosted `users.yml` synced via [Ansible](https://www.ansible.com/).
-
-### Phase 2: User Assets & Gateway (Daily Driver)
-**Goal:** The human interface and primary cloud replacement.
-* **Gateway:** [Flame Dashboard](https://github.com/pawelmalak/flame) (Internal Mesh only).
-* **Vault:** [Vaultwarden](https://github.com/dani-garcia/vaultwarden) (SQLite-based Bitwarden API).
-* **Sync:** [Syncthing](https://syncthing.net/) for encrypted P2P file transport.
-* **PIM:** [Radicale](https://radicale.org/) (Flat-file) for private Contacts/Calendars.
-* **Web Office:** [FileBrowser](https://filebrowser.org/) + [OnlyOffice](https://www.onlyoffice.com/) for document management.
-
-### Phase 3: Vital Records (The Searchable Life)
-**Goal:** Digitizing medical, legal, and financial history.
-* **Archive:** [Paperless-ngx](https://docs.paperless-ngx.com/) (SQLite) with OCR indexing.
-* **SpendTracker:** [QuickScan](https://getquickscan.app/) (iOS) ➔ Syncthing ➔ Paperless matching.
-* **Ledger:** [Actual Budget](https://actualbudget.org/) (SQLite) for private finance.
-* **Legacy:** [Aeterna](https://github.com/reallibreboard/aeterna) (Dead Man's Switch) for info handover.
-
-### Phase 4: Sovereign Media & Presence (The iCloud Killer)
-**Goal:** Cancellation of all big-tech media subscriptions.
-* **Photos:** [Immich](https://immich.app/) for auto-backup and local AI facial recognition.
-* **Social:** [GoToSocial](https://gotosocial.org/) (SQLite) for private microblogging.
-* **Visual Blog:** [Pixelfed](https://pixelfed.org/) (Instagram replacement).
-* **Email:** [Stalwart Mail](https://stalwart.io/) (Rust/SQLite) JMAP/IMAP/SMTP server.
-
-### Phase 5: SovrIT Assistant (AI Handbook Auditor)
-**Goal:** A local AI that keeps the documentation and the user in sync.
-* **Brain:** [Ollama](https://ollama.com/) hosting local LLMs (Llama 3 / Llava).
-* **Auditor:** [Playwright](https://playwright.dev/) for automated UI screenshot auditing.
-* **Chat:** [LibreChat](https://www.librechat.ai/) interface for mobile system queries.
-
-### Phase 6: SovrIT Fortitude (Resiliency & Insta-Restore)
-**Goal:** Functional immortality via HA clusters and S3 cold storage.
-* **HA Cluster:** [Proxmox VE](https://www.proxmox.com/) High-Availability environment.
-* **Offsite Vault:** [Kopia](https://kopia.io/) encrypted backups to [Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/).
-* **Restore Logic:** [n8n](https://n8n.io/) + Ansible for "couple-click" service rebuilding.
-* **Watchman:** [Uptime Kuma](https://uptime.kuma.pet/) for health monitoring and failover triggers.
-
-### Phase 7: Sovereign Carrier (Communication)
-**Goal:** Own your phone number and unify your messaging.
-* **Voice PBX:** [VitalPBX](https://www.vitalpbx.com/) with SIP-TLS/SRTP encryption.
-* **Messaging:** [Matrix](https://matrix.org/) unified via [Beeper Bridge Manager (bbctl)](https://github.com/beeper/bridge-manager).
-* **Identity:** [JMP.chat](https://jmp.chat/) for portable phone identity via XMPP/Matrix.
-
-### Phase 8: SovrIT Habitat (The Local IoT)
-**Goal:** A home that works without the internet and respects your privacy.
-* **Smart Brain:** [Home Assistant](https://www.home-assistant.io/) (Core VM).
-* **Radios:** [Zigbee](https://csa-iot.org/all-solutions/zigbee/) 3.0 / [Z-Wave](https://z-wavealliance.org/) 800-series (Local only).
-* **Voice:** [Home Assistant Assist](https://www.home-assistant.io/voice_control/) for local voice processing.
-
-### Phase 9: SovrIT Sentinel (Private Surveillance)
-**Goal:** Intelligent monitoring invisible to third parties.
-* **NVR:** [Frigate](https://frigate.video/) with [Local AI Object Detection](https://coral.ai/products/accelerator/).
-* **Cameras:** Non-cloud PoE Hardware (Firewalled via VLAN).
-
----
-
-## 🛠️ Maintenance & Lifecycle
-1. **The Binder Rule:** Every AI-detected revision change in Phase 5 must be printed and filed in the physical binder.
-2. **The Key Protocol:** ZFS Encryption passphrases must never be stored on the same physical node as the data.
-3. **The Audit:** Monthly "Insta-Restore" tests to verify S3 backup integrity.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-===============================
-===============================
-===============================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-This WILLWIF (What It Looks Like When It’s Finished) defines the end-state for SovrIT PTI. It is the "North Star" for your private technology infrastructure, moving away from fragmented self-hosting toward a unified, enterprise-grade sovereign environment.
-
-🖥️ The User Experience: "The Command Center"
-When you or your spouse open a browser or a tablet, you are greeted by the SovrIT Dashboard (Flame).
-
-UI: The Flame Main Menu
-Minimalist Landing: A clean, dark-themed interface with high-contrast icons.
-
-Categorized Modules: Services are grouped logically (e.g., Identity, Communications, Vaults, System Health).
-
-Live Status Indicators: Each app icon features a small "Heartbeat" dot (Green/Red) showing real-time availability.
-
-Integrated Search: A central bar that searches not just the web, but your internal documentation (The Handbook).
-
-"Emergency" Pin: A permanent, red-bordered pin at the top-right labeled "System Recovery" which links directly to the physical binder’s digital twin.
-
-🏗️ Module 1: SovrIT Core (The Substrate)
-This is the invisible engine room. It provides the services that protect and privatize everything else.
-
-Functionality & Services
-Sync-in Server: Replacing the bloat of Nextcloud with a high-performance, open-standards file synchronization engine.
-
-User Benefit: Instant, background syncing of files across your iPhone 15, iPad Pro, and TrueNAS server with no 3rd-party "eyes" on the metadata.
-
-SovrIT SecureNet (Netbird): A Wireguard-based mesh overlay.
-
-User Benefit: You access the dashboard from Panama City or Tahiti exactly as if you were on your home Wi-Fi, without opening a single port to the public internet.
-
-Sovereign DNS (Pi-hole + Unbound): * User Benefit: Every device on the network has ads and trackers stripped at the root before they even reach the browser.
-
-Forgejo (The Forge): A lightweight, self-hosted Git platform for your "Infrastructure as Code" and documentation.
-
-Privacy & Data Protection
-Traffic Obfuscation: All outbound traffic from mobile devices is tunneled through the VPS/Home Core, masking your physical location from mobile carriers and ISPs.
-
-Zero-Knowledge Storage: Data on the Sync-in Server is encrypted at rest; even a physical seizure of the server yields nothing but "digital noise."
-
-Identity Isolation (Authelia): A single, hardened login screen for every app. One password + one Yubikey tap unlocks the entire ecosystem.
-
-🛡️ The Resiliency Engine (SovrIT Fortitude)
-This is the "Corporate-Grade" layer that ensures the system stays up or can be recovered by a child.
-
-Functionality
-Self-Healing Containers: Using Autoheal to monitor Docker health; if a service hangs, the system automatically restarts it without human intervention.
-
-3-2-1 Backup Strategy: * 3 copies of data (Live, Local Backup, Offsite).
-
-2 different media (NVMe and HDD).
-
-1 offsite (Encrypted "Cold" storage or a secondary mini-PC at a trusted location).
-
-Snapshotting: Filesystem-level snapshots (ZFS) taken every hour. If you accidentally delete a critical folder, you "roll back the clock" in seconds.
-
-What Resiliency Looks Like to the User
-The "Quiet" System: No "Server is down" complaints. If a secondary node fails, the user notices nothing because the high-availability (HA) cluster shifted the load.
-
-The Physical Binder: A physical 3-ring binder sitting on a shelf.
-
-The "Child/Spouse" Test: If the internet goes out, the binder has a tab labeled "No Internet." They flip to it, see a screenshot of the router, a red circle around the power button, and an arrow saying "Push this."
-
-AI Handholding: If a service updates and the UI changes, the AI Assistant proactively sends a message: "I've updated the 'How to Sync' guide in your handbook. Please print the new version (Rev 3.2) when you have a moment."
-
-🧩 The Module Breakdown (WILLWIF Summary)
-Module	Core Service	Primary Sovereign Benefit
-Access	Authelia / Kanidm	Centralized, hardened identity; no Google/Apple login needed.
-Vault	Vaultwarden	Passwords and SSH keys stay off the 3rd-party cloud.
-Carrier	Asterisk / Jami	Encrypted voice/text routed through your own hardware.
-Ledger	Actual Budget	Financial history remains private and local.
-Handbook	Forgejo / Wiki.js	Documentation that is always accurate and spouse-friendly.
-This WILLWIF describes a system that is no longer a "project" but a utility—as reliable as the electricity in your walls, but significantly more private.
-
-How does this end-state align with your vision for the "SovrIT PTI" platform?
