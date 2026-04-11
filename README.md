@@ -1,8 +1,8 @@
-# SovrIT PTI: Personal Technology Infrastructure
+# SovrIT PTI
 
-**SovrIT PTI** (Personal/Private Technology Infrastructure) is a high-performance, local-first infrastructure designed to reclaim digital sovereignty. It replaces the **entire** suite of modern cloud-dependent services—identity, voice and text communication, productivity, media, and more—with a unified, encrypted, and self-hosted ecosystem. 
+**SovrIT PTI** (Personal/Private Technology Infrastructure) is a high-performance, local-first infrastructure designed to reclaim digital sovereignty. It replaces the _**entire**_ suite of modern cloud-dependent services—identity, authentication, email/text communication, productivity, office/documents, medical/legal/financial records, media, even telephony and location services (and more) - with a unified, encrypted, and self-hosted ecosystem. 
 
-SovrIT replaces reliance on third-party cloud services with a modular ecosystem you operate yourself—engineered to be used, understood, and maintained by anyone in your home. This repository defines the SovrIT Platform: the architecture, design philosophy, and long‑term principles that guide the entire SovrIT ecosystem.
+SovrIT replaces reliance on ISP, mobile carrier, and third-party cloud services with a modular ecosystem you operate yourself —engineered to be used, understood, and maintained by anyone in your home.
 
 ---
 
@@ -10,19 +10,26 @@ SovrIT replaces reliance on third-party cloud services with a modular ecosystem 
 
 Most personal data today lives inside third‑party clouds you do not control. It is routinely inspected, analyzed, monetized, and used by the companies that store it, as well as by government agencies that increasingly disregard the spirit and intent of constitutional privacy protections. SovrIT exists to break that dependency by providing a stable, sovereign foundation for digital life—engineered and maintained with the same safeguards, discipline, and mission‑critical mindset found in enterprise IT environments.
 
-Self‑hosting isolated services is not enough. True digital sovereignty requires that your data, your communications, and your daily digital operations be protected end‑to‑end. SovrIT enables you to become your own ISP and your own mobile carrier—while still paying traditional providers only for the raw bandwidth required to move encrypted data. Your information should belong and be visible only to you.
+Self‑hosting isolated services is not enough. True digital sovereignty requires that your data, your communications, and your daily digital operations be protected end‑to‑end. SovrIT enables you to become your own ISP and mobile carrier, paying traditional providers only for the raw bandwidth required to move encrypted data. Your information should belong to and be visible only to you.
 
 ---
 
 ## 🛡️ The Seven Architectural Pillars
 
-1. **Absolute Sovereignty & Zero-Trust Privacy:** No third party holds the keys to your data, identity, or mesh network. All data passing through external carriers is strictly encrypted.
-2. **Autonomous Functional Resiliency:** The system is *self-healing*. Automated recovery pipelines detect service degradation and trigger immediate rebuilds to ensure integrity without manual intervention.
-3. **Global High Availability & Failover Redundancy:** A geographically distant VPS "Ghost Mirror" provides failover orchestration, ensuring critical data remains accessible during local outages or catastrophic physical events.
-4. **Invisible Security:** Security is integrated into the user flow via biometrics (FaceID/TouchID), eliminating the friction of traditional passwords.
-5. **Sovereign Voice/AI Assistance:** The **SovrIT Assistant** serves as the primary gateway to the system's intelligence, providing both voice and chat-based local AI. By utilizing local LLMs and speech-to-text engines, it processes complex intents and research entirely within the private network, integrated with a universal search index for context-aware insights.
-6. **Decoupled Encryption at Rest:** All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). Encryption keys are decoupled from physical hardware to ensure data remains unreadable if servers are physically seized.
-7. **Operational Continuity (The Living Handbook):** Comprehensive "Human-Centric" documentation ensures the system can be maintained by anyone in the household. AI-audited instructions match real-time UIs to provide non-technical users with a clear visual roadmap.
+### 1. Absolute Sovereignty & Zero-Trust Privacy
+No third party holds the keys to your data, identity, or mesh network. All data passing through external carriers is strictly encrypted.
+### 2. Autonomous Functional Resiliency
+The system is *self-healing*. Automated recovery pipelines detect service degradation and trigger immediate rebuilds to ensure integrity without manual intervention.
+### 3. Global High Availability & Failover Redundancy
+A geographically distant VPS "Ghost Mirror" provides failover orchestration, ensuring critical data remains accessible during local outages or catastrophic physical events.
+### 4. Invisible Security
+Security is integrated into the user flow via biometrics (FaceID/TouchID), eliminating the friction of traditional passwords.
+### 5. Sovereign Voice/AI Assistance
+The **SovrIT Assistant** serves as the primary gateway to the system's intelligence, providing both voice and chat-based local AI. By utilizing local LLMs and speech-to-text engines, it processes complex intents and research entirely within the private network, integrated with a universal search index for context-aware insights.
+### 6. Decoupled Encryption at Rest
+All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). Encryption keys are decoupled from physical hardware to ensure data remains unreadable if servers are physically seized.
+### 7. **Operational Continuity (The Living Handbook)
+Comprehensive "Human-Centric" documentation ensures the system can be maintained by anyone in the household. AI-audited instructions match real-time UIs to provide non-technical users with a clear visual roadmap.
 
 ---
 
