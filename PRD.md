@@ -73,7 +73,7 @@ _”As a remote worker who lost access to critical documents during a massive th
 | :--- | :--- | :--- | :--- |
 | **FR-01** | **Mesh Networking** | High | Establish an encrypted P2P mesh network ([Netbird](https://netbird.io/)) to facilitate secure node communication without public port exposure. |
 | **FR-02** | **Universal Identity** | High | Provide a centralized Identity Provider ([Authentik](https://goauthentik.io/)) for OIDC/SAML authentication across all system modules. |
-| **FR-03** | **Biometric Gatekeeper** | High | Mandate WebAuthn (FaceID/TouchID) as the primary MFA via [Authentik](https://goauthentik.io/) to ensure high security with zero daily user friction. |
+| **FR-03** | **Biometric Gatekeeper** | High | Mandate ([WebAuthn](https://webauthn.guide/)) (FaceID/TouchID) as the primary MFA via [Authentik](https://goauthentik.io/) to ensure high security with zero daily user friction. |
 | **FR-04** | **Edge Traffic Control** | High | Implement an edge proxy ([Traefik](https://traefik.io/)) supporting gRPC and automated SSL management for mesh-wide routing. |
 | **FR-05** | **Insta-Restore Engine** | High | Provide a dashboard (n8n/Ansible) to rebuild core services from a clean state using versioned configs and S3 data. |
 | **FR-06** | **Universal Sovereign Search** | High | Deploy a centralized, lightning-fast indexer ([Meilisearch](https://www.meilisearch.com/)) that provides exhaustive, real-time search across mail, messages, files, notes, bookmarks, web history, and more. |
