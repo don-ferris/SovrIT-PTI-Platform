@@ -105,6 +105,7 @@ _”As a remote worker who lost access to critical documents during a massive th
 | **FR-32** | **Smart Home (Habitat)** | Medium | Centrally manage lights, climate, and sensors via a local-only hub ([Home Assistant](https://www.home-assistant.io/)) completely isolated from the public internet. |
 | **FR-33** | **AI Handbook Auditor** | Medium | Employ a local agent to audit service UIs and update the Knowledge Base with annotated screenshots for visual and instructional parity. |
 | **FR-34** | **Network Segmentation** | Medium | Isolate IoT and automation hardware into dedicated VLANs with zero outbound internet access to prevent lateral network attacks. |
+| **FR-23** | **Air-Gapped IoT Radio** | Medium | Utilize local radio protocols (Zigbee/Z-Wave) that are physically incapable of communicating with the public internet. |
 | **FR-35** | **Sovereign Social Feed** | Low | Deploy private social networking and photo sharing ([Pixelfed](https://pixelfed.org/), [GoToSocial](https://gotosocial.org/)) to facilitate communication without metadata harvesting. |
 | **FR-36** | **Media & YouTube Hub** | Low | Provide streaming of movies and music ([Jellyfin](https://jellyfin.org/)) with automated local archiving of relevant YouTube content ([TubeArchivist](https://tubearchivist.com/)). |
 | **FR-37** | **Digital Library (Books)** | Low | Centralize e-books and audiobooks ([Kavita](https://www.kavitareader.com/), [Audiobookshelf](https://www.audiobookshelf.org/)) into a unified, cross-device accessible library. |
@@ -114,9 +115,15 @@ _”As a remote worker who lost access to critical documents during a massive th
 ---
 
 
+---
+
+
+---
+
+
 | ID | Feature Name | Priority | Requirement Description |
 | :--- | :--- | :--- | :--- |
-| **FR-23** | **Air-Gapped IoT Radio** | Medium | Utilize local radio protocols (Zigbee/Z-Wave) that are physically incapable of communicating with the public internet. |
+
 | **FR-24** | **Metadata Isolation** | Medium | Store all communication and media metadata on local, encrypted ZFS pools rather than third-party servers. |
 | **FR-25** | **OCR Record Archive** | Medium | Automatically OCR-index all uploaded PDFs to allow for full-text search of medical, legal, and financial records. |
 | **FR-26** | **Digital Dead-Man Switch** | Medium | Trigger an automated information handover to beneficiaries if a user heartbeat is not detected for 30 days. |
