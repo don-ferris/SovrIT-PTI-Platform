@@ -92,6 +92,8 @@ _”As a remote worker who lost access to critical documents during a massive th
 | **FR-19** | **Local Certificate Authority** | High | Implement an internal ACME server (Step-CA or Traefik) to issue trusted SSL certificates for all mesh-only domains. |
 | **FR-20** | **Database Atomic Snapshots** | High | Coordinate ZFS snapshots with database "freeze" commands to ensure backup consistency. |
 | **FR-21** | **Mobile Device Hardening** | High | Ensure mobile clients are configured to route all sovereign traffic through the mesh with "Always-On" VPN logic. |
+| **FR-29** | **Resource Quotas** | High | Implement strict CPU/RAM limits for non-critical services to ensure Identity and Resilience services remain responsive. |
+| **FR-30** | **Hardware Wear Monitoring** | Medium | Monitor SSD/NVMe S.M.A.R.T. data and trigger proactive alerts when "Remaining Life" falls below 15%. |
 | **FR-22** | **Zero-Log Application Config** | Medium | Force containerized applications to log to the central aggregator while disabling identifiable debug logs to local disk. |
 | **FR-23** | **Financial Auditor (Money)** | Medium | Integrate receipt capture ([QuickScan](https://www.quickscanapp.com/)) and OCR ([Paperless-ngx](https://docs.paperless-ngx.com/)) with spending analysis ([Actual Budget](https://actualbudget.org/)), including voice-based transaction logging. |
 | **FR-24** | **Vital Records (Med/Legal)** | Medium | Automate the indexing and OCR of medical and legal documents ([Paperless-ngx](https://docs.paperless-ngx.com/)) for instant retrieval via the universal search interface. |
@@ -106,42 +108,22 @@ _”As a remote worker who lost access to critical documents during a massive th
 | **FR-33** | **AI Handbook Auditor** | Medium | Employ a local agent to audit service UIs and update the Knowledge Base with annotated screenshots for visual and instructional parity. |
 | **FR-34** | **Network Segmentation** | Medium | Isolate IoT and automation hardware into dedicated VLANs with zero outbound internet access to prevent lateral network attacks. |
 | **FR-23** | **Air-Gapped IoT Radio** | Medium | Utilize local radio protocols (Zigbee/Z-Wave) that are physically incapable of communicating with the public internet. |
-| **FR-35** | **Sovereign Social Feed** | Low | Deploy private social networking and photo sharing ([Pixelfed](https://pixelfed.org/), [GoToSocial](https://gotosocial.org/)) to facilitate communication without metadata harvesting. |
-| **FR-36** | **Media & YouTube Hub** | Low | Provide streaming of movies and music ([Jellyfin](https://jellyfin.org/)) with automated local archiving of relevant YouTube content ([TubeArchivist](https://tubearchivist.com/)). |
-| **FR-37** | **Digital Library (Books)** | Low | Centralize e-books and audiobooks ([Kavita](https://www.kavitareader.com/), [Audiobookshelf](https://www.audiobookshelf.org/)) into a unified, cross-device accessible library. |
-| **FR-38** | **Physical Security (Sentinel)** | Low | Utilize local AI object detection ([Frigate](https://frigate.video/)) for camera feeds to ensure no metadata or video streams are sent to third-party clouds. |
-
-
----
-
-
----
-
-
----
-
-
-| ID | Feature Name | Priority | Requirement Description |
-| :--- | :--- | :--- | :--- |
-
-| **FR-24** | **Metadata Isolation** | Medium | Store all communication and media metadata on local, encrypted ZFS pools rather than third-party servers. |
 | **FR-25** | **OCR Record Archive** | Medium | Automatically OCR-index all uploaded PDFs to allow for full-text search of medical, legal, and financial records. |
 | **FR-26** | **Digital Dead-Man Switch** | Medium | Trigger an automated information handover to beneficiaries if a user heartbeat is not detected for 30 days. |
 | **FR-27** | **P2P Asset Sync** | Medium | Facilitate direct, encrypted synchronization of files and photos between mobile devices and the home node. |
 | **FR-28** | **Automated Health Reports** | Medium | Generate weekly system health reports (Disk wear, backup integrity, failed auth attempts) sent via private mesh. |
-| **FR-29** | **Resource Quotas** | Medium | Implement strict CPU/RAM limits for non-critical services to ensure Identity and Resilience services remain responsive. |
-| **FR-30** | **Hardware Wear Monitoring** | Medium | Monitor SSD/NVMe S.M.A.R.T. data and trigger proactive alerts when "Remaining Life" falls below 15%. |
 | **FR-31** | **Snapshot Pruning Logic** | Medium | Implement automated ZFS snapshot thinning (hourly, daily, weekly retention) to optimize disk space. |
 | **FR-32** | **Bandwidth QoS** | Medium | Implement Quality of Service (QoS) rules to prioritize mesh-failover and telephony traffic over media synchronization. |
-| **FR-33** | **Unified Messaging** | Low | Bridge disparate messaging platforms (WhatsApp/Signal/iMessage) into a single, self-hosted Matrix inbox. |
-| **FR-34** | **Local AI NVR** | Low | Utilize local hardware acceleration for object detection; no video metadata may be sent to third-party clouds. |
+| **FR-34** | **Local AI NVR** | Medium | Utilize local hardware acceleration for object detection; no video metadata may be sent to third-party clouds. |
 | **FR-35** | **Log Aggregation** | Low | Centralize and encrypt logs from all nodes for auditing and troubleshooting without cloud log-analyzers. |
 | **FR-36** | **MFA Recovery Vault** | Low | Establish a physical "Break-Glass" procedure involving paper-stored recovery codes and Yubikeys secured in a physical safe. |
+| **FR-35** | **Sovereign Social Feed** | Low | Deploy private social networking and photo sharing ([Pixelfed](https://pixelfed.org/), [GoToSocial](https://gotosocial.org/)) to facilitate communication without metadata harvesting. |
+| **FR-36** | **Media & YouTube Hub** | Low | Provide streaming of movies and music ([Jellyfin](https://jellyfin.org/)) with automated local archiving of relevant YouTube content ([TubeArchivist](https://tubearchivist.com/)). |
+| **FR-37** | **Digital Library (Books)** | Low | Centralize e-books and audiobooks ([Kavita](https://www.kavitareader.com/), [Audiobookshelf](https://www.audiobookshelf.org/)) into a unified, cross-device accessible library. |
+| **FR-38** | **Physical Security (Sentinel)** | Low | Utilize local AI object detection ([Frigate](https://frigate.video/)) for camera feeds to ensure no metadata or video streams are sent to third-party clouds. |
 | **FR-37** | **Encryption Key Rotation** | Low | Support a procedure for rotating ZFS encryption master keys and IdP signing keys without data loss. |
 | **FR-38** | **Encrypted Temp-Sharing** | Low | Provide a mechanism for sharing large files via auto-expiring, password-protected links. |
 | **FR-40** | **Physical Asset Tracking** | Low | Maintain an encrypted inventory of all physical hardware (serial numbers, MAC addresses) within the Handbook. |
-
-
 
 ---
 
