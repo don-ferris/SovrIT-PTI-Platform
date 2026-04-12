@@ -14,22 +14,23 @@ Self‑hosting isolated services is not enough. True digital sovereignty require
 
 ---
 
-## 🛡️ The Seven Architectural Pillars
-
+## 5. The Seven Architectural Pillars of SovrIT PTI
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
-No third party holds the keys to your data, identity, or mesh network. All data passing through external carriers is strictly encrypted.
+No third party holds the keys or has access to your data, identity, or mesh network. Where your data passes through servers that are not under your control (e.g. phone calls from a mobile device), they do so in encrypted form.
 ### 2. Autonomous Functional Resiliency
-The system is *self-healing*. Automated recovery pipelines detect service degradation and trigger immediate rebuilds to ensure integrity without manual intervention.
+The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate rebuilds or relaunches. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 ### 3. Global High Availability & Failover Redundancy
-A geographically distant VPS "Ghost Mirror" provides failover orchestration, ensuring critical data remains accessible during local outages or catastrophic physical events.
+SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
 ### 4. Invisible Security
-Security is integrated into the user flow via biometrics (FaceID/TouchID), eliminating the friction of traditional passwords.
+Security is integrated into the user flow via biometrics (FaceID/TouchID), eliminating the friction of traditional passwords. 
 ### 5. Sovereign Voice/AI Assistance
-The **SovrIT Assistant** serves as the primary gateway to the system's intelligence, providing both voice and chat-based local AI. By utilizing local LLMs and speech-to-text engines, it processes complex intents and research entirely within the private network, integrated with a universal search index for context-aware insights.
+The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
-All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). Encryption keys are decoupled from physical hardware to ensure data remains unreadable if servers are physically seized.
-### 7. Operational Continuity (The Living Handbook)
-Comprehensive "Human-Centric" documentation ensures the system can be maintained by anyone in the household. AI-audited instructions match real-time UIs to provide non-technical users with a clear visual roadmap.
+All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
+### 7. Operational Continuity - The Living Handbook
+Comprehensive "Human-Centric" documentation ensures the system can be maintained and recovered by anyone in the household. An AI-audited Handbook uses annotated screenshots and real-time UI tracking to ensure that the documentation precisely matches the screen layout,  menus, dialogs, and options that the user sees on-screen. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the family IT person is unavailable.
+
+
 
 ---
 
