@@ -210,11 +210,10 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Actual Budget**] — privacy-first personal finance and envelope budgeting
 - [**Paperless-ngx**] — powerful document management and OCR indexing
 - [**Immich**] — high-performance, AI-driven photo and video management
-- [**Flame**] — aesthetic, protected dashboard for all sovereign services
+- [**Uptime Kuma**] — self-hosted uptime monitoring and service alerts
+- [**NixOS**] — declarative and reproducible operating system configuration- [**Flame**] — aesthetic, protected dashboard for all sovereign services
 - [**Kavita**] / [**Audiobookshelf**] — decentralized digital libraries for books and audio
 - [**Traccar**] / [**MapLibre**] — private location tracking and sovereign mapping
 - [**Jellyfin**] — high-performance personal media streaming
 - [**TubeArchivist**] — sovereign YouTube archiving and metadata management
 - [**Hugging Face**] — LLM/AI frameworks for guided operations and documentation auditing
-- [**Uptime Kuma**] — self-hosted uptime monitoring and service alerts
-- [**NixOS**] — declarative and reproducible operating system configuration
