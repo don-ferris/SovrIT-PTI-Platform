@@ -38,41 +38,42 @@ Comprehensive "Human-Centric" documentation walks users through procedures consi
 
 ### SovrIT Core (Runtime Substrate)
 The sovereign execution environment and foundational services:
-- **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird]).
-- **SovrIT Access:** Centralized identity, biometric gatekeeping ([WebAuthn]), and OIDC/SAML authentication ([Authentik]).
-- **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia]), automated recovery ([n8n]), and uptime monitoring ([Uptime Kuma]).
-- **Core Ops:** Provisioning and lifecycle management ([Ansible]), declarative configuration [NixOS], private state tracking ([Forgejo]), and encrypted storage foundations ([ZFS]).
+- **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)).
+- **SovrIT Access:** Centralized identity, biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), and OIDC/SAML authentication ([Authentik](https://goauthentik.io/)).
+- **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
+- **Core Ops:** Provisioning and lifecycle management ([Ansible](https://www.ansible.com/)), declarative configuration ([NixOS](https://nixos.org/)), private state tracking ([Forgejo](https://forgejo.org/)), and encrypted storage foundations ([ZFS](https://openzfs.org/)).
 
 ### SovrIT Modules
 The user-facing applications that fulfill the functional requirements:
 
 * **Intelligence & Discovery:**
-    * **SovrIT Assistant:** Local voice/chat AI ([Ollama]), transcription ([Whisper]), and speech synthesis ([Piper]).
-    * **SovrIT Search:** Lightning-fast universal discovery across all system data ([Meilisearch]).
-    * **SovrIT Sentinel:** Intelligent local security and AI NVR ([Frigate]).
+    * **SovrIT Assistant:** Local voice/chat AI ([Ollama](https://ollama.com/)), transcription ([Whisper](https://github.com/SYSTRAN/faster-whisper)), and speech synthesis ([Piper](https://github.com/rhasspy/piper)).
+    * **SovrIT Search:** Lightning-fast universal discovery across all system data ([Meilisearch](https://www.meilisearch.com/)).
+    * **SovrIT Sentinel:** Intelligent local security and AI NVR ([Frigate](https://frigate.video/)).
 * **Communication & Social:**
-    * **SovrIT Messenger:** Unified chat hub (WhatsApp/Signal/iMessage) via [Matrix] and [Mautrix] bridges.
-    * **SovrIT Carrier:** Sovereign voice and telephony [VitalPBX] using SIP-TLS and SRTP for encrypted signaling and media.
-    * **SovrIT Notify:** Unified cross-system notification gateway [ntfy].
-    * **SovrIT Social:** Private photo sharing and social networking [Pixelfed] / [GoToSocial].
+    * **SovrIT Messenger:** Unified chat hub (WhatsApp/Signal/iMessage) via ([Matrix](https://matrix.org/)) and ([Mautrix](https://mautrix.net/)) bridges.
+    * **SovrIT Carrier:** Sovereign voice and telephony ([VitalPBX](https://www.vitalpbx.com/)) using SIP-TLS and SRTP for encrypted signaling and media.
+    * **SovrIT Notify:** Unified cross-system notification gateway ([ntfy](https://ntfy.sh/)).
+    * **SovrIT Social:** Private photo sharing and social networking ([Pixelfed](https://pixelfed.org/)) / ([GoToSocial](https://gotosocial.org/)).
 * **Productivity & Office:**
-    * **SovrIT Office:** File management [FileBrowser Quantum] and collaborative editing [OnlyOffice].
-    * **SovrIT Notes:** E2EE synchronized note-taking [Notesnook].
-    * **SovrIT Calendar / Contacts:** Sovereign schedules and people [Radicale].
-    * **SovrIT Bookmarks:** Permanent article archiving and visual pinning [Readeck].
-    * **SovrIT History:** Searchable web memory [ArchiveBox] / [Promnesia].
+    * **SovrIT Office:** File management ([FileBrowser Quantum](https://filebrowser.org/)) and collaborative editing ([OnlyOffice](https://www.onlyoffice.com/)).
+    * **SovrIT Notes:** E2EE synchronized note-taking ([Notesnook](https://notesnook.com/)).
+    * **SovrIT Calendar / Contacts:** Sovereign schedules and people ([Radicale](https://radicale.org/)).
+    * **SovrIT Bookmarks:** Permanent article archiving and visual pinning ([Readeck](https://readeck.org/)).
+    * **SovrIT History:** Searchable web memory ([ArchiveBox](https://archivebox.io/)) / ([Promnesia](https://github.com/karlicoss/promnesia)).
 * **Vital Archives:**
-    * **SovrIT Money:** Financial auditing [Actual Budget] with mobile receipt capture [QuickScan] / [OpenScan] and document OCR [Paperless-ngx].
-    * **SovrIT Photos:** AI gallery and media management with ML-driven pruning [Immich].
-    * **SovrIT Med / Legal:** OCR-indexed health and estate records [Paperless-ngx].
-    * **SovrIT Handbook:** AI-audited documentation and manuals [Dokuwiki].
-    * **SovrIT Maps:** Private location services [Traccar] and private vector mapping [MapLibre].
+    * **SovrIT Money:** Financial auditing ([Actual Budget](https://actualbudget.org/)) with mobile receipt capture ([QuickScan](https://www.quickscanapp.com/)) / ([OpenScan](https://github.com/OpenScan-App/OpenScan)) and document OCR ([Paperless-ngx](https://docs.paperless-ngx.com/)).
+    * **SovrIT Photos:** AI gallery and media management with ML-driven pruning ([Immich](https://immich.app/)).
+    * **SovrIT Med / Legal:** OCR-indexed health and estate records ([Paperless-ngx](https://docs.paperless-ngx.com/)).
+    * **SovrIT Handbook:** AI-audited documentation and manuals ([Dokuwiki](https://www.dokuwiki.org/)).
+    * **SovrIT Maps:** Private location services ([Traccar](https://www.traccar.org/)) and private vector mapping ([MapLibre](https://maplibre.org/)).
 * **Identity & Vault:**
-    * **SovrIT Vault:** Secrets, passwords, and MFA recovery stewardship ([Vaultwarden]).
+    * **SovrIT Vault:** Secrets, passwords, and MFA recovery stewardship ([Vaultwarden](https://github.com/dani-garcia/vaultwarden)).
 * **Media & Lifestyle:**
-    * **SovrIT Media:** Streaming and YouTube archiving ([Jellyfin]/[TubeArchivist]).
-    * **SovrIT Books:** Digital and audiobook library ([Kavita]/[Audiobookshelf]).
-    * **SovrIT Habitat:** Local-only smart home automation ([Home Assistant]).
+    * **SovrIT Media:** Streaming and YouTube archiving ([Jellyfin](https://jellyfin.org/))/([TubeArchivist](https://tubearchivist.com/)).
+    * **SovrIT Books:** Digital and audiobook library ([Kavita](https://www.kavitareader.com/))/([Audiobookshelf](https://www.audiobookshelf.org/)).
+    * **SovrIT Habitat:** Local-only smart home automation ([Home Assistant](https://www.home-assistant.io/)).
+
 
 ---
 
