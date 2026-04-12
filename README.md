@@ -28,7 +28,7 @@ Security is integrated into the user flow via biometrics (FaceID/TouchID), elimi
 The **SovrIT Assistant** serves as the primary gateway to the system's intelligence, providing both voice and chat-based local AI. By utilizing local LLMs and speech-to-text engines, it processes complex intents and research entirely within the private network, integrated with a universal search index for context-aware insights.
 ### 6. Decoupled Encryption at Rest
 All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). Encryption keys are decoupled from physical hardware to ensure data remains unreadable if servers are physically seized.
-### 7. **Operational Continuity (The Living Handbook)
+### 7. Operational Continuity (The Living Handbook)
 Comprehensive "Human-Centric" documentation ensures the system can be maintained by anyone in the household. AI-audited instructions match real-time UIs to provide non-technical users with a clear visual roadmap.
 
 ---
@@ -36,51 +36,54 @@ Comprehensive "Human-Centric" documentation ensures the system can be maintained
 ## 🧩 SovrIT Ecosystem Overview
 
 ### SovrIT Core (Runtime Substrate)
-- **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN [Netbird].
-- **SovrIT Fortitude:** Resilience engine (backups, disaster recovery, monitoring, self-healing).
-- **Core Ops:** Provisioning, hardening, encrypted [ZFS] storage foundations, and lifecycle management.
+The sovereign execution environment and foundational services:
+- **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird]).
+- **SovrIT Access:** Centralized identity, biometric gatekeeping ([WebAuthn]), and OIDC/SAML authentication ([Authentik]).
+- **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia]), automated recovery ([n8n]), and uptime monitoring ([Uptime Kuma]).
+- **Core Ops:** Provisioning and lifecycle management ([Ansible]), declarative configuration [NixOS], private state tracking ([Forgejo]), and encrypted storage foundations ([ZFS]).
 
 ### SovrIT Modules
+The user-facing applications that fulfill the functional requirements:
+
 * **Intelligence & Discovery:**
-    * **SovrIT Assistant:** Local voice and chat-based AI [Ollama]/[Whisper].
-    * **SovrIT Search:** Lightning-fast universal discovery [Meilisearch].
-    * **SovrIT Sentinel:** Intelligent local security and AI NVR [Frigate].
+    * **SovrIT Assistant:** Local voice/chat AI ([Ollama]), transcription ([Whisper]), and speech synthesis ([Piper]).
+    * **SovrIT Search:** Lightning-fast universal discovery across all system data ([Meilisearch]).
+    * **SovrIT Sentinel:** Intelligent local security and AI NVR ([Frigate]).
 * **Communication & Social:**
-    * **SovrIT Messenger:** Unified chat hub (WhatsApp/Signal/iMessage) via [Matrix].
-    * **SovrIT Carrier:** Sovereign voice and telephony [VitalPBX].
-    * **SovrIT Notify:** Unified notification gateway [ntfy].
+    * **SovrIT Messenger:** Unified chat hub (WhatsApp/Signal/iMessage) via [Matrix] and [Mautrix] bridges.
+    * **SovrIT Carrier:** Sovereign voice and telephony [VitalPBX] using SIP-TLS and SRTP for encrypted signaling and media.
+    * **SovrIT Notify:** Unified cross-system notification gateway [ntfy].
     * **SovrIT Social:** Private photo sharing and social networking [Pixelfed] / [GoToSocial].
 * **Productivity & Office:**
     * **SovrIT Office:** File management [FileBrowser Quantum] and collaborative editing [OnlyOffice].
     * **SovrIT Notes:** E2EE synchronized note-taking [Notesnook].
     * **SovrIT Calendar / Contacts:** Sovereign schedules and people [Radicale].
-    * **SovrIT Bookmarks:** Permanent article archiving [Readeck].
-    * **SovrIT History:** Searchable web memory [ArchiveBox]/[Promnesia].
+    * **SovrIT Bookmarks:** Permanent article archiving and visual pinning [Readeck].
+    * **SovrIT History:** Searchable web memory [ArchiveBox] / [Promnesia].
 * **Vital Archives:**
-    * **SovrIT Money:** Financial auditor and receipt capture [Actual Budget].
-    * **SovrIT Photos:** AI gallery and media management [Immich].
+    * **SovrIT Money:** Financial auditing [Actual Budget] with mobile receipt capture [QuickScan] / [OpenScan] and document OCR [Paperless-ngx].
+    * **SovrIT Photos:** AI gallery and media management with ML-driven pruning [Immich].
     * **SovrIT Med / Legal:** OCR-indexed health and estate records [Paperless-ngx].
-    * **SovrIT Handbook:** AI-audited documentation [Dokuwiki].
-    * **SovrIT Maps:** Private location services [Traccar]/[MapLibre].
+    * **SovrIT Handbook:** AI-audited documentation and manuals [Dokuwiki].
+    * **SovrIT Maps:** Private location services [Traccar] and private vector mapping [MapLibre].
 * **Identity & Vault:**
-    * **SovrIT Access:** Authentication and biometric gatekeeper [Authentik].
-    * **SovrIT Vault:** Secrets and password stewardship [Vaultwarden].
+    * **SovrIT Vault:** Secrets, passwords, and MFA recovery stewardship ([Vaultwarden]).
 * **Media & Lifestyle:**
-    * **SovrIT Media:** Streaming and YouTube archiving [Jellyfin]/[TubeArchivist].
-    * **SovrIT Books:** Digital and audiobook library [Kavita]/[Audiobookshelf].
-    * **SovrIT Habitat:** Local-only smart home automation [Home Assistant].
+    * **SovrIT Media:** Streaming and YouTube archiving ([Jellyfin]/[TubeArchivist]).
+    * **SovrIT Books:** Digital and audiobook library ([Kavita]/[Audiobookshelf]).
+    * **SovrIT Habitat:** Local-only smart home automation ([Home Assistant]).
 
 ---
 
-## 🏗️ Hardware Architecture: The "Divide & Conquer" Strategy
+## 🏗️ Hardware Architecture: "Divide & Conquer"
 
 ### 1. The Storage Node (The Heart)
 * **Substrate:** Proxmox or TrueNAS Scale.
-* **Responsibilities:** [ZFS] Pool management, Identity [Authentik], Proxy [Traefik], and Core Modules.
+* **Responsibilities:** [ZFS] Pool management, Identity ([Authentik]), Proxy ([Traefik]), and Core Modules.
 * **Mirroring:** Mirrored to a low-resource VPS (The Ghost Mirror) for emergency failover.
 
 ### 2. The Compute Node (The Brain)
-* **Recommended Hardware:** Apple Silicon (Early-gen MacBook or Mac Mini with 16GB+ Unified Memory).
+* **Recommended Hardware:** Apple Silicon (Early-gen MacBook or Mac Mini with M1 or M2 Pro or Max CPU and 16GB+ Unified Memory).
 * **Benefit:** Unified Memory Architecture allows LLMs and Speech-to-Text engines to stay "hot" in memory, providing instant responses while drawing as little as 30W.
 
 ---
@@ -169,44 +172,49 @@ Comprehensive "Human-Centric" documentation ensures the system can be maintained
 ## 📜 License & Ethical Usage
 The SovrIT PTI blueprint is provided for individual sovereignty. By deploying this stack, you assume total responsibility for your data security and the legal implications of hosting your own communication and encryption services.
 
-[Netbird]: https://netbird.io/
-[Authentik]: https://goauthentik.io/
-[WebAuthn]: https://webauthn.guide/
-[Traefik]: https://traefik.io/
-[ZFS]: https://openzfs.org/
-[Step-CA]: https://smallstep.com/certificates/
-[n8n]: https://n8n.io/
-[Ansible]: https://www.ansible.com/
-[Kopia]: https://kopia.io/
-[Forgejo]: https://forgejo.org/
-[Dokuwiki]: https://www.dokuwiki.org/
-[Flame]: https://github.com/pawelmalak/flame
-[Ollama]: https://ollama.com/
-[Whisper]: https://github.com/SYSTRAN/faster-whisper
-[Piper]: https://github.com/rhasspy/piper
-[Meilisearch]: https://www.meilisearch.com/
-[Frigate]: https://frigate.video/
-[Matrix]: https://matrix.org/
-[VitalPBX]: https://www.vitalpbx.com/
-[ntfy]: https://ntfy.sh/
-[Stalwart]: https://stalwart.io/
-[Pixelfed]: https://pixelfed.org/
-[GoToSocial]: https://gotosocial.org/
-[FileBrowser Quantum]: https://filebrowser.org/
-[OnlyOffice]: https://www.onlyoffice.com/
-[Notesnook]: https://notesnook.com/
-[Readeck]: https://readeck.org/
-[ArchiveBox]: https://archivebox.io/
-[Promnesia]: https://github.com/karlicoss/promnesia
-[Radicale]: https://radicale.org/
-[QuickScan]: https://www.quickscanapp.com/
-[Actual Budget]: https://actualbudget.org/
-[Paperless-ngx]: https://docs.paperless-ngx.com/
-[Immich]: https://immich.app/
-[Kavita]: https://www.kavitareader.com/
-[Audiobookshelf]: https://www.audiobookshelf.org/
-[Traccar]: https://www.traccar.org/
-[MapLibre]: https://maplibre.org/
-[Jellyfin]: https://jellyfin.org/
-[TubeArchivist]: https://tubearchivist.com/
-[Home Assistant]: https://www.home-assistant.io/
+## 🙏 Acknowledgements
+SovrIT stands firmly on the shoulders of giants. It would not exist without the incredible work of the open‑source communities whose tools and ideas form its foundation.
+
+- [**Docker**] — containerization and modular service deployment
+- [**Python**] — scripting, tooling, and automation logic
+- [**NetBird**] / [**WireGuard**] — encrypted overlay networking and sovereign VPNs
+- [**ZFS**] — resilient, hardware-agnostic, and encrypted storage foundations
+- [**Proxmox**] — enterprise-grade virtualization and orchestration
+- [**Authentik**] — centralized identity provider and biometric authentication gateway
+- [**Ansible**] — declarative provisioning and automated infrastructure configuration
+- [**n8n**] — low-code workflow automation and service integration
+- [**Dokuwiki**] — lightweight, database-less documentation for maximum resiliency
+- [**WebAuthn**] — biometric MFA standard for secure, passwordless access
+- [**Traefik**] — cloud-native edge proxy and automated traffic management
+- [**Step-CA**] — internal certificate authority for private mesh encryption
+- [**Kopia**] — fast, secure, and incremental encrypted backups
+- [**Forgejo**] — lightweight self-hosted git service for infrastructure-as-code
+- [**Ollama**] — local large language model (LLM) orchestration
+- [**Whisper**] — high-fidelity local speech-to-text transcription
+- [**Piper**] — fast, local text-to-speech synthesis
+- [**Meilisearch**] — lightning-fast local search engine for all personal data
+- [**Home Assistant**] — the heart of local-only, cloud-independent smart home automation
+- [**Frigate**] — AI-powered local NVR and intelligent object detection
+- [**Matrix**] / [**Mautrix**] — decentralized communication hub and bridge architecture
+- [**VitalPBX**] — sovereign voice-over-IP (VoIP) and telephony
+- [**ntfy**] — unified, lightweight notification gateway
+- [**Stalwart**] — modern, memory-safe sovereign email server
+- [**Pixelfed**] / [**GoToSocial**] — privacy-focused, federated social networking
+- [**FileBrowser Quantum**] — web-based file management and remote access
+- [**OnlyOffice**] — collaborative document editing and office suite
+- [**Notesnook**] — end-to-end encrypted note-taking and sync
+- [**Readeck**] — permanent article archiving and visual bookmarking
+- [**ArchiveBox**] / [**Promnesia**] — comprehensive web history archiving and exploration
+- [**Radicale**] — lightweight CalDAV/CardDAV for calendars and contacts
+- [**QuickScan**] / [**OpenScan**] — mobile document capture with local processing
+- [**Actual Budget**] — privacy-first personal finance and envelope budgeting
+- [**Paperless-ngx**] — powerful document management and OCR indexing
+- [**Immich**] — high-performance, AI-driven photo and video management
+- [**Flame**] — aesthetic, protected dashboard for all sovereign services
+- [**Kavita**] / [**Audiobookshelf**] — decentralized digital libraries for books and audio
+- [**Traccar**] / [**MapLibre**] — private location tracking and sovereign mapping
+- [**Jellyfin**] — high-performance personal media streaming
+- [**TubeArchivist**] — sovereign YouTube archiving and metadata management
+- [**Hugging Face**] — LLM/AI frameworks for guided operations and documentation auditing
+- [**Uptime Kuma**] — self-hosted uptime monitoring and service alerts
+- [**NixOS**] — declarative and reproducible operating system configuration
