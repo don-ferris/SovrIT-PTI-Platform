@@ -28,7 +28,7 @@ The SovrIT Assistant serves as the primary gateway to the system's intelligence,
 ### 6. Decoupled Encryption at Rest
 All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
 ### 7. Operational Continuity - The Living Handbook
-Comprehensive "Human-Centric" documentation ensures the system can be maintained and recovered by anyone in the household. An AI-audited Handbook uses annotated screenshots and real-time UI tracking to ensure that the documentation precisely matches the screen layout,  menus, dialogs, and options that the user sees on-screen. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the family IT person is unavailable.
+Comprehensive "Human-Centric" documentation walks users through procedures consisting of annotated screenshots. "Click the gear icon shown circled in red." An AI agent regularly reviews, autonomously updates, increments the revision number, and alerts the user when a new revision is available to be printed. This ensures the Handbook always matches precisely what the user sees on-screen- layout, menus, and dialog options - ensuring stress-free success and future confidence. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the family IT person is unavailable.
 
 
 
