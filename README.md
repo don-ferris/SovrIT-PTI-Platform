@@ -40,7 +40,7 @@ The sovereign execution environment and foundational services:
 - **SovrIT Access:** Centralized identity, biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), and OIDC/SAML authentication ([Authentik](https://goauthentik.io/)).
 - **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
 - **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
-- **Core Ops:** Provisioning and lifecycle management ([Ansible](https://www.ansible.com/)), declarative configuration ([NixOS](https://nixos.org/)), private state tracking ([Forgejo](https://forgejo.org/)), and encrypted storage foundations ([ZFS](https://openzfs.org/)).
+- **Core Ops:** Provisioning and lifecycle management ([Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview), [TrueNAS CE](https://www.truenas.com/truenas-community-edition/), [Ansible](https://www.ansible.com/)), declarative configuration ([NixOS](https://nixos.org/)), private state tracking ([Forgejo](https://forgejo.org/)), and encrypted storage foundations ([ZFS](https://openzfs.org/)).
 
 ### SovrIT Modules
 The user-facing applications that fulfill the functional requirements:
@@ -81,7 +81,7 @@ The user-facing applications that fulfill the functional requirements:
 ## 🏗️ Hardware Architecture: "Divide & Conquer"
 
 ### 1. The Storage Node (The Heart)
-* **Substrate:** Proxmox or TrueNAS Scale.
+* **Substrate:** [Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) or TrueNAS Scale.
 * **Responsibilities:** [ZFS] Pool management, Identity ([Authentik]), Proxy ([Traefik]), and Core Modules.
 * **Mirroring:** Mirrored to a low-resource VPS (The Ghost Mirror) for emergency failover.
 
@@ -226,7 +226,7 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Python**](https://www.python.org/) - scripting, tooling, and automation logic
 - [**NetBird**](https://netbird.io/)/[**WireGuard**](https://www.wireguard.com/) - encrypted overlay networking and sovereign VPNs
 - [**ZFS**](https://openzfs.org/) - resilient, hardware-agnostic, and encrypted storage foundations
-- [**Proxmox**](https://www.proxmox.com/) - enterprise-grade virtualization and orchestration
+- [**Proxmox**](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) - enterprise-grade virtualization and orchestration
 - [**Authentik**](https://goauthentik.io/) - centralized identity provider and biometric authentication gateway
 - [**Ansible**](https://www.ansible.com/) - declarative provisioning and automated infrastructure configuration
 - [**n8n**](https://n8n.io/) - low-code workflow automation and service integration
