@@ -74,7 +74,6 @@ The user-facing applications that fulfill the functional requirements:
     * **SovrIT Books:** Digital and audiobook library ([Kavita](https://www.kavitareader.com/))/([Audiobookshelf](https://www.audiobookshelf.org/)).
     * **SovrIT Habitat:** Local-only smart home automation ([Home Assistant](https://www.home-assistant.io/)).
 
-
 ---
 
 ## 🏗️ Hardware Architecture: "Divide & Conquer"
@@ -97,7 +96,7 @@ The user-facing applications that fulfill the functional requirements:
 | :--- | :--- |
 | **Mesh Networking** | Encrypted P2P overlay network via [Netbird] for secure inter-node communication. |
 | **Universal Identity** | Centralized OIDC/SAML authentication and account brokering via [Authentik]. |
-| **Biometric Gatekeeper** | Zero-friction MFA utilizing [WebAuthn] for all system access. |
+| **Biometric Gatekeeper** | Zero-friction MFA utilizing [WebAuthn] (Face ID/TouchID) for all system access. |
 | **Edge Traffic Control** | High-performance routing and automated SSL management via [Traefik]. |
 | **At-Rest Encryption** | Hardware-agnostic filesystem encryption using [ZFS] with decoupled master keys. |
 | **Secure Remote Access** | Mesh-only administrative management of server substrates via [Netbird]. |
@@ -162,7 +161,7 @@ The user-facing applications that fulfill the functional requirements:
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
 | **Financial Auditor** | Receipt capture via [QuickScan] and spend analysis via [Actual Budget]. |
-| **Vital Records** | OCR-indexed medical and legal archives utilizing [Paperless-ngx]. |
+| **Vital Records** | OCR-indexed medical and legal archives utilizing [Paperless-ngx] / [Tika](https://tika.apache.org/). |
 | **AI Photo Management** | High-performance gallery with ML deduplication via [Immich]. |
 | **Digital Library** | Hosting for e-books and audiobooks via [Kavita] and [Audiobookshelf]. |
 | **Private Geolocation** | Location tracking via [Traccar] with private mapping via [MapLibre]. |
@@ -212,6 +211,7 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Actual Budget**] — privacy-first personal finance and envelope budgeting
 - [**Paperless-ngx**] — powerful document management and OCR indexing
 - [**Immich**] — high-performance, AI-driven photo and video management
+- [**Tika**](https://tika.apache.org) — extracts metadata and text from over a thousand different file types
 - [**Uptime Kuma**] — self-hosted uptime monitoring and service alerts
 - [**NixOS**] — declarative and reproducible operating system configuration- [**Flame**] — aesthetic, protected dashboard for all sovereign services
 - [**Kavita**] / [**Audiobookshelf**] — decentralized digital libraries for books and audio
