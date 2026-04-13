@@ -94,36 +94,36 @@ The user-facing applications that fulfill the functional requirements:
 ### 🛡️ Core Infrastructure & Security
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
-| **Mesh Networking** | Encrypted P2P overlay network via [Netbird] for secure inter-node communication. |
-| **Universal Identity** | Centralized OIDC/SAML authentication and account brokering via [Authentik]. |
-| **Biometric Gatekeeper** | Zero-friction MFA utilizing [WebAuthn] (Face ID/TouchID) for all system access. |
-| **Edge Traffic Control** | High-performance routing and automated SSL management via [Traefik]. |
-| **At-Rest Encryption** | Hardware-agnostic filesystem encryption using [ZFS] with decoupled master keys. |
-| **Secure Remote Access** | Mesh-only administrative management of server substrates via [Netbird]. |
-| **Local Certificate Authority** | Trusted internal SSL certificate issuance for mesh-only domains via [Step-CA]. |
-| **Internal Time Server** | Local high-stratum NTP server for MFA and [ZFS] synchronization during outages. |
+| **Mesh Networking** | Encrypted P2P overlay network via ([Netbird](https://netbird.io/)) for secure inter-node communication. |
+| **Universal Identity** | Centralized OIDC/SAML authentication and account brokering via ([Authentik](https://goauthentik.io/)). |
+| **Biometric Gatekeeper** | Zero-friction MFA utilizing ([WebAuthn](https://webauthn.guide/)) (Face ID/TouchID) for all system access. |
+| **Edge Traffic Control** | High-performance routing and automated SSL management via ([Traefik](https://traefik.io/)). |
+| **At-Rest Encryption** | Hardware-agnostic filesystem encryption using ([ZFS](https://openzfs.org/)) with decoupled master keys. |
+| **Secure Remote Access** | Mesh-only administrative management of server substrates via ([Netbird](https://netbird.io/)). |
+| **Local Certificate Authority** | Trusted internal SSL certificate issuance for mesh-only domains via ([Step-CA](https://smallstep.com/certificates/)). |
+| **Internal Time Server** | Local high-stratum NTP server for MFA and ([ZFS](https://openzfs.org/)) synchronization during outages. |
 | **Network Segmentation** | Isolation of IoT hardware into dedicated VLANs with zero outbound access. |
 | **Air-Gapped IoT Radio** | Local-only sensor communication via physical Zigbee/Z-Wave protocols. |
 | **MFA Recovery Vault** | Physical "Break-Glass" recovery procedure using paper-stored codes. |
-| **Encryption Key Rotation** | Procedure for rotating [ZFS] master keys and identity signing keys. |
+| **Encryption Key Rotation** | Procedure for rotating ([ZFS](https://openzfs.org/)) master keys and identity signing keys. |
 | **Mobile Device Hardening** | Routing of all mobile traffic through the mesh with "Always-On" VPN logic. |
-| **Physical Asset Tracking** | Encrypted inventory of all physical hardware within the [Dokuwiki] Handbook. |
+| **Physical Asset Tracking** | Encrypted inventory of all physical hardware within the ([Dokuwiki](https://www.dokuwiki.org/)) Handbook. |
 
 ### 🔄 Resilience & Maintenance
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
-| **Insta-Restore Engine** | Automated rebuild pipelines for core services using [n8n] and [Ansible]. |
-| **Immutable Backups** | Hourly, encrypted client-side backups to offsite storage via [Kopia]. |
+| **Insta-Restore Engine** | Automated rebuild pipelines for core services using ([n8n](https://n8n.io/)) and ([Ansible](https://www.ansible.com/)). |
+| **Immutable Backups** | Hourly, encrypted client-side backups to offsite storage via ([Kopia](https://kopia.io/)). |
 | **Remote Failover Mirror** | High-availability "Ghost Mirror" on a remote VPS for Identity and Vault access. |
 | **Graceful Power Safety** | Automated UPS-triggered shutdown sequences for storage and compute nodes. |
-| **Versioned Infrastructure** | State reproducibility using configurations stored in a private [Forgejo] instance. |
-| **The Living Handbook** | Database-less, human-centric documentation maintained in [Dokuwiki]. |
+| **Versioned Infrastructure** | State reproducibility using configurations stored in a private ([Forgejo](https://forgejo.org/)) instance. |
+| **The Living Handbook** | Database-less, human-centric documentation maintained in ([Dokuwiki](https://www.dokuwiki.org/)). |
 | **Database Atomic Snapshots** | Coordinated filesystem snapshots for consistent point-in-time recovery. |
 | **Digital Dead-Man Switch** | Automated information handover to beneficiaries if heartbeat is not detected. |
 | **Automated Health Reports** | Weekly reporting on disk wear, backup integrity, and authentication attempts. |
 | **Log Aggregation** | Centralized, encrypted log management for auditing and troubleshooting. |
-| **Snapshot Pruning Logic** | Automated thinning of [ZFS] snapshots to optimize space. |
-| **Gateway Dashboard** | Unified web interface for all services using [Flame]. |
+| **Snapshot Pruning Logic** | Automated thinning of ([ZFS](https://openzfs.org/)) snapshots to optimize space. |
+| **Gateway Dashboard** | Unified web interface for all services using ([Flame](https://github.com/pawelmalak/flame)). |
 | **Resource Quotas** | Strict CPU/RAM limits to ensure Identity and Resilience responsiveness. |
 | **Zero-Log App Config** | Disabling of identifiable debug logs to disk in favor of central aggregation. |
 | **Bandwidth QoS** | Prioritization of mesh-failover and telephony traffic over media sync. |
@@ -132,41 +132,41 @@ The user-facing applications that fulfill the functional requirements:
 ### 🧠 Sovereign Intelligence
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
-| **Local AI Assistant** | Private voice and chat intelligence using [Ollama], [Whisper], and [Piper]. |
-| **Universal Sovereign Search** | Exhaustive, real-time discovery across all system data via [Meilisearch]. |
+| **Local AI Assistant** | Private voice and chat intelligence using ([Ollama](https://ollama.com/)), ([Whisper](https://github.com/SYSTRAN/faster-whisper)), and ([Piper](https://github.com/rhasspy/piper)). |
+| **Universal Sovereign Search** | Exhaustive, real-time discovery across all system data via ([Meilisearch](https://www.meilisearch.com/)). |
 | **AI Handbook Auditor** | Automated agent that audits UIs to keep documentation screenshots in parity. |
-| **Local AI NVR** | Hardware-accelerated object detection for feeds via [Frigate]. |
+| **Local AI NVR** | Hardware-accelerated object detection for feeds via ([Frigate](https://frigate.video/)). |
 
 ### 📞 Communication & Social
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
-| **Unified Messenger Hub** | Centralized chat bridging WhatsApp, Signal, and iMessage into [Matrix]. |
-| **Encrypted Telephony** | Private voice communication via [VitalPBX] using SIP-TLS and SRTP. |
-| **SovrIT Notify** | Unified cross-system notification gateway powered by [ntfy]. |
-| **Sovereign Mail Engine** | Modern, high-performance email hosting and ownership via [Stalwart]. |
-| **Sovereign Social Feed** | Privacy-focused social networking via [Pixelfed] and [GoToSocial]. |
+| **Unified Messenger Hub** | Centralized chat bridging WhatsApp, Signal, and iMessage into ([Matrix](https://matrix.org/)). |
+| **Encrypted Telephony** | Private voice communication via ([VitalPBX](https://www.vitalpbx.com/)) using SIP-TLS and SRTP. |
+| **SovrIT Notify** | Unified cross-system notification gateway powered by ([ntfy](https://ntfy.sh/)). |
+| **Sovereign Mail Engine** | Modern, high-performance email hosting and ownership via ([Stalwart](https://stalwart.io/)). |
+| **Sovereign Social Feed** | Privacy-focused social networking via ([Pixelfed](https://pixelfed.org/)) and ([GoToSocial](https://gotosocial.org/)). |
 
 ### 📂 Productivity & The Virtual Office
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
-| **Integrated Virtual Office** | File management via [FileBrowser Quantum] and editing via [OnlyOffice]. |
-| **End-to-End Notes** | Encrypted note-taking and synchronization via [Notesnook]. |
-| **Permanent Bookmarking** | Article archiving as searchable PDFs via [Readeck]. |
-| **Web Memory & History** | Comprehensive web archiving via [ArchiveBox] and [Promnesia]. |
-| **Schedules & People** | Sovereign calendar and contact synchronization via [Radicale]. |
+| **Integrated Virtual Office** | File management via ([FileBrowser Quantum](https://filebrowser.org/)) and editing via ([OnlyOffice](https://www.onlyoffice.com/)). |
+| **End-to-End Notes** | Encrypted note-taking and synchronization via ([Notesnook](https://notesnook.com/)). |
+| **Permanent Bookmarking** | Article archiving as searchable PDFs via ([Readeck](https://readeck.org/)). |
+| **Web Memory & History** | Comprehensive web archiving via ([ArchiveBox](https://archivebox.io/)) and ([Promnesia](https://github.com/karlicoss/promnesia)). |
+| **Schedules & People** | Sovereign calendar and contact synchronization via ([Radicale](https://radicale.org/)). |
 | **Encrypted Temp-Sharing** | Mechanism for sharing large files via auto-expiring, protected links. |
 | **P2P Asset Sync** | Direct, encrypted synchronization between mobile devices and the home node. |
 
 ### 🗄️ Vital Archives & Records
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
-| **Financial Auditor** | Receipt capture via [QuickScan] and spend analysis via [Actual Budget]. |
-| **Vital Records** | OCR-indexed medical and legal archives utilizing [Paperless-ngx] / [Tika](https://tika.apache.org/). |
-| **AI Photo Management** | High-performance gallery with ML deduplication via [Immich]. |
-| **Digital Library** | Hosting for e-books and audiobooks via [Kavita] and [Audiobookshelf]. |
-| **Private Geolocation** | Location tracking via [Traccar] with private mapping via [MapLibre]. |
+| **Financial Auditor** | Receipt capture via ([QuickScan](https://www.quickscanapp.com/)) and spend analysis via ([Actual Budget](https://actualbudget.org/)). |
+| **Vital Records** | OCR-indexed medical and legal archives utilizing ([Paperless-ngx](https://docs.paperless-ngx.com/)) / ([Tika](https://tika.apache.org/)). |
+| **AI Photo Management** | High-performance gallery with ML deduplication via ([Immich](https://immich.app/)). |
+| **Digital Library** | Hosting for e-books and audiobooks via ([Kavita](https://www.kavitareader.com/)) and ([Audiobookshelf](https://www.audiobookshelf.org/)). |
+| **Private Geolocation** | Location tracking via ([Traccar](https://www.traccar.org/)) with private mapping via ([MapLibre](https://maplibre.org/)). |
 | **OCR Record Archive** | Automated full-text indexing of all uploaded PDFs for instant retrieval. |
-| **Media & YouTube Hub** | Streaming via [Jellyfin] and local YouTube archiving via [TubeArchivist]. |
+| **Media & YouTube Hub** | Streaming via ([Jellyfin](https://jellyfin.org/)) and local YouTube archiving via ([TubeArchivist](https://tubearchivist.com/)). |
 
 ---
 
