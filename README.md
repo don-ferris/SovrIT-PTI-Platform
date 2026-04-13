@@ -66,7 +66,7 @@ The user-facing applications that fulfill the functional requirements:
 - **SovrIT Photos:** AI gallery and media management with ML-driven pruning ([Immich](https://immich.app/)).
 - **SovrIT Med/Legal:** OCR-indexed health and estate records ([Paperless-ngx](https://docs.paperless-ngx.com/)/[Tika](https://tika.apache.org/)).
 - **SovrIT Mobile:** Local, tethered device imaging and full data extraction via [libimobiledevice](https://libimobiledevice.org/) and [adb](https://developer.android.com/tools/adb).
-- **SovrIT Eternal:** Digital dead-man switch for automated information handover ([Aeternal](https://github.com/sh4nks/aeternal)).
+- **SovrIT Eternal:** Digital dead-man switch for automated information handover ([Aeterna](https://alpyxn.github.io/aeterna/)).
 - **SovrIT Handbook:** AI-audited documentation and manuals ([Dokuwiki](https://www.dokuwiki.org/)).
 - **SovrIT Maps:** Private location services ([Traccar](https://www.traccar.org/)) and private vector mapping ([MapLibre](https://maplibre.org/)).
 #### Passwords:
@@ -121,7 +121,7 @@ The user-facing applications that fulfill the functional requirements:
 | **Versioned Infrastructure** | State reproducibility using configurations stored in a private ([Forgejo](https://forgejo.org/)) instance. |
 | **The Living Handbook** | Database-less, human-centric documentation maintained in [Dokuwiki](https://www.dokuwiki.org/). |
 | **Database Atomic Snapshots** | Coordinated filesystem snapshots for consistent point-in-time recovery. |
-| **Digital Dead-Man Switch** | Automated information handover to beneficiaries if heartbeat is not detected. |
+| **Digital Dead-Man Switch** | Automated information handover to beneficiaries via [Aeterna](https://alpyxn.github.io/aeterna/) if system heartbeat is not detected for 30 days. |
 | **Automated Health Reports** | Weekly reporting on disk wear, backup integrity, and authentication attempts. |
 | **Log Aggregation** | Centralized, encrypted log management for auditing and troubleshooting. |
 | **Snapshot Pruning Logic** | Automated thinning of ([ZFS](https://openzfs.org/)) snapshots to optimize space. |
@@ -227,5 +227,6 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Kavita**](https://www.kavitareader.com/)/[**Audiobookshelf**](https://www.audiobookshelf.org/) - decentralized digital libraries for books and audio
 - [**Traccar**](https://www.traccar.org/)/[**MapLibre**](https://maplibre.org/) - private location tracking and sovereign mapping
 - [**Jellyfin**](https://jellyfin.org/) - high-performance personal media streaming
+- [**Aeterna**](https://alpyxn.github.io/aeterna/)
 - [**TubeArchivist**](https://tubearchivist.com/) - sovereign YouTube archiving and metadata management
 - [**Hugging Face**](https://huggingface.co/) - LLM/AI frameworks for guided operations, documentation auditing, and household operability
