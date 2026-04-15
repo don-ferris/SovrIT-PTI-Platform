@@ -35,12 +35,14 @@ Comprehensive "Human-Centric" documentation walks users through procedures consi
 ## 🧩 SovrIT Ecosystem Overview
 
 ### SovrIT Core (Runtime Substrate)
+
 The sovereign execution environment and foundational services:
-- **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)).
-- **SovrIT Access:** Centralized identity, biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), and OIDC/SAML authentication ([Authentik](https://goauthentik.io/)).
-- **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
-- **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
-- **Core Ops:** Provisioning and lifecycle management ([Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview), [TrueNAS CE](https://www.truenas.com/truenas-community-edition/), [Ansible](https://www.ansible.com/)), declarative configuration ([NixOS](https://nixos.org/)), private state tracking ([Forgejo](https://forgejo.org/)), and encrypted storage foundations ([ZFS](https://openzfs.org/)).
+
+* **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)), paired with private, recursive DNS resolution ([AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) + [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/)) to eliminate third-party tracking at the query level.
+* **SovrIT Access:** Centralized identity and biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), OIDC/SAML authentication ([Authentik](https://goauthentik.io/)), and private PKI ([Step-CA](https://smallstep.com/docs/step-ca/)). All traffic is orchestrated via sovereign ingress ([Traefik](https://traefik.io/)) for local SSL termination.
+* **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
+* **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
+* **Core Ops:** Provisioning and lifecycle management utilizing NixOS for declarative system state, [Proxmox VE](https://www.proxmox.com/) for virtualization, and [TrueNAS CE](https://www.truenas.com/) for mission-critical data storage.
 
 ### SovrIT Modules
 The user-facing applications that fulfill the functional requirements:
@@ -48,7 +50,6 @@ The user-facing applications that fulfill the functional requirements:
 #### Intelligence & Discovery:
 - **SovrIT Assistant:** Local voice/chat AI ([Ollama](https://ollama.com/)), transcription ([Whisper](https://github.com/SYSTRAN/faster-whisper)), and speech synthesis ([Piper](https://github.com/rhasspy/piper)).
 - **SovrIT Search:** Lightning-fast universal discovery across all system data ([Meilisearch](https://www.meilisearch.com/)).
-- **SovrIT Sentinel:** Intelligent local security and AI NVR ([Frigate](https://frigate.video/)).
 #### Communication & Social:
 - **SovrIT Messenger:** Unified chat hub (WhatsApp/Signal/iMessage) via [Matrix](https://matrix.org/) and [Mautrix](https://mautrix.net/) bridges.
 - **SovrIT Carrier:** Sovereign voice and telephony ([VitalPBX](https://www.vitalpbx.com/)) using SIP-TLS and SRTP for encrypted signaling and media.
@@ -71,23 +72,42 @@ The user-facing applications that fulfill the functional requirements:
 - **SovrIT Maps:** Private location services ([Traccar](https://www.traccar.org/)) and private vector mapping ([MapLibre](https://maplibre.org/)).
 #### Passwords:
 - **SovrIT Vault:** Secrets, passwords, and MFA recovery stewardship ([Vaultwarden](https://github.com/dani-garcia/vaultwarden)).
-#### Media & Lifestyle:
+#### Media:
 - **SovrIT Media:** Streaming and YouTube archiving ([Jellyfin](https://jellyfin.org/)/[TubeArchivist](https://tubearchivist.com/)).
 - **SovrIT Books:** Ebook ([Kavita](https://www.kavitareader.com/)) and audiobook ([Audiobookshelf](https://www.audiobookshelf.org/)) library.
-- **SovrIT Habitat:** Local-only smart home automation ([Home Assistant](https://www.home-assistant.io/)).
+#### Home/Lifestyle
+- **SovrIT Home:** Local-only smart home automation ([Home Assistant](https://www.home-assistant.io/)).
+- **SovrIT Sentinel:** Intelligent local security/surveillance and AI NVR ([Alarmo](https://github.com/nielsfaber/alarmo)/[Frigate](https://frigate.video/)).
 
 ---
 
-## 🏗️ Hardware Architecture: "Divide & Conquer"
+## 🏗️ Hardware Architecture
 
-### 1. The Storage Node (The Heart)
-* **Substrate:** [Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) or TrueNAS Scale.
+SovrIT PTI is designed to be hardware-agnostic but is currently optimized for a high-performance, low-wattage distributed model.
+
+### 1. The Network
+* **Substrate:** Router/Firewall & WAP
+* **Responsibilities:** Physical perimeter and VLAN-based network segmentation.
+
+### 2. The Core/Storage Node
+* **Substrate:** [NixOS](https://nixos.org/) (non-clustered) or [Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) (high availability cluster); ([TrueNAS](https://www.truenas.com/) may be deployed as a separate/standalone NAS.)
 * **Responsibilities:** [ZFS] Pool management, Identity ([Authentik]), Proxy ([Traefik]), and Core Modules.
-* **Mirroring:** Mirrored to a low-resource VPS (The Ghost Mirror) for emergency failover.
 
-### 2. The Compute Node (The Brain)
+### 3. Compute Node (Local LLM)
 * **Recommended Hardware:** Apple Silicon - M1 or greater Pro or Max CPU with 16GB+ Unified Memory.
 * **Benefit:** Unified Memory Architecture allows LLMs and Speech-to-Text engines to stay "hot" in memory, providing instant responses while drawing as little as 30W.
+
+### 4. VPS (Ghost Mirror)
+* **Recommended Configuration:** 4+ VCores, 6+ GB RAM, 100+ GB Disk space, 10+ TB Bandwidth, NixOS.
+* **Benefit:** Hardened failover node for critical service continuity.
+
+### 5. Mobile Endpoints
+* **Biometric-Capable Devices:** Trusted nodes for secure remote access and identity verification.
+
+### 6. Off-site Archive (S3 Storage)
+* **Substrate:** S3-Compatible Object Storage (e.g., [Backblaze B2](https://www.backblaze.com/cloud-storage), [Wasabi](https://wasabi.com/), or remote [MinIO](https://min.io/) instance).
+* **Responsibilities:** Immutable encrypted snapshots and geographical data redundancy.
+* **Benefit:** Ensures data survival against local catastrophic events (fire, theft, or total hardware failure) by providing a "last resort" recovery target.
 
 ---
 
