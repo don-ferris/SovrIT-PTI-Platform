@@ -86,8 +86,8 @@ The user-facing applications that fulfill the functional requirements:
 SovrIT PTI is designed to be hardware-agnostic but is currently optimized for a high-performance, low-wattage distributed model.
 
 ### 1. The Network
-* **Substrate:** Router/Firewall & WAP
-* **Responsibilities:** Physical perimeter and VLAN-based network segmentation.
+* **Substrate:** Router/Firewall & Wireless Access Points
+* **Responsibilities:** WAN/Internet andd Wired/Wireless LAN connectivity, security, and VLAN-based network segmentation.
 
 ### 2. The Core/Storage Node
 * **Substrate:** [NixOS](https://nixos.org/) (non-clustered) or [Proxmox VE](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) (high availability cluster); ([TrueNAS](https://www.truenas.com/) may be deployed as a separate/standalone NAS.)
