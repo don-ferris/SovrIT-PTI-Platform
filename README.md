@@ -242,54 +242,56 @@ The SovrIT PTI blueprint is provided for individual sovereignty. By deploying th
 ## 🙏 Acknowledgements
 SovrIT stands firmly on the shoulders of giants. It would not exist without the incredible work of the open‑source communities whose tools and ideas form its foundation.
 
-- [**Docker**](https://www.docker.com/) - containerization and modular service deployment
-- [**Python**](https://www.python.org/) - scripting, tooling, and automation logic
-- [**NetBird**](https://netbird.io/)/[**WireGuard**](https://www.wireguard.com/) - encrypted overlay networking and sovereign VPNs
-- [**ZFS**](https://openzfs.org/) - resilient, hardware-agnostic, and encrypted storage foundations
-- [**Proxmox**](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) - enterprise-grade virtualization and orchestration
-- [**Authentik**](https://goauthentik.io/) - centralized identity provider and biometric authentication gateway
-- [**Ansible**](https://www.ansible.com/) - declarative provisioning and automated infrastructure configuration
-- [**n8n**](https://n8n.io/) - low-code workflow automation and service integration
-- [**Dokuwiki**](https://www.dokuwiki.org/) - lightweight, database-less documentation for maximum resiliency
-- [**WebAuthn**](https://webauthn.guide/) - biometric MFA standard for secure, passwordless access
-- [**Traefik**](https://traefik.io/) - cloud-native edge proxy and automated traffic management
-- [**Step-CA**](https://smallstep.com/certificates/) - internal certificate authority for private mesh encryption
-- [**chrony**](https://chrony-project.org/) - versatile implementation of the Network Time Protocol (NTP) for local synchronization
-- [**Kopia**](https://kopia.io/) - fast, secure, and incremental encrypted backups
-- [**Forgejo**](https://forgejo.org/) - lightweight self-hosted git service for infrastructure-as-code
-- [**Ollama**](https://ollama.com/) - local large language model (LLM) orchestration
-- [**Whisper**](https://github.com/SYSTRAN/faster-whisper) - high-fidelity local speech-to-text transcription
-- [**Piper**](https://github.com/rhasspy/piper) - fast, local text-to-speech synthesis
-- [**Meilisearch**](https://www.meilisearch.com/) - lightning-fast local search engine for all personal data
-- [**Home Assistant**](https://www.home-assistant.io/) - the heart of local-only, cloud-independent smart home automation
-- [**Frigate**](https://frigate.video/) - AI-powered local NVR and intelligent object detection
-- [**Matrix**](https://matrix.org/)/[**Mautrix**](https://mautrix.net/) - decentralized communication hub and bridge architecture
-- [**VitalPBX**](https://www.vitalpbx.com/) - sovereign voice-over-IP (VoIP) and telephony
-- [**ntfy**](https://ntfy.sh/) - unified, lightweight notification gateway
-- [**Stalwart**](https://stalwart.io/) - modern, memory-safe sovereign email server
-- [**SnappyMail**](https://snappymail.eu/) - modern, privacy-focused web-based email client
-- [**Mailgun**](https://www.mailgun.com/) - high-reputation SMTP relay to prevent outbound mail from being flagged as spam
-- [**Pixelfed**](https://pixelfed.org/)/[**GoToSocial**](https://gotosocial.org/) - privacy-focused, federated social networking
-- [**FileBrowser Quantum**](https://filebrowser.org/) - web-based file management and remote access
-- [**OnlyOffice**](https://www.onlyoffice.com/) - collaborative document editing and office suite
-- [**Notesnook**](https://notesnook.com/) - end-to-end encrypted note-taking and sync
-- [**Readeck**](https://readeck.org/) - permanent article archiving and visual bookmarking
-- [**ArchiveBox**](https://archivebox.io/)/[**Promnesia**](https://github.com/karlicoss/promnesia) - comprehensive web history archiving and exploration
-- [**Radicale**](https://radicale.org/) - lightweight CalDAV/CardDAV for calendars and contacts
-- [**QuickScan**](https://www.quickscanapp.com/)/[**OpenScan**](https://github.com/OpenScan-App/OpenScan) - mobile document capture with local processing
-- [**Actual Budget**](https://actualbudget.org/) - privacy-first personal finance and envelope budgeting
-- [**Paperless-ngx**](https://docs.paperless-ngx.com/) - powerful document management and OCR indexing
-- [**Tika**](https://tika.apache.org) - extracts metadata and text from over a thousand different file types
-- [**libimobiledevice**](https://libimobiledevice.org/) - cross-platform protocol library to communicate with iOS devices natively
-- [**adb**](https://developer.android.com/tools/adb) - versatile command-line tool for Android device communication and data extraction
-- [**Immich**](https://immich.app/) - high-performance, AI-driven photo and video management
-- [**Uptime Kuma**](https://github.com/louislam/uptime-kuma) - self-hosted uptime monitoring and service alerts
-- [**NixOS**](https://nixos.org/) - declarative and reproducible operating system configuration
-- [**Flame**](https://github.com/pawelmalak/flame) - aesthetic, protected dashboard for all sovereign services
-- [**Vaultwarden**](https://github.com/dani-garcia/vaultwarden) - lightweight, self-hosted Bitwarden-compatible secret management
-- [**Kavita**](https://www.kavitareader.com/)/[**Audiobookshelf**](https://www.audiobookshelf.org/) - decentralized digital libraries for books and audio
-- [**Traccar**](https://www.traccar.org/)/[**MapLibre**](https://maplibre.org/) - private location tracking and sovereign mapping
-- [**Jellyfin**](https://jellyfin.org/) - high-performance personal media streaming
-- [**Aeterna**](https://alpyxn.github.io/aeterna/)
-- [**TubeArchivist**](https://tubearchivist.com/) - sovereign YouTube archiving and metadata management
-- [**Hugging Face**](https://huggingface.co/) - LLM/AI frameworks for guided operations, documentation auditing, and household operability
+- [**Actual Budget**](https://actualbudget.org/) — privacy-first personal finance and envelope budgeting
+- [**adb**](https://developer.android.com/tools/adb) — versatile command-line tool for Android device communication and data extraction
+- [**Aeterna**](https://github.com/alpyxn/aeterna) — digital dead-man switch logic for automated information handover
+- [**Ansible**](https://www.ansible.com/) — declarative provisioning and automated infrastructure configuration
+- [**ArchiveBox**](https://archivebox.io/) / [**Promnesia**](https://github.com/karlicoss/promnesia) — comprehensive web history archiving and exploration
+- [**Authentik**](https://goauthentik.io/) — centralized identity provider and biometric authentication gateway
+- [**chrony**](https://chrony-project.org/) — versatile implementation of the Network Time Protocol (NTP) for local synchronization
+- [**Docker**](https://www.docker.com/) — containerization and modular service deployment
+- [**Dokuwiki**](https://www.dokuwiki.org/) — lightweight, database-less documentation for maximum resiliency
+- [**FFmpeg**](https://ffmpeg.org/) — the "Swiss Army knife" of media processing powering Jellyfin, Frigate, and TubeArchivist
+- [**FileBrowser Quantum**](https://filebrowser.org/) — web-based file management and remote access
+- [**Flame**](https://github.com/pawelmalak/flame) — aesthetic, protected dashboard for all sovereign services
+- [**Forgejo**](https://forgejo.org/) — lightweight self-hosted git service for infrastructure-as-code
+- [**Frigate**](https://frigate.video/) — AI-powered local NVR and intelligent object detection
+- [**Home Assistant**](https://www.home-assistant.io/) — the heart of local-only, cloud-independent smart home automation
+- [**Hugging Face**](https://huggingface.co/) — LLM/AI frameworks for guided operations and documentation auditing
+- [**Immich**](https://immich.app/) — high-performance, AI-driven photo and video management
+- [**Jellyfin**](https://jellyfin.org/) — high-performance personal media streaming
+- [**Kavita**](https://www.kavitareader.com/) / [**Audiobookshelf**](https://www.audiobookshelf.org/) — decentralized digital libraries for books and audio
+- [**Kopia**](https://kopia.io/) — fast, secure, and incremental encrypted backups
+- [**libimobiledevice**](https://libimobiledevice.org/) — cross-platform protocol library to communicate with iOS devices natively
+- [**llama.cpp**](https://github.com/ggerganov/llama.cpp) — the foundational inference engine enabling local LLMs on consumer hardware
+- [**Mailgun**](https://www.mailgun.com/) — high-reputation SMTP relay to prevent outbound mail from being flagged as spam
+- [**Matrix**](https://matrix.org/) / [**Mautrix**](https://mautrix.net/) — decentralized communication hub and bridge architecture
+- [**Meilisearch**](https://www.meilisearch.com/) — lightning-fast local search engine for all personal data
+- [**n8n**](https://n8n.io/) — low-code workflow automation and service integration
+- [**NetBird**](https://netbird.io/) / [**WireGuard**](https://www.wireguard.com/) — encrypted overlay networking and the high-performance protocol powering sovereign VPNs
+- [**NixOS**](https://nixos.org/) — declarative and reproducible operating system configuration
+- [**Notesnook**](https://notesnook.com/) — end-to-end encrypted note-taking and sync
+- [**ntfy**](https://ntfy.sh/) — unified, lightweight notification gateway
+- [**Ollama**](https://ollama.com/) — local large language model (LLM) orchestration
+- [**OnlyOffice**](https://www.onlyoffice.com/) — collaborative document editing and office suite
+- [**Paperless-ngx**](https://docs.paperless-ngx.com/) — powerful document management and OCR indexing
+- [**Piper**](https://github.com/rhasspy/piper) — fast, local text-to-speech synthesis
+- [**Pixelfed**](https://pixelfed.org/) / [**GoToSocial**](https://gotosocial.org/) — privacy-focused, federated social networking
+- [**Proxmox**](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) — enterprise-grade virtualization and orchestration
+- [**Python**](https://www.python.org/) — scripting, tooling, and automation logic
+- [**QuickScan**](https://www.quickscanapp.com/) / [**OpenScan**](https://github.com/OpenScan-App/OpenScan) — mobile document capture with local processing
+- [**Radicale**](https://radicale.org/) — lightweight CalDAV/CardDAV for calendars and contacts
+- [**Readeck**](https://readeck.org/) — permanent article archiving and visual bookmarking
+- [**SnappyMail**](https://snappymail.eu/) — modern, privacy-focused web-based email client
+- [**Stalwart**](https://stalwart.io/) — modern, memory-safe sovereign email server
+- [**Step-CA**](https://smallstep.com/certificates/) — internal certificate authority for private mesh encryption
+- [**Tika**](https://tika.apache.org) — metadata and text extraction from complex file types
+- [**Traccar**](https://www.traccar.org/) / [**MapLibre**](https://maplibre.org/) — private location tracking and sovereign mapping
+- [**Traefik**](https://traefik.io/) — cloud-native edge proxy and automated traffic management
+- [**TubeArchivist**](https://tubearchivist.com/) / [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) — sovereign YouTube archiving and the underlying engine that makes it possible
+- [**Uptime Kuma**](https://github.com/louislam/uptime-kuma) — self-hosted uptime monitoring and service alerts
+- [**Vaultwarden**](https://github.com/dani-garcia/vaultwarden) — lightweight secret management and MFA recovery stewardship
+- [**VitalPBX**](https://www.vitalpbx.com/) — sovereign voice-over-IP (VoIP) and telephony
+- [**WebAuthn**](https://webauthn.guide/) — biometric MFA standard for secure, passwordless access
+- [**Whisper**](https://github.com/SYSTRAN/faster-whisper) — high-fidelity local speech-to-text transcription
+- [**ZFS**](https://openzfs.org/) — resilient, hardware-agnostic, and encrypted storage foundations
