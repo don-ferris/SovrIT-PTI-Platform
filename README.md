@@ -295,3 +295,5 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**WebAuthn**](https://webauthn.guide/) — biometric MFA standard for secure, passwordless access
 - [**Whisper**](https://github.com/SYSTRAN/faster-whisper) — high-fidelity local speech-to-text transcription
 - [**ZFS**](https://openzfs.org/) — resilient, hardware-agnostic, and encrypted storage foundations
+
+**_Add NetAlertX_**
