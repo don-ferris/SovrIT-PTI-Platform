@@ -58,7 +58,7 @@ The user-facing applications that fulfill the functional requirements:
 - **SovrIT Social:** Private social networking and photo blogging ([GoToSocial](https://gotosocial.org/)/[Pixelfed](https://pixelfed.org/)).
 #### Productivity & Office:
 - **SovrIT Office:** File management ([FileBrowser Quantum](https://filebrowser.org/)) and collaborative editing ([OnlyOffice](https://www.onlyoffice.com/)).
-- **SovrIT Notes:** E2EE synchronized note-taking ([Notesnook](https://notesnook.com/)).
+- **SovrIT Notes:** synchronized note-taking ([Silverbullet](https://silverbullet.md/)).
 - **SovrIT Calendar/Contacts:** Sovereign schedules and people ([Radicale](https://radicale.org/)).
 - **SovrIT Bookmarks:** Permanent article archiving and visual pinning ([Readeck](https://readeck.org/)).
 - **SovrIT History:** Searchable web memory ([ArchiveBox](https://archivebox.io/)/[Promnesia](https://github.com/karlicoss/promnesia)).
@@ -172,7 +172,7 @@ SovrIT PTI is designed to be hardware-agnostic but is currently optimized for a 
 | Feature Name | Functionality & Integrated Services |
 | :--- | :--- |
 | **Integrated Virtual Office** | File management via [FileBrowser Quantum](https://filebrowser.org/) and collaborative editing via [OnlyOffice](https://www.onlyoffice.com/). |
-| **End-to-End Notes** | Encrypted note-taking and synchronization via [Notesnook](https://notesnook.com/). |
+| **Notes** | Note-taking and synchronization via [Silverbullet](https://silverbullet.md/). |
 | **Permanent Bookmarking** | Article archiving as searchable PDFs via [Readeck](https://readeck.org/). |
 | **Web Memory & History** | Comprehensive web archiving via [ArchiveBox](https://archivebox.io/) and [Promnesia](https://github.com/karlicoss/promnesia). |
 | **Schedules & People** | Sovereign calendar and contact synchronization via [Radicale](https://radicale.org/). |
@@ -270,7 +270,6 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**n8n**](https://n8n.io/) — low-code workflow automation and service integration
 - [**NetBird**](https://netbird.io/) / [**WireGuard**](https://www.wireguard.com/) — encrypted overlay networking and the high-performance protocol powering sovereign VPNs
 - [**NixOS**](https://nixos.org/) — declarative and reproducible operating system configuration
-- [**Notesnook**](https://notesnook.com/) — end-to-end encrypted note-taking and sync
 - [**ntfy**](https://ntfy.sh/) — unified, lightweight notification gateway
 - [**Ollama**](https://ollama.com/) — local large language model (LLM) orchestration
 - [**OnlyOffice**](https://www.onlyoffice.com/) — collaborative document editing and office suite
@@ -282,6 +281,7 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**QuickScan**](https://www.quickscanapp.com/) / [**OpenScan**](https://github.com/OpenScan-App/OpenScan) — mobile document capture with local processing
 - [**Radicale**](https://radicale.org/) — lightweight CalDAV/CardDAV for calendars and contacts
 - [**Readeck**](https://readeck.org/) — permanent article archiving and visual bookmarking
+- [**Silverbullet**](https://silverbullet.md/) — PWA note-taking and sync
 - [**SnappyMail**](https://snappymail.eu/) — modern, privacy-focused web-based email client
 - [**Stalwart**](https://stalwart.io/) — modern, memory-safe sovereign email server
 - [**Step-CA**](https://smallstep.com/certificates/) — internal certificate authority for private mesh encryption
