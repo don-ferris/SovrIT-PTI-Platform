@@ -123,6 +123,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | **Security Health Audit** | Automated periodic hardening assessments via **Lynis** with **ntfy** alerting. |
 | **Network Entry Sentry** | Real-time discovery and alerting of new local network clients via **Home Assistant**. |
 | **Credential Breach Audit** | Client-side monitoring for leaked vault credentials via **Vaultwarden** (HIBP integration). |
+| **Sovereign Sentinel** | AI-driven SecOps agent (Local SLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
 | **Resiliency Engine** | Automated state backups, service monitoring, and self-healing via **Fortitude** (**Kopia** / **n8n**). |
 
 ### 🧠 Sovereign Intelligence
@@ -160,6 +161,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | **Cinema** | High-performance personal media streaming via **Jellyfin**. |
 | **Library** | Digital management for books (**Kavita**) and audiobooks (**Audiobookshelf**). |
 | **TubeArchivist** | Sovereign YouTube archiving and metadata management via **TubeArchivist**. |
+
 
 ## 🧩 SovrIT PTI: Functionality Map
 
@@ -302,6 +304,7 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Authentik**](https://goauthentik.io/) — centralized identity provider and biometric authentication gateway
 - [**chrony**](https://chrony-project.org/) — versatile implementation of the Network Time Protocol (NTP)
 - [**CrowdSec**](https://www.crowdsec.net/) — behavior-based security engine and automated IP bouncer
+- [**Cyber-Llama / VaultGemma**](https://huggingface.co/models) — specialized small language models (SLM) tuned for local security operations and log triage
 - [**Docker**](https://www.docker.com/) — containerization and modular service deployment
 - [**Dokuwiki**](https://www.dokuwiki.org/) — lightweight, database-less documentation for maximum resiliency
 - [**FFmpeg**](https://ffmpeg.org/) — the "Swiss Army knife" of media processing powering Jellyfin, Frigate, and TubeArchivist
