@@ -1,3 +1,108 @@
+# SovrIT PTI: Product Specification
+
+## 1. Introduction
+### 1.1 Purpose
+To reclaim digital autonomy by establishing a local-first, zero-trust infrastructure that replaces cloud-dependent services with a unified, encrypted ecosystem. It is engineered to ensure that your data, communications, and identity remain under your exclusive control, providing a stable and sovereign foundation for digital life that is immune to third-party surveillance or monetization.
+### 1.2 Scope
+This specification defines the technical boundaries and operational standards for the SovrIT PTI ecosystem. It encompasses the physical hardware architecture, logical network segmentation (VLANs), and the Runtime Substrate—specifically identity, ingress, and storage layers. The scope extends to the integration of sovereign modules for communication, productivity, and intelligence, as well as the "Ghost Mirror" failover and "Living Handbook" documentation systems. It does not cover the maintenance of third-party ISP bandwidth or the internal development of the open-source engines utilized.
+### 1.3 Target Audience
+Privacy advocates, advanced self-hosters, technical administrators, and contributors to the SovrIT project.
+
+## 2. Technical Objectives (The Sovereign Standards)
+### 2.1 The Zero-Trust Mandate: Biometric Requirements
+To achieve "Invisible Security," the system replaces passwords with device-based biometrics. The technical requirements are simplified to three core rules:
+- **Rule 1:** Use What You Have (Hardware)
+The system must support the biometric sensors already built into the user's devices (FaceID, TouchID, or Android Biometrics). For devices without cameras or scanners, a physical USB Security Key (e.g., YubiKey) is the mandatory backup.
+- **Rule 2:** No Passwords on the Wire (Protocol)
+Once a device is enrolled in Authentik, the user shall never be prompted for a password on that device again. The "Secret" stays on the hardware; only a cryptographic "Yes/No" is sent to the server.
+- **Rule 3:** Secure Path Only (Transport)
+Biometrics will only be triggered for services served over HTTPS. If the "Green Lock" (provided by Traefik and Step-CA) isn't present, the biometric gate remains locked to prevent credential interception.
+#### The User Experience (Summary)
+- **Enrollment:** You tap "Register Device" once.
+- **Usage:** To open your Email, Files, or Vault, you simply look at your webcam or touch the fingerprint sensor.
+- **Security:** Even if someone steals your "password," they can't get in because they don't have your face or your physical hardware.
+
+### 2.2 Data Integrity & Sovereignty
+This layer ensures your data is both immortal (Integrity) and invisible to everyone but you (Sovereignty). We achieve this by being "mathematically paranoid" about how files are stored.
+- **Standard: The "Twin" Rule (Mirrored Vdevs)** - We avoid complex RAID configurations in favor of simple ZFS Mirrors. Every bit of data is written to two drives simultaneously. If one drive fails, the system doesn't blink; it keeps running off the twin. This is the fastest and most reliable way to recover from hardware death.
+- **Standard: Constant Self-Healing (Checksumming)** - ZFS acts like a continuous health inspector. Every time a file is read, the system calculates a "checksum" to verify its integrity. If it finds "bit-rot" (silent corruption), it automatically repairs the file using the clean copy from the mirror before you even know there was a problem.
+- **Policy: The "Unplugged" Defense (Decoupled Encryption)** - Encryption keys are never stored on the server's own drives. To unlock the "Digital Fortress," the master key must be "injected" from a trusted device over the SecureNet mesh during boot-up. If the server is physically seized, unplugged, or stolen, the data becomes unreadable "mathematical noise" the moment the power cuts.
+#### The Result
+- **Hardware Failure:** You lose a drive? Buy a new one, plug it in, and the "Twin" handles the rest.
+- **Silent Corruption:** Your 10-year-old family photos will never "decay" because the system fixes them in the background.
+- **Physical Theft:** If someone walks off with your server, they've stolen a very expensive paperweight. Without the mesh-injected key, your data is gone.### 2.3 Functional Resiliency Targets
+* Defined Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO).
+* Requirements for automated "Self-Healing" via n8n and systemd.
+
+## 3. Logical Network Architecture
+### 3.1 The Network Edge
+* Gateway standards: Default-deny posture and stateful packet inspection.
+* VLAN Segmentation Schema:
+    * **MGMT (10):** Infrastructure management and IPMI.
+    * **CORE (20):** Primary services (Traefik, Authentik, DNS).
+    * **TRUSTED (30):** User endpoints (Laptops, Tablets).
+    * **IOT (40):** Isolated smart home devices (No WAN access).
+    * **GUEST (50):** Isolated internet-only access.
+### 3.2 DNS Resolution Path
+* Detailed flow: Client -> AdGuard Home (Filtering) -> Unbound (Recursive Root Resolution).
+* Split-brain DNS logic for mesh/local seamless connectivity.
+### 3.3 Sovereign Ingress (Traefik)
+* Automated SSL lifecycle via Step-CA (internal) and ACME/DNS-01 (external).
+* Middleware standards: Header hardening, IP whitelisting, and Authentik integration.
+
+## 4. Storage & Filesystem Infrastructure
+### 4.1 ZFS Implementation Standards
+* Dataset hierarchy and recordsize optimization (e.g., 1M for media, 16k for databases).
+* Snapshotting schedule: Hourly/Daily/Monthly retention policies.
+### 4.2 Decoupled Encryption Logic
+* Native ZFS encryption (AES-256-GCM) with keyloading via encrypted mesh nodes.
+### 4.3 Off-site Synchronization (The 3-2-1 Strategy)
+* Local (ZFS) -> Periodic (Kopia) -> Cloud (S3/Ghost Mirror).
+
+## 5. The Security Substrate (Defense in Depth)
+### 5.1 Host-Level Hardening
+* NixOS/Linux kernel hardening parameters.
+* Mandatory Access Control (AppArmor) profile standards.
+### 5.2 Intrusion Awareness & Remediation
+* **NetAlertX:** Thresholds for unauthorized device alerting.
+* **CrowdSec/Fail2Ban:** Integration between service logs and firewall bouncers.
+### 5.3 The NetSentinel SLM
+* Technical role: Log parsing, anomaly detection, and automated n8n playbook execution.
+* Security-specific tuning for local SLMs (e.g., Cyber-Llama).
+
+## 6. The Intelligence Layer
+### 6.1 Assistant Architecture
+* GPU/NPU acceleration requirements for real-time inference.
+* Speech-to-Text (Whisper) and Text-to-Speech (Piper) latency targets.
+### 6.2 Universal Search (Meilisearch)
+* Scraping and indexing logic for decentralized file structures.
+
+## 7. Resilience & High Availability
+### 7.1 The Ghost Mirror (VPS)
+* Minimum specs and hardening requirements.
+* Failover orchestration logic for Identity (Authentik) and Vault services.
+### 7.2 Automated Recovery Pipelines
+* Use cases for n8n-driven container redeployment and state restoration.
+
+## 8. Operational Continuity (The Living Handbook)
+### 8.1 Documentation Standards
+* Dokuwiki structure: Technical Docs vs. Human-Centric Procedures.
+### 8.2 The AI Auditor Logic
+* How the AI agent compares current Web UI DOM trees to existing handbook screenshots to detect "documentation drift."
+
+## 9. Hardware Tiers & Performance Benchmarks
+### 9.1 Infrastructure Tier (Core)
+* Minimum CPU/RAM requirements for substrate stability.
+### 9.2 Compute Tier (AI)
+* Memory bandwidth requirements (M-series Pro/Max tiers).
+### 9.3 Storage Tier
+* Drive longevity targets and S.M.A.R.T. monitoring thresholds.
+
+## 10. Service Directory & Engine Selection
+*(Detailed technical justification for every tool listed in the README Acknowledgements—e.g., "Why Silverbullet over Obsidian?" or "Why Stalwart over Mailcow?").*
+
+
+
 # SovrIT PTI
 
 **SovrIT PTI** (Personal/Private Technology Infrastructure) is a high-performance, local-first infrastructure designed to reclaim digital sovereignty. It replaces the _**entire**_ suite of modern cloud-dependent services - identity, authentication, email/text communication, calendar, contacts, office/documents, medical/legal/financial records, media, even telephony and location services (and more) - with a unified, encrypted, and self-hosted ecosystem. 
