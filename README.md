@@ -39,13 +39,14 @@ Comprehensive "Human-Centric" documentation walks users through procedures consi
 The sovereign execution environment and foundational services:
 
 * **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)), paired with private, recursive DNS resolution ([AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) + [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/)) to eliminate third-party tracking at the query level.
-* **SovrIT Security Substrate:** 
-    * **Behavioral IPS/IDS:** [CrowdSec](https://www.crowdsec.net/) monitors for malicious patterns across all services and blocks threats at the firewall level.
-    * **Brute-Force Shield:** [Fail2Ban](https://github.com/fail2ban/fail2ban) provides local, signature-based protection by monitoring log files (SSH, Auth, etc.) and instantly banning IPs that exhibit aggressive login behavior.
-    * **Process Sandboxing:** [AppArmor](https://gitlab.com/apparmor/apparmor/-/wikis/home) isolates individual services, ensuring that a compromise in one module cannot move laterally through the infrastructure.
+* **SovrIT NetSentinel (The Security Substrate):** A dedicated, security-focused SLM that orchestrates active defense and employs automated remediation (with logging and user notifications) using:
     * **Network Intrusion Awareness:** [NetAlertX](https://github.com/jpsenior/netalertx) provides real-time monitoring of the network substrate, alerting immediately to unauthorized or unrecognized devices.
+    * **Brute-Force Shield:** [Fail2Ban](https://github.com/fail2ban/fail2ban) provides local, signature-based protection by monitoring log files (SSH, Auth, etc.) and instantly banning IPs that exhibit aggressive login behavior.
+    * **Behavioral IPS/IDS:** [CrowdSec](https://www.crowdsec.net/) monitors for malicious patterns across all services and blocks threats at the firewall level.
+    * **Process Sandboxing:** [AppArmor](https://gitlab.com/apparmor/apparmor/-/wikis/home) isolates individual services, ensuring that a compromise in one module cannot move laterally through the infrastructure.
     * **Automated Hardening Audits:** [Lynis](https://cisofy.com/lynis/) performs regular security scans of the underlying host, identifying configuration drift and potential vulnerabilities before they can be exploited.
-    * **SovrIT NetSentinel:** A dedicated Security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats. Distinct from the vision-based **SovrIT Sentinel**, NetSentinel correlates disparate security events to identify complex threats and employ automated remediation with logging and user notifications.
+    * **Automated Security Countermeasues:** [n8n](https://n8n.io/) workflows to autonomously block/isolate threats, logging actions taken and notifying the user.
+
 * **SovrIT Access:** Centralized identity and biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), OIDC/SAML authentication ([Authentik](https://goauthentik.io/)), and private PKI ([Step-CA](https://smallstep.com/docs/step-ca/)). All traffic is orchestrated via sovereign ingress ([Traefik](https://traefik.io/)) for local SSL termination.
 * **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
 * **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
@@ -131,7 +132,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | **Security Health Audit** | Automated periodic hardening assessments via **Lynis** with **ntfy** alerting. |
 | **Network Entry Sentry** | Real-time discovery and alerting of new local network clients via **Home Assistant**. |
 | **Credential Breach Audit** | Client-side monitoring for leaked vault credentials via **Vaultwarden** (HIBP integration). |
-| **Sovereign Sentinel** | AI-driven SecOps agent (Local SLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
+| **SovrIT NetSentinel** | AI-driven SecOps agent (Local SLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
 | **Resiliency Engine** | Automated state backups, service monitoring, and self-healing via **Fortitude** (**Kopia** / **n8n**). |
 
 ### 🧠 Sovereign Intelligence
