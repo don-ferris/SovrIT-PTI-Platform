@@ -22,7 +22,7 @@ The system is _self-healing_. Continuous uptime monitoring is tethered to automa
 ### 3. Global High Availability & Failover Redundancy
 SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
 ### 4. Invisible & Active Security
-Security is integrated into the user flow via biometrics (WebAuthn) and a "Defense in Depth" posture. The system utilizes CrowdSec for behavioral threat blocking and AppArmor to sandbox individual services, ensuring that a compromise in one module cannot spread to the rest of the infrastructure.
+Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT NetSentinel- a dedicated security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
 ### 5. Sovereign Voice/AI Assistance
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
@@ -39,10 +39,18 @@ Comprehensive "Human-Centric" documentation walks users through procedures consi
 The sovereign execution environment and foundational services:
 
 * **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)), paired with private, recursive DNS resolution ([AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) + [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/)) to eliminate third-party tracking at the query level.
+* **SovrIT Security Substrate:** 
+    * **Behavioral IPS/IDS:** [CrowdSec](https://www.crowdsec.net/) monitors for malicious patterns across all services and blocks threats at the firewall level.
+    * **Brute-Force Shield:** [Fail2Ban](https://github.com/fail2ban/fail2ban) provides local, signature-based protection by monitoring log files (SSH, Auth, etc.) and instantly banning IPs that exhibit aggressive login behavior.
+    * **Process Sandboxing:** [AppArmor](https://gitlab.com/apparmor/apparmor/-/wikis/home) isolates individual services, ensuring that a compromise in one module cannot move laterally through the infrastructure.
+    * **Network Intrusion Awareness:** [NetAlertX](https://github.com/jpsenior/netalertx) provides real-time monitoring of the network substrate, alerting immediately to unauthorized or unrecognized devices.
+    * **Automated Hardening Audits:** [Lynis](https://cisofy.com/lynis/) performs regular security scans of the underlying host, identifying configuration drift and potential vulnerabilities before they can be exploited.
+    * **SovrIT NetSentinel:** A dedicated Security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats. Distinct from the vision-based **SovrIT Sentinel**, NetSentinel correlates disparate security events to identify complex threats and employ automated remediation with logging and user notifications.
 * **SovrIT Access:** Centralized identity and biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), OIDC/SAML authentication ([Authentik](https://goauthentik.io/)), and private PKI ([Step-CA](https://smallstep.com/docs/step-ca/)). All traffic is orchestrated via sovereign ingress ([Traefik](https://traefik.io/)) for local SSL termination.
 * **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
 * **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
-* **Core Ops:** Provisioning and lifecycle management utilizing NixOS for declarative system state, [TrueNAS CE](https://www.truenas.com/) for mission-critical encrypted storage (**ZFS**). Active defense is maintained via behavioral IP blocking (**CrowdSec**), mandatory access control (**AppArmor**), and automated security auditing (**Lynis**).for 
+* **Core Ops:** Provisioning and lifecycle management utilizing NixOS for declarative system state, [TrueNAS CE](https://www.truenas.com/) for mission-critical encrypted storage (**ZFS**). Active defense is maintained via behavioral IP blocking (**CrowdSec**), mandatory access control (**AppArmor**), and automated security auditing (**Lynis**).
+
 ### SovrIT Modules
 The user-facing applications that fulfill the functional requirements:
 
@@ -361,11 +369,14 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**adb**](https://developer.android.com/tools/adb) — versatile command-line tool for Android device communication and data extraction
 - [**Aeterna**](https://github.com/alpyxn/aeterna) — digital dead-man switch logic for automated information handover
 - [**Ansible**](https://www.ansible.com/) — declarative provisioning and automated infrastructure configuration
+- [**AppArmor**](https://gitlab.com/apparmor/apparmor/-/wikis/home) isolates individual services, preventing a compromise in one module from compromising others.
 - [**ArchiveBox**](https://archivebox.io/) / [**Promnesia**](https://github.com/karlicoss/promnesia) — comprehensive web history archiving and exploration
 - [**Authentik**](https://goauthentik.io/) — centralized identity provider and biometric authentication gateway
+- [**CrowdSec**](https://www.crowdsec.net/) monitors network for malicious patterns across all services and blocks threats at the firewall level.
 - [**chrony**](https://chrony-project.org/) — versatile implementation of the Network Time Protocol (NTP) for local synchronization
 - [**Docker**](https://www.docker.com/) — containerization and modular service deployment
 - [**Dokuwiki**](https://www.dokuwiki.org/) — lightweight, database-less documentation for maximum resiliency
+- [**Fail2Ban**](https://github.com/fail2ban/fail2ban) - bans attackers that cause multiple authentication errors
 - [**FFmpeg**](https://ffmpeg.org/) — the "Swiss Army knife" of media processing powering Jellyfin, Frigate, and TubeArchivist
 - [**FileBrowser Quantum**](https://filebrowser.org/) — web-based file management and remote access
 - [**Flame**](https://github.com/pawelmalak/flame) — aesthetic, protected dashboard for all sovereign services
@@ -379,10 +390,12 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Kopia**](https://kopia.io/) — fast, secure, and incremental encrypted backups
 - [**libimobiledevice**](https://libimobiledevice.org/) — cross-platform protocol library to communicate with iOS devices natively
 - [**llama.cpp**](https://github.com/ggerganov/llama.cpp) — the foundational inference engine enabling local LLMs on consumer hardware
+- [**Lynis**](https://cisofy.com/lynis/) performs regular security scans to identify potential vulnerabilities.
 - [**Mailgun**](https://www.mailgun.com/) — high-reputation SMTP relay to prevent outbound mail from being flagged as spam
 - [**Matrix**](https://matrix.org/) / [**Mautrix**](https://mautrix.net/) — decentralized communication hub and bridge architecture
 - [**Meilisearch**](https://www.meilisearch.com/) — lightning-fast local search engine for all personal data
 - [**n8n**](https://n8n.io/) — low-code workflow automation and service integration
+- [**NetAlertX**](https://github.com/jpsenior/netalertx) provides real-time monitoring and  immediate alerting to unauthorized network devices.
 - [**NetBird**](https://netbird.io/) / [**WireGuard**](https://www.wireguard.com/) — encrypted overlay networking and the high-performance protocol powering sovereign VPNs
 - [**NixOS**](https://nixos.org/) — declarative and reproducible operating system configuration
 - [**ntfy**](https://ntfy.sh/) — unified, lightweight notification gateway
@@ -410,5 +423,3 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**WebAuthn**](https://webauthn.guide/) — biometric MFA standard for secure, passwordless access
 - [**Whisper**](https://github.com/SYSTRAN/faster-whisper) — high-fidelity local speech-to-text transcription
 - [**ZFS**](https://openzfs.org/) — resilient, hardware-agnostic, and encrypted storage foundations
-
-**_Add NetAlertX_**
