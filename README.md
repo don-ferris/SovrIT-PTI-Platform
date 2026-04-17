@@ -21,8 +21,8 @@ No third party holds the keys or has access to your data, identity, or mesh netw
 The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate rebuilds or relaunches. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 ### 3. Global High Availability & Failover Redundancy
 SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
-### 4. Invisible Security
-Security is integrated into the user flow via biometrics (FaceID/TouchID), eliminating the friction of traditional passwords. 
+### 4. Invisible & Active Security
+Security is integrated into the user flow via biometrics (WebAuthn) and a "Defense in Depth" posture. The system utilizes CrowdSec for behavioral threat blocking and AppArmor to sandbox individual services, ensuring that a compromise in one module cannot spread to the rest of the infrastructure.
 ### 5. Sovereign Voice/AI Assistance
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
@@ -42,8 +42,7 @@ The sovereign execution environment and foundational services:
 * **SovrIT Access:** Centralized identity and biometric gatekeeping ([WebAuthn](https://webauthn.guide/)), OIDC/SAML authentication ([Authentik](https://goauthentik.io/)), and private PKI ([Step-CA](https://smallstep.com/docs/step-ca/)). All traffic is orchestrated via sovereign ingress ([Traefik](https://traefik.io/)) for local SSL termination.
 * **SovrIT Fortitude:** Resilience engine providing immutable backups ([Kopia](https://kopia.io/)), automated recovery ([n8n](https://n8n.io/)), and uptime monitoring ([Uptime Kuma](https://github.com/louislam/uptime-kuma)).
 * **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
-* **Core Ops:** Provisioning and lifecycle management utilizing NixOS for declarative system state, [Proxmox VE](https://www.proxmox.com/) for virtualization, and [TrueNAS CE](https://www.truenas.com/) for mission-critical data storage.
-
+* **Core Ops:** Provisioning and lifecycle management utilizing NixOS for declarative system state, [TrueNAS CE](https://www.truenas.com/) for mission-critical encrypted storage (**ZFS**). Active defense is maintained via behavioral IP blocking (**CrowdSec**), mandatory access control (**AppArmor**), and automated security auditing (**Lynis**).for 
 ### SovrIT Modules
 The user-facing applications that fulfill the functional requirements:
 
@@ -110,6 +109,57 @@ SovrIT PTI is designed to be hardware-agnostic but is currently optimized for a 
 * **Benefit:** Ensures data survival against local catastrophic events (fire, theft, or total hardware failure) by providing a "last resort" recovery target.
 
 ---
+
+## 🗺️ Functionality Map
+The following table outlines the specific capabilities of the SovrIT platform and the open-source engines that power them.
+
+### 🛡️ Core Infrastructure & Security
+| Feature Name | Functionality & Integrated Services |
+| :--- | :--- |
+| **Identity & Access** | Centralized OIDC/SAML provider with biometric MFA (WebAuthn) via **Authentik**. |
+| **Secure Mesh** | Peer-to-peer encrypted overlay network via **NetBird** (WireGuard) for zero-trust access. |
+| **Active Mesh Defense** | Behavioral log analysis and automated IP banning via **CrowdSec**. |
+| **Service Sandboxing** | Mandatory Access Control (MAC) using **AppArmor** to isolate service processes. |
+| **Security Health Audit** | Automated periodic hardening assessments via **Lynis** with **ntfy** alerting. |
+| **Network Entry Sentry** | Real-time discovery and alerting of new local network clients via **Home Assistant**. |
+| **Credential Breach Audit** | Client-side monitoring for leaked vault credentials via **Vaultwarden** (HIBP integration). |
+| **Resiliency Engine** | Automated state backups, service monitoring, and self-healing via **Fortitude** (**Kopia** / **n8n**). |
+
+### 🧠 Sovereign Intelligence
+| Feature Name | Functionality & Integrated Services |
+| :--- | :--- |
+| **Assistant** | Local, private Large Language Model (LLM) orchestration via **Ollama**. |
+| **Knowledge Index** | High-performance full-text search across all sovereign data via **Meilisearch**. |
+| **Sentinel** | AI-powered local NVR and intelligent object detection via **Frigate**. |
+
+### 💬 Communication & Social
+| Feature Name | Functionality & Integrated Services |
+| :--- | :--- |
+| **Messenger** | Unified, bridged chat (WhatsApp/iMessage/Signal) via **Matrix** and **Mautrix**. |
+| **Carrier** | Sovereign SMTP mail (**Stalwart**) and SIP-TLS voice telephony (**VitalPBX**). |
+| **Social** | Privacy-focused, federated social networking via **Pixelfed** and **GoToSocial**. |
+
+### 📅 Productivity & Knowledge
+| Feature Name | Functionality & Integrated Services |
+| :--- | :--- |
+| **SovrIT Notes** | Lightweight, flat-file Markdown note-taking and documentation via **SilverBullet**. |
+| **Office** | Collaborative document, spreadsheet, and presentation editing via **OnlyOffice**. |
+| **History & Reading** | Permanent web archiving (**ArchiveBox**) and visual bookmarking (**Readeck**). |
+
+### 📂 Vital Archives
+| Feature Name | Functionality & Integrated Services |
+| :--- | :--- |
+| **Money** | Privacy-first personal finance and envelope budgeting via **Actual Budget**. |
+| **Records** | Long-term document management and OCR indexing via **Paperless-ngx**. |
+| **Mobile** | Local Android/iOS data extraction and management via **adb** and **libimobiledevice**. |
+| **Eternal** | Digital dead-man switch and automated legacy handover via **Aeterna**. |
+
+### 🎬 Sovereign Media
+| Feature Name | Functionality & Integrated Services |
+| :--- | :--- |
+| **Cinema** | High-performance personal media streaming via **Jellyfin**. |
+| **Library** | Digital management for books (**Kavita**) and audiobooks (**Audiobookshelf**). |
+| **TubeArchivist** | Sovereign YouTube archiving and metadata management via **TubeArchivist**. |
 
 ## 🧩 SovrIT PTI: Functionality Map
 
@@ -238,6 +288,68 @@ Cloud subscriptions (Google Workspace, iCloud+, Dropbox, Netflix, Spotify, and A
 
 ## 📜 License & Ethical Usage
 The SovrIT PTI blueprint is provided for individual sovereignty. By deploying this stack, you assume total responsibility for your data security and the legal implications of hosting your own communication and encryption services.
+
+
+## 🙏 Acknowledgements
+SovrIT stands firmly on the shoulders of giants. It would not exist without the incredible work of the open‑source communities whose tools and ideas form its foundation.
+
+- [**Actual Budget**](https://actualbudget.org/) — privacy-first personal finance and envelope budgeting
+- [**adb**](https://developer.android.com/tools/adb) — versatile command-line tool for Android device communication
+- [**Aeterna**](https://github.com/alpyxn/aeterna) — digital dead-man switch logic for automated information handover
+- [**Ansible**](https://www.ansible.com/) — declarative provisioning and automated infrastructure configuration
+- [**AppArmor**](https://gitlab.com/apparmor/apparmor/-/wikis/home) — mandatory access control and kernel-level process sandboxing
+- [**ArchiveBox**](https://archivebox.io/) / [**Promnesia**](https://github.com/karlicoss/promnesia) — comprehensive web history archiving and exploration
+- [**Authentik**](https://goauthentik.io/) — centralized identity provider and biometric authentication gateway
+- [**chrony**](https://chrony-project.org/) — versatile implementation of the Network Time Protocol (NTP)
+- [**CrowdSec**](https://www.crowdsec.net/) — behavior-based security engine and automated IP bouncer
+- [**Docker**](https://www.docker.com/) — containerization and modular service deployment
+- [**Dokuwiki**](https://www.dokuwiki.org/) — lightweight, database-less documentation for maximum resiliency
+- [**FFmpeg**](https://ffmpeg.org/) — the "Swiss Army knife" of media processing powering Jellyfin, Frigate, and TubeArchivist
+- [**FileBrowser Quantum**](https://filebrowser.org/) — web-based file management and remote access
+- [**Flame**](https://github.com/pawelmalak/flame) — aesthetic, protected dashboard for all sovereign services
+- [**Forgejo**](https://forgejo.org/) — lightweight self-hosted git service for infrastructure-as-code
+- [**Frigate**](https://frigate.video/) — AI-powered local NVR and intelligent object detection
+- [**Home Assistant**](https://www.home-assistant.io/) — the heart of local-only, cloud-independent smart home automation
+- [**Hugging Face**](https://huggingface.co/) — LLM/AI frameworks for guided operations and documentation auditing
+- [**Immich**](https://immich.app/) — high-performance, AI-driven photo and video management
+- [**Jellyfin**](https://jellyfin.org/) — high-performance personal media streaming
+- [**Kavita**](https://www.kavitareader.com/) / [**Audiobookshelf**](https://www.audiobookshelf.org/) — decentralized digital libraries for books and audio
+- [**Kopia**](https://kopia.io/) — fast, secure, and incremental encrypted backups
+- [**libimobiledevice**](https://libimobiledevice.org/) — cross-platform protocol library for native iOS communication
+- [**llama.cpp**](https://github.com/ggerganov/llama.cpp) — foundational inference engine enabling local LLMs on consumer hardware
+- [**Lynis**](https://cisofy.com/lynis/) — battle-tested security auditing tool for hardening Linux systems
+- [**Mailgun**](https://www.mailgun.com/) — high-reputation SMTP relay for sovereign mail invisibility
+- [**Matrix**](https://matrix.org/) / [**Mautrix**](https://mautrix.net/) — decentralized communication hub and bridge architecture
+- [**Meilisearch**](https://www.meilisearch.com/) — lightning-fast local search engine for all personal data
+- [**n8n**](https://n8n.io/) — low-code workflow automation and service integration
+- [**NetBird**](https://netbird.io/) / [**WireGuard**](https://www.wireguard.com/) — encrypted overlay networking and high-performance VPN protocols
+- [**NixOS**](https://nixos.org/) — declarative and reproducible operating system configuration
+- [**ntfy**](https://ntfy.sh/) — unified, lightweight notification gateway
+- [**Ollama**](https://ollama.com/) — local large language model (LLM) orchestration
+- [**OnlyOffice**](https://www.onlyoffice.com/) — collaborative document editing and office suite
+- [**Paperless-ngx**](https://docs.paperless-ngx.com/) — powerful document management and OCR indexing
+- [**Piper**](https://github.com/rhasspy/piper) — fast, local text-to-speech synthesis
+- [**Pixelfed**](https://pixelfed.org/) / [**GoToSocial**](https://gotosocial.org/) — privacy-focused, federated social networking
+- [**Proxmox**](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) — enterprise-grade virtualization and orchestration
+- [**Python**](https://www.python.org/) — scripting, tooling, and automation logic
+- [**QuickScan**](https://www.quickscanapp.com/) / [**OpenScan**](https://github.com/OpenScan-App/OpenScan) — mobile document capture with local processing
+- [**Radicale**](https://radicale.org/) — lightweight CalDAV/CardDAV for calendars and contacts
+- [**Readeck**](https://readeck.org/) — permanent article archiving and visual bookmarking
+- [**SilverBullet**](https://silverbullet.md/) — extensible, flat-file Markdown personal knowledge base
+- [**SnappyMail**](https://snappymail.eu/) — modern, privacy-focused web-based email client
+- [**Stalwart**](https://stalwart.io/) — modern, memory-safe sovereign email server
+- [**Step-CA**](https://smallstep.com/certificates/) — internal certificate authority for private mesh encryption
+- [**Tika**](https://tika.apache.org) — metadata and text extraction from complex file types
+- [**Traccar**](https://www.traccar.org/) / [**MapLibre**](https://maplibre.org/) — private location tracking and sovereign mapping
+- [**Traefik**](https://traefik.io/) — cloud-native edge proxy and automated traffic management
+- [**TubeArchivist**](https://tubearchivist.com/) / [**yt-dlp**](https://github.com/yt-dlp/yt-dlp) — sovereign YouTube archiving and the underlying download engine
+- [**Uptime Kuma**](https://github.com/louislam/uptime-kuma) — self-hosted uptime monitoring and service alerts
+- [**Vaultwarden**](https://github.com/dani-garcia/vaultwarden) — lightweight secret management and MFA recovery stewardship
+- [**VitalPBX**](https://www.vitalpbx.com/) — sovereign voice-over-IP (VoIP) and telephony
+- [**WebAuthn**](https://webauthn.guide/) — biometric MFA standard for secure, passwordless access
+- [**Whisper**](https://github.com/SYSTRAN/faster-whisper) — high-fidelity local speech-to-text transcription
+- [**ZFS**](https://openzfs.org/) — resilient, hardware-agnostic, and encrypted storage foundations
+
 
 ## 🙏 Acknowledgements
 SovrIT stands firmly on the shoulders of giants. It would not exist without the incredible work of the open‑source communities whose tools and ideas form its foundation.
