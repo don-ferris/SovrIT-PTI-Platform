@@ -135,15 +135,31 @@ To maintain simplicity while allowing for multi-node growth:
 ---
 
 ## 5. The Security Substrate (Defense in Depth)
-### 5.1 Host-Level Hardening
-* NixOS/Linux kernel hardening parameters.
-* Mandatory Access Control (AppArmor) profile standards.
-### 5.2 Intrusion Awareness & Remediation
-* **NetAlertX:** Thresholds for unauthorized device alerting.
-* **CrowdSec/Fail2Ban:** Integration between service logs and firewall bouncers.
-### 5.3 The NetSentinel SLM
-* Technical role: Log parsing, anomaly detection, and automated n8n playbook execution.
-* Security-specific tuning for local SLMs (e.g., Cyber-Llama).
+
+The security substrate is designed to provide proactive defense, isolation, and intelligent oversight. It follows the principle that "Hardening is a process, not a state."
+
+### 5.1 Host-Level Hardening & Auditing
+The underlying OS must be hardened to minimize the attack surface of the physical hardware.
+* **Declarative Hardening (NixOS):** System state is defined in code, disabling unnecessary kernel modules and services by default.
+* **Service Sandboxing (AppArmor):** Mandatory Access Control (MAC) profiles are applied to all high-risk services (e.g., Traefik, Matrix, Stalwart). This ensures that even if a service is compromised, it cannot read the root filesystem or access other service datasets.
+* **Continuous Auditing (Lynis):** Automated security scans run weekly to identify configuration drift, outdated packages, or weak permissions. The "Hardening Index" from Lynis is reported directly to the NetSentinel for health tracking.
+
+### 5.2 Intrusion Awareness & Proactive Defense
+This layer monitors the "Wire" and the "Logs" for behavioral anomalies.
+* **Network Sentry (NetAlertX):** Monitors the physical network substrate. It triggers immediate alerts for unauthorized MAC addresses or unrecognized device pings within the trusted VLANs.
+* **Behavioral IPS (CrowdSec):** Acts as the "Immune System." It parses logs across all services to identify distributed brute-force attacks or L7 "scans" and blocks them at the firewall level.
+* **Local Brute-Force Shield (Fail2Ban):** Provides high-speed, local banning for repeated authentication failures on critical infrastructure (SSH, Core Ops).
+
+### 5.3 The SovrIT NetSentinel (Security SLM)
+The NetSentinel is a dedicated Security Small Language Model (SLM) that acts as the intelligent "Overseer" of the substrate.
+* **The Intelligence Engine:** Utilizes local, security-tuned models (e.g., **VaultGemma** or **Cyber-Llama**) running on the Compute/LLM Node.
+* **Role: Alert Triage & Correlation:** Instead of flooding the user with raw logs, NetSentinel correlates disparate events. 
+    * *Example:* Correlating a blocked SSH attempt (Fail2Ban) with a new device on the network (NetAlertX) to elevate the threat level.
+* **Role: Autonomous Remediation (SOAR):** NetSentinel executes automated playbooks via **n8n**. 
+    * *Action:* If a service exhibits compromised behavior, NetSentinel can autonomously "Quarantine" the container by dropping its mesh connection and notifying the user via **ntfy**.
+* **Role: Log Summarization:** Provides a daily "Security Heartbeat" summary, translating technical log spikes into plain English for the user.
+
+---
 
 ## 6. The Intelligence Layer
 ### 6.1 Assistant Architecture
