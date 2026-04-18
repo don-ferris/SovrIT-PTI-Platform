@@ -217,7 +217,7 @@ To ensure a perfect reconstruction, the system separates "How it works" from "Th
 * **Monitoring:** The VPS runs a light **Uptime Kuma** instance monitoring the Home Node’s mesh IP.
 * **The Handover Logic:** If the Home Node is unreachable for >120 seconds:
     1. The VPS triggers a local activation script.
-    2. Local "Warm" instances of Authentik, Vaultwarden, and Paperless-ngx are brought online.
+    2. Local "Warm" instances of Authentik, Vaultwarden, Paperless-ngx, and other serices are brought online.
     3. **NetBird DNS** is updated to route `auth.sovrit.lan` and `vault.sovrit.lan` to the VPS mesh IP.
 
 ### 7.4 The "Nuclear" Option: Site Reconstruction
