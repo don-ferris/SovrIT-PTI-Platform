@@ -128,7 +128,7 @@ Following Pillar 6, encryption is handled at the filesystem level, ensuring the 
 
 ### 4.5 Evolution Path: Compute/Storage Separation
 To maintain simplicity while allowing for multi-node growth:
-* **Phase 1 (Converged):** A single node acts as both the Core (Compute) and Storage host.
+* **Phase 1 (Converged):** A single node acts as both the Core and Storage host.
 * **Phase 2 (Distributed):** As the environment moves to a multi-node NixOS Cluster, storage is migrated to a dedicated node (NixOS or TrueNAS). 
 * **Protocol:** Datasets are shared with the cluster nodes via high-speed, local VLAN-restricted NFS or SMB. This maintains simplicity while providing high-availability storage to the entire cluster.
 
