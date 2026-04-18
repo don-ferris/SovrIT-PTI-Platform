@@ -39,9 +39,10 @@ Security should be a silent partner, not a series of annoying pop-ups.
 * **Standard:** Utilize **NetAlertX** for intrusion awareness and **CrowdSec** for behavioral blocking. The NetSentinel correlates these signals to autonomously isolate threats and notify the user only when human judgment is required.
 
 ### 2.5 Sovereign Voice/AI Assistance
-Intelligence must be private, local, and context-aware.
-* **Objective:** Process all AI requests (LLM, STT, TTS) on the local **Compute Node**.
-* **Standard:** No prompt data or personal records shall ever leave the network. The assistant must have "Read-Only" access to the universal search index to provide insights from personal documents without compromising the privacy of the raw data.
+Intelligence must be private, local, and context-aware, utilizing a tiered model approach for different tasks.
+* **Objective:** Process all AI requests (LLM, STT, TTS) on the local **Compute/LLM Node**.
+* **Standard (Reasoning):** Utilize **Phi-4-mini** for high-speed, real-time voice interaction and **Qwen3-8B** for complex, long-context document analysis (RAG).
+* **Standard (Privacy):** No prompt data or personal records shall ever leave the network. The assistant has "Read-Only" access to the universal search index, providing insights from medical/financial documents without exposing raw data to external APIs.
 
 ### 2.6 Decoupled Encryption at Rest
 Physical possession of a server should not equal access to its data.
@@ -49,10 +50,14 @@ Physical possession of a server should not equal access to its data.
 * **Standard:** Encryption keys must be "injected" from a trusted mesh device during the boot sequence. If the server is powered down or removed from the premises, the data remains mathematically inaccessible noise.
 
 ### 2.7 Operational Continuity: The Living Handbook
-The system must be maintainable even if the primary administrator is unavailable.
+The system must be maintainable by non-technical users through a perfectly synchronized physical-digital documentation bridge.
 * **Objective:** Maintain a "Human-Centric" documentation vault in **Dokuwiki**.
 * **Standard (The Procedure Rule):** Documentation consists of step-by-step procedures built around **annotated screenshots** (e.g., "Click the gear icon shown circled in red").
-* **Standard (The Parity Rule):** A dedicated AI agent regularly audits all system UIs. When a software update changes a layout, menu, or dialog, the agent autonomously updates the screenshots in the Handbook, increments the revision number, and alerts the user to print the new pages.
+* **Standard (The Parity Rule):** A dedicated **Visual Agent** (e.g., **Qwen2.5-VL**) regularly audits all system UIs. When a software update changes a layout, menu, or dialog, the agent autonomously:
+    1. Re-captures the affected UI element.
+    2. Re-annotates the image to match the existing visual style.
+    3. Updates the Handbook page and increments the revision number.
+    4. Triggers an **ntfy** alert to the user to print the updated page for the physical binder.
 
 ---
 
