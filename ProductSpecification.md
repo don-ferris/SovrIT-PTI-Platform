@@ -57,29 +57,82 @@ The system must be maintainable even if the primary administrator is unavailable
 ---
 
 ## 3. Logical Network Architecture
-### 3.1 The Network Edge
-* Gateway standards: Default-deny posture and stateful packet inspection.
-* VLAN Segmentation Schema:
-    * **MGMT (10):** Infrastructure management and IPMI.
-    * **CORE (20):** Primary services (Traefik, Authentik, DNS).
-    * **TRUSTED (30):** User endpoints (Laptops, Tablets).
-    * **IOT (40):** Isolated smart home devices (No WAN access).
-    * **GUEST (50):** Isolated internet-only access.
-### 3.2 DNS Resolution Path
-* Detailed flow: Client -> AdGuard Home (Filtering) -> Unbound (Recursive Root Resolution).
-* Split-brain DNS logic for mesh/local seamless connectivity.
-### 3.3 Sovereign Ingress (Traefik)
-* Automated SSL lifecycle via Step-CA (internal) and ACME/DNS-01 (external).
-* Middleware standards: Header hardening, IP whitelisting, and Authentik integration.
+
+The SovrIT network is a hybrid architecture combining physical isolation (VLANs), an encrypted overlay (NetBird), and a geographically distant (VPS) failover node (The Ghost Mirror).
+
+### 3.1 Physical Segmentation (VLAN Schema)
+The local substrate utilizes a "Default Deny" posture between five distinct security zones:
+
+| VLAN ID | Name | Description & Policy |
+| :--- | :--- | :--- |
+| **10** | **MGMT** | 10.10.10.x - Infrastructure management (IPMI, Controllers). No WAN access. |
+| **20** | **CORE** | 10.10.20.x - The Runtime Substrate (Identity, DNS, Ingress). Restricted WAN. |
+| **30** | **TRUSTED** | 10.10.30.x - Primary user devices. Full mesh access. |
+| **40** | **IOT** | 172.16.40.x - Isolated hardware (Cameras/Sensors). Zero outbound/inter-VLAN access. |
+| **50** | **GUEST** | 192.168.0.x - Internet-only access. Total client isolation. |
+
+### 3.2 The Sovereign Mesh & Ghost Mirror (Hybrid Topology)
+The network relies on **NetBird** (WireGuard) to bridge the home infrastructure with the remote VPS.
+* **The SecureNet Mesh:** All administrative and inter-node traffic is encapsulated in a peer-to-peer overlay. No service ports are opened on the local home router.
+* **The Ghost Mirror (VPS):** Acts as a hardened, secondary node in the mesh.
+    * **Ingress Role:** Acts as the "Front Porch" for public-facing traffic, proxying requests to the home node via the mesh.
+    * **Failover Role (Life-Line Services):** The VPS hosts a "Warm Standby" of critical services (Authentik, Vaultwarden, Actual Budget, Radicale, and Paperless-ngx). 
+    * **Data Sync:** Encrypted data stores for these services are synchronized from the Home Node to the VPS at regular intervals (via **Kopia** or **ZFS send** over the mesh). 
+    * **Zero-Knowledge Hosting:** Data resides on the VPS in an encrypted state. It is only accessible through the Sovereign Identity gate, ensuring that the VPS provider has zero visibility into your financial or medical records.
+
+### 3.3 DNS, Discovery & Internal Trust (Step-CA)
+This layer handles how services are found and how they prove their identity to your devices.
+
+1. **Filtering Layer:** **AdGuard Home** intercepts all queries to strip tracking, telemetry, and malware domains.
+2. **Resolution Layer:** **Unbound** performs recursive resolution directly from Root Nameservers, bypassing ISP logging.
+3. **Internal Trust Anchor (Step-CA):** Operates a private Certificate Authority (PKI) within the mesh. 
+    * **Sovereign SSL:** Issues internal TLS certificates for all `.lan` and mesh services.
+    * **Privacy:** This removes the need to use public ACME/Let's Encrypt challenges for internal services, ensuring that your internal domain names and service structures are never leaked to public transparency logs.
+    * **Requirement:** All trusted devices must have the SovrIT Root Certificate installed to ensure seamless, warning-free HTTPS across the entire substrate.
+
+### 3.4 Ingress & Traffic Orchestration (Traefik)
+**Traefik** manages all inbound traffic across both the Home and VPS nodes:
+* **Sovereign Gatekeeping:** Every request is challenged by the **Authentik** Forward Auth middleware. 
+* **Protocol Enforcement:** All traffic is forced to HTTPS. Traefik coordinates with **Step-CA** to ensure certificates are valid and automatically rotated.
+
+---
 
 ## 4. Storage & Filesystem Infrastructure
-### 4.1 ZFS Implementation Standards
-* Dataset hierarchy and recordsize optimization (e.g., 1M for media, 16k for databases).
-* Snapshotting schedule: Hourly/Daily/Monthly retention policies.
-### 4.2 Decoupled Encryption Logic
-* Native ZFS encryption (AES-256-GCM) with keyloading via encrypted mesh nodes.
-### 4.3 Off-site Synchronization (The 3-2-1 Strategy)
-* Local (ZFS) -> Periodic (Kopia) -> Cloud (S3/Ghost Mirror).
+
+SovrIT utilizes **ZFS** as the mandatory filesystem for all persistent data. The architecture supports a tiered storage model, allowing high-performance system data and high-capacity media to coexist under a unified management standard.
+
+### 4.1 Storage Tiering & Pool Standards
+To balance performance and capacity, the storage substrate is divided into two functional tiers:
+* **The Core Tier (System/Apps):** Configured as a **ZFS Mirror** (RAID-1 equivalent). This tier provides maximum IOPS and fast recovery for the operating system, identity databases, and service configurations.
+* **The Archive Tier (Media/Bulk):** Configured as **RAIDZ2 or RAIDZ3** (allowing 2-3 drive failures). This tier is optimized for sequential read/write and maximum storage efficiency for large media libraries.
+* **Verification:** Monthly **ZFS Scrubs** are mandatory across all tiers to detect and repair latent bit-rot.
+
+### 4.2 Logical Dataset Strategy
+Data is organized into logical **Datasets** rather than simple directories. This allows for granular control over encryption, snapshots, and performance tuning without the complexity of per-service management.
+* **Categorical Grouping:** Instead of per-service datasets, data is grouped by functional requirements (e.g., `tank/core-services`, `tank/media-vault`, `tank/backups`).
+* **Recordsize Optimization:**
+    * **System/Database Datasets:** Fixed at **16k** for high-frequency small-block writes.
+    * **General Storage Datasets:** Set to **128k** (Default).
+    * **Media Datasets:** Set to **1M** to reduce metadata overhead and fragmentation for large files.
+
+### 4.3 Decoupled Encryption & Key Management
+Following Pillar 6, encryption is handled at the filesystem level, ensuring the physical substrate holds no usable data without active authorization.
+* **Algorithm:** AES-256-GCM (Hardware accelerated).
+* **The "Blind Server" Policy:** Master encryption keys are never stored on the local boot drive or pool metadata. 
+* **Key Injection:** Pools remain locked at boot. Keys must be "injected" from a trusted mesh device over the **SecureNet** mesh before datasets are mounted. If the hardware is powered down or removed from the premises, the data remains mathematical noise.
+
+### 4.4 Resilience: The 3-2-1-0 Strategy
+* **Snapshots (Local Persistence):** Atomic, read-only snapshots are taken hourly and pruned according to a 24-hour / 30-day / 1-year retention policy.
+* **Mirroring (Hardware Persistence):** Real-time redundancy via Mirrored (Core) or Parity-based (Archive) vdevs.
+* **Off-site Archive (Global Persistence):** Encrypted, incremental backups via **Kopia** are pushed to S3-compatible storage.
+
+### 4.5 Evolution Path: Compute/Storage Separation
+To maintain simplicity while allowing for multi-node growth:
+* **Phase 1 (Converged):** A single node acts as both the Core (Compute) and Storage host.
+* **Phase 2 (Distributed):** As the environment moves to a multi-node NixOS Cluster, storage is migrated to a dedicated node (NixOS or TrueNAS). 
+* **Protocol:** Datasets are shared with the cluster nodes via high-speed, local VLAN-restricted NFS or SMB. This maintains simplicity while providing high-availability storage to the entire cluster.
+
+---
 
 ## 5. The Security Substrate (Defense in Depth)
 ### 5.1 Host-Level Hardening
