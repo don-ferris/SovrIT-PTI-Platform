@@ -203,7 +203,7 @@ This section defines the survival strategies for "Sovereign Life-Line Services."
 
 ### 7.1 The Ghost Mirror (VPS) Specifications
 The Ghost Mirror is a geographically distant, hardened node that acts as a "Warm Standby."
-* **Minimum Specifications:** 2 vCPU / 4GB RAM / 50GB NVMe.
+* **Minimum Specifications:** 4 vCPU / 6GB RAM / 100GB NVMe / 10TB bandwidth.
 * **Hardening Standards:** Strictly mesh-only SSH access via NetBird; host-level hardening via NixOS security profiles.
 * **Redundancy Role:** Provides 24/7 availability for Identity (Authentik) and Password Vault (Vaultwarden) services.
 
