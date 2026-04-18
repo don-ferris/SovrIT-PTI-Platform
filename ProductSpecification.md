@@ -8,31 +8,53 @@ This specification defines the technical boundaries and operational standards fo
 ### 1.3 Target Audience
 Privacy advocates, advanced self-hosters, technical administrators, and contributors to the SovrIT project.
 
-## 2. Technical Objectives (The Sovereign Standards)
-### 2.1 The Zero-Trust Mandate: Biometric Requirements
-To achieve "Invisible Security," the system replaces passwords with device-based biometrics. The technical requirements are simplified to three core rules:
-- **Rule 1:** Use What You Have (Hardware)
-The system must support the biometric sensors already built into the user's devices (FaceID, TouchID, or Android Biometrics). For devices without cameras or scanners, a physical USB Security Key (e.g., YubiKey) is the mandatory backup.
-- **Rule 2:** No Passwords on the Wire (Protocol)
-Once a device is enrolled in Authentik, the user shall never be prompted for a password on that device again. The "Secret" stays on the hardware; only a cryptographic "Yes/No" is sent to the server.
-- **Rule 3:** Secure Path Only (Transport)
-Biometrics will only be triggered for services served over HTTPS. If the "Green Lock" (provided by Traefik and Step-CA) isn't present, the biometric gate remains locked to prevent credential interception.
-#### The User Experience (Summary)
-- **Enrollment:** You tap "Register Device" once.
-- **Usage:** To open your Email, Files, or Vault, you simply look at your webcam or touch the fingerprint sensor.
-- **Security:** Even if someone steals your "password," they can't get in because they don't have your face or your physical hardware.
+---
 
-### 2.2 Data Integrity & Sovereignty
-This layer ensures your data is both immortal (Integrity) and invisible to everyone but you (Sovereignty). We achieve this by being "mathematically paranoid" about how files are stored.
-- **Standard: The "Twin" Rule (Mirrored Vdevs)** - We avoid complex RAID configurations in favor of simple ZFS Mirrors. Every bit of data is written to two drives simultaneously. If one drive fails, the system doesn't blink; it keeps running off the twin. This is the fastest and most reliable way to recover from hardware death.
-- **Standard: Constant Self-Healing (Checksumming)** - ZFS acts like a continuous health inspector. Every time a file is read, the system calculates a "checksum" to verify its integrity. If it finds "bit-rot" (silent corruption), it automatically repairs the file using the clean copy from the mirror before you even know there was a problem.
-- **Policy: The "Unplugged" Defense (Decoupled Encryption)** - Encryption keys are never stored on the server's own drives. To unlock the "Digital Fortress," the master key must be "injected" from a trusted device over the SecureNet mesh during boot-up. If the server is physically seized, unplugged, or stolen, the data becomes unreadable "mathematical noise" the moment the power cuts.
-#### The Result
-- **Hardware Failure:** You lose a drive? Buy a new one, plug it in, and the "Twin" handles the rest.
-- **Silent Corruption:** Your 10-year-old family photos will never "decay" because the system fixes them in the background.
-- **Physical Theft:** If someone walks off with your server, they've stolen a very expensive paperweight. Without the mesh-injected key, your data is gone.### 2.3 Functional Resiliency Targets
-* Defined Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO).
-* Requirements for automated "Self-Healing" via n8n and systemd.
+## 2. Technical Objectives (The Seven Pillars in Practice)
+
+These objectives define the "Definition of Done" for the SovrIT ecosystem. Every service, script, and hardware choice must align with these seven core requirements.
+
+### 2.1 Absolute Sovereignty & Zero-Trust Privacy
+The system ensures that all identity, data, and communication assets are owned and controlled exclusively by the user, with zero exposure to third-party intermediaries.
+* **Objective:** Establish a "Digital Fortress" where third parties act only as blind transport pipes for encrypted data.
+* **Standard (Identity):** Centralize all access through a self-hosted identity provider (**Authentik**) using biometric-first verification (**WebAuthn**). External "Sign-in with Google/Apple" is strictly prohibited.
+* **Standard (Connectivity):** All administrative and inter-node traffic must be encapsulated within a private, peer-to-peer mesh network (**NetBird**). No service ports are exposed directly to the public internet.
+* **Standard (Comms):** Data in transit through non-sovereign servers (e.g., mobile carriers or ISPs) must utilize end-to-end encryption. This includes **SIP-TLS/SRTP** for telephony and **GPG/S/MIME** for sensitive mail, ensuring that carriers see only "mathematical noise," never the payload.
+
+### 2.2 Autonomous Functional Resiliency
+Data survival must be ensured by employing redundant backups; up-time for critical system services must be considered "mission critical", utilizing automated "self-healing" workflows wherever possible to minimize manual intervention.
+* **Objective (Operational):** Deploy automated health checks via **Uptime Kuma** and **n8n**.
+* **Objective (Data):** Automate the **3-2-1 Backup Rule** (3 copies, 2 media types, 1 off-site).
+* **Standard (The "Self-Healing" Rule):** If a service degrades, the system must attempt an autonomous restart or rebuild. 
+* **Standard (The "Off-site Archive" Rule):** Encrypted, incremental backups (via **Kopia**) must be pushed at regular (1-4 hour) intervals to an **S3-compatible provider**. Encryption must happen *client-side* before the data leaves the network.
+
+### 2.3 Global High Availability & Failover Redundancy
+Power and internet outages at home must be mitigated to preserve critical services and access to data.
+* **Objective:** Maintain a geographically distant **VPS Ghost Mirror**.
+* **Standard:** In the event of a local ISP or power failure, critical "Life-Line" services (Identity, Vault, and Communications) must automatically failover to the VPS to ensure zero downtime for remote users.
+
+### 2.4 Invisible & Active Security
+Security should be a silent partner, not a series of annoying pop-ups.
+* **Objective:** Orchestrate a "Defense-in-Depth" stack overseen by the **SovrIT NetSentinel** (Security SLM).
+* **Standard:** Utilize **NetAlertX** for intrusion awareness and **CrowdSec** for behavioral blocking. The NetSentinel correlates these signals to autonomously isolate threats and notify the user only when human judgment is required.
+
+### 2.5 Sovereign Voice/AI Assistance
+Intelligence must be private, local, and context-aware.
+* **Objective:** Process all AI requests (LLM, STT, TTS) on the local **Compute Node**.
+* **Standard:** No prompt data or personal records shall ever leave the network. The assistant must have "Read-Only" access to the universal search index to provide insights from personal documents without compromising the privacy of the raw data.
+
+### 2.6 Decoupled Encryption at Rest
+Physical possession of a server should not equal access to its data.
+* **Objective:** Implement **ZFS-native encryption** where the master keys are never stored on the physical substrate.
+* **Standard:** Encryption keys must be "injected" from a trusted mesh device during the boot sequence. If the server is powered down or removed from the premises, the data remains mathematically inaccessible noise.
+
+### 2.7 Operational Continuity: The Living Handbook
+The system must be maintainable even if the primary administrator is unavailable.
+* **Objective:** Maintain a "Human-Centric" documentation vault in **Dokuwiki**.
+* **Standard (The Procedure Rule):** Documentation consists of step-by-step procedures built around **annotated screenshots** (e.g., "Click the gear icon shown circled in red").
+* **Standard (The Parity Rule):** A dedicated AI agent regularly audits all system UIs. When a software update changes a layout, menu, or dialog, the agent autonomously updates the screenshots in the Handbook, increments the revision number, and alerts the user to print the new pages.
+
+---
 
 ## 3. Logical Network Architecture
 ### 3.1 The Network Edge
