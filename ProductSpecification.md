@@ -4,7 +4,7 @@
 ### 1.1 Purpose
 To reclaim digital autonomy by establishing a local-first, zero-trust infrastructure that replaces cloud-dependent services with a unified, encrypted ecosystem. It is engineered to ensure that your data, communications, and identity remain under your exclusive control, providing a stable and sovereign foundation for digital life that is immune to third-party surveillance or monetization.
 ### 1.2 Scope
-This specification defines the technical boundaries and operational standards for the SovrIT PTI ecosystem. It encompasses the physical hardware architecture, logical network segmentation (VLANs), and the Runtime Substrate—specifically identity, ingress, and storage layers. The scope extends to the integration of sovereign modules for communication, productivity, and intelligence, as well as the "Ghost Mirror" failover and "Living Handbook" documentation systems. It does not cover the maintenance of third-party ISP bandwidth or the internal development of the open-source engines utilized.
+This specification defines the technical boundaries and operational standards for the SovrIT PTI ecosystem. It encompasses the physical hardware architecture, logical network segmentation (VLANs), and the Runtime Substrate—specifically identity, ingress, and storage layers. The scope extends to the integration of sovereign modules for communication, productivity, and intelligence, as well as the "Ghost Mirror" failover and "SovrIT Handbook" documentation systems. It does not cover the maintenance of third-party ISP bandwidth or the internal development of the open-source engines utilized.
 ### 1.3 Target Audience
 Privacy advocates, advanced self-hosters, technical administrators, and contributors to the SovrIT project.
 
@@ -49,7 +49,7 @@ Physical possession of a server should not equal access to its data.
 * **Objective:** Implement **ZFS-native encryption** where the master keys are never stored on the physical substrate.
 * **Standard:** Encryption keys must be "injected" from a trusted mesh device during the boot sequence. If the server is powered down or removed from the premises, the data remains mathematically inaccessible noise.
 
-### 2.7 Operational Continuity: The Living Handbook
+### 2.7 Operational Continuity: The SovrIT Handbook
 The system must be maintainable by non-technical users through a perfectly synchronized physical-digital documentation bridge.
 * **Objective:** Maintain a "Human-Centric" documentation vault in **Dokuwiki**.
 * **Standard (The Procedure Rule):** Documentation consists of step-by-step procedures built around **annotated screenshots** (e.g., "Click the gear icon shown circled in red").
@@ -228,22 +228,63 @@ In the event of total hardware loss at home, the Reconstruction Pipeline is as f
 4. **Hydrate:** Execute the "Sovereign Restore" script to pull the ZFS hierarchy and service state from Kopia-S3.
 5. **Rebuild:** Run `nixos-rebuild switch` to restore the entire 40+ service ecosystem to its exact pre-disaster state.
 
+---
+
+## 8. SovrIT Handbook (Operational Continuity)
+
+The SovrIT Handbook is the human-centric "Fail-Safe." It ensures that the Digital Fortress remains operable even if auto-healing workflows fail or the primary administrator is unavailable.
+
+### 8.1 The Physical-Digital Bridge
+The Handbook exists in two synchronized states: a self-hosted **Dokuwiki** instance and a physical, printed **SovrIT Handbook Binder**.
+* **Standard:** No technical change is considered "Production Ready" until the documentation reflects the current state of the UI.
+* **The "Zero-Assumption" Rule:** Procedures must be written so a non-technical user can follow them to restore services when other means fail.
+
+### 8.2 The Visual Parity Agent
+To prevent documentation rot, the substrate utilizes a dedicated **Visual AI Agent** (e.g., Qwen2.5-VL) to audit the Handbook against the live environment.
+* **Autonomous Auditing:** The agent periodically logs into system and module UIs and compares the screen layouts, menus, and dialogs to the screenshots in the Handbook.
+* **Auto-Correction:** If a software update changes a layout, menu path, or dialog options:
+    1. The agent captures and re-annotates a new screenshot.
+    2. It updates the Markdown/Dokuwiki page with the new visual.
+    3. It increments the revision number and triggers an **ntfy** alert for the user to print the updated page for the physical binder.
+
+### 8.3 The Maintenance Cadence
+* **The Print Cycle:** Monthly review of all "Flagged for Re-Print" pages.
+* **The Restoration Drill:** Quarterly verification that the "Nuclear Option" (Section 7.4) can successfully hydrate a test node from the S3 archive.
 
 ---
 
-## 8. Operational Continuity (The Living Handbook)
-### 8.1 Documentation Standards
-* Dokuwiki structure: Technical Docs vs. Human-Centric Procedures.
-### 8.2 The AI Auditor Logic
-* How the AI agent compares current Web UI DOM trees to existing handbook screenshots to detect "documentation drift."
-
 ## 9. Hardware Tiers & Performance Benchmarks
-### 9.1 Infrastructure Tier (Core)
-* Minimum CPU/RAM requirements for substrate stability.
-### 9.2 Compute Tier (AI)
-* Memory bandwidth requirements (M-series Pro/Max tiers).
-### 9.3 Storage Tier
-* Drive longevity targets and S.M.A.R.T. monitoring thresholds.
+
+The SovrIT PTI hardware architecture is divided into three functional tiers to ensure compute-heavy AI tasks do not impact core service stability or data integrity.
+
+### 9.1 The Edge Tier (Networking Perimeter)
+Provides the physical and logical "Moat" for the environment using accessible, prosumer-grade hardware.
+* **Gateway Hardware:** Multi-VLAN capable router (e.g., TP-Link Omada ER605 / Ubiquiti EdgeRouter).
+* **WAP Infrastructure:** Wi-Fi 6 Access Points with hardware-level SSID-to-VLAN mapping.
+* **Benchmark:** * **Internal LAN:** Must support 1Gbps "Wire-Speed" switching within the same VLAN.
+    * **Inter-VLAN Routing:** Must maintain a minimum of **300-500 Mbps** throughput when routing between CORE and TRUSTED zones with basic firewall rules active. This ensures that internal backups and media streaming do not saturate the gateway's CPU.
+
+### 9.2 The Core Node (Storage & Substrate)
+The "Heart" of the system, optimized for 24/7 service uptime and data sovereignty.
+* **Hardware Profile:** High-efficiency x86_64 nodes.
+* **Storage Standard:** Minimum 2x mirrored SATA/NVMe drives for the Core substrate.
+* **Performance Benchmark:**
+    * **I/O Latency:** <10ms for ZFS writes.
+    * **RTO (Recovery Time):** Must be able to restore the 5GB "Life-Line" state from local snapshots in <60 seconds.
+
+### 9.3 The Compute Node (Sovereign Intelligence)
+The "Brain," dedicated to local inference, the NetSentinel, and the SovrIT Assistant.
+* **Hardware Profile:** High-bandwidth Unified Memory architecture (Apple Silicon / M-Series Pro, Max, or Studio) to leverage high tokens-per-second for real-time agents.
+* **Inference Benchmarks:**
+    * **NetSentinel (8B Model):** >30 tokens/sec for real-time log triage.
+    * **Visual Agent (VLM):** <5 second processing time for UI audit screenshots.
+    * **Voice Assistant:** <500ms time-to-first-token (TTFT) for seamless interaction.
+
+### 9.4 Environmental Hardening
+* **Thermal Policy:** Active cooling (even if its external) is mandatory; nodes must maintain a T-junction temperature below 65°C.
+* **Power Conditioning:** All Tiers must be backed by a UPS or  "dumb"/solar battery backup with Nut/USB integration to trigger an orderly ZFS export and shutdown when battery life reaches <20%.
+
+---
 
 ## 10. Service Directory & Engine Selection
 *(Detailed technical justification for every tool listed in the README Acknowledgements—e.g., "Why Silverbullet over Obsidian?" or "Why Stalwart over Mailcow?").*
@@ -279,7 +320,7 @@ Security is integrated into the user flow via biometrics (**WebAuthn**) and self
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
 All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
-### 7. Operational Continuity - The Living Handbook
+### 7. Operational Continuity - The SovrIT Handbook
 Comprehensive "Human-Centric" documentation walks users through procedures consisting of annotated screenshots. "Click the gear icon shown circled in red." An AI agent regularly reviews, autonomously updates, increments the revision number, and alerts the user when a new revision is available to be printed. This ensures the Handbook always matches precisely what the user sees on-screen-layout, menus, and dialog options - ensuring stress-free success and future confidence. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the family IT person is unavailable.
 
 ---
@@ -452,7 +493,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | **Remote Failover Mirror** | High-availability "Ghost Mirror" on a remote VPS for Identity and Vault access. |
 | **Graceful Power Safety** | Automated UPS-triggered shutdown sequences for storage and compute nodes. |
 | **Versioned Infrastructure** | State reproducibility using configurations stored in a private ([Forgejo](https://forgejo.org/)) instance. |
-| **The Living Handbook** | Database-less, human-centric documentation maintained in [Dokuwiki](https://www.dokuwiki.org/). |
+| **The SovrIT Handbook** | Database-less, human-centric documentation maintained in [Dokuwiki](https://www.dokuwiki.org/). |
 | **Database Atomic Snapshots** | Coordinated filesystem snapshots for consistent point-in-time recovery. |
 | **Digital Dead-Man Switch** | Automated information handover to beneficiaries via [Aeterna](https://alpyxn.github.io/aeterna/) if system heartbeat is not detected for 30 days. |
 | **Automated Health Reports** | Weekly reporting on disk wear, backup integrity, and authentication attempts. |
