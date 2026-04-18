@@ -166,19 +166,65 @@ The NetSentinel is a dedicated Security Small Language Model (SLM) that acts as 
 
 ---
 
-## 6. The Intelligence Layer
-### 6.1 Assistant Architecture
-* GPU/NPU acceleration requirements for real-time inference.
-* Speech-to-Text (Whisper) and Text-to-Speech (Piper) latency targets.
-### 6.2 Universal Search (Meilisearch)
-* Scraping and indexing logic for decentralized file structures.
+## 6. Operational Automation & Self-Healing
+
+The SovrIT ecosystem utilizes "Self-Healing Logic Trees" to ensure service continuity. This system is driven by a distinct layer of **Machine-Readable Standard Operating Procedures (mSOPs)** that exist independently of the human-facing Handbook.
+
+### 6.1 The Operational Logic Substrate (mSOPs)
+Automation is governed by structured logic files (mSOPs) stored within the system's version-controlled configuration (NixOS/Git). 
+* **Separation of Concerns:** Unlike the Handbook, mSOPs are formatted for the **NetSentinel SLM** and **n8n** to execute. They contain the specific API calls, CLI commands, and logic branches required for autonomous remediation.
+* **The "First Responder":** When a failure is detected, the system exclusively references the mSOPs. It only engages the human operator (and by extension, the Handbook) when these automated routines reach a "terminal fail" state.
+
+### 6.2 The Remediation Loop (Observe-Orient-Decide-Act)
+The NetSentinel follows a standardized loop to resolve degradation without human intervention:
+
+1. **Observe:** **Uptime Kuma** or **NetAlertX** detects a service failure.
+2. **Orient:** NetSentinel gathers system context (e.g., "Container is running, but logs show 'Out of Memory'").
+3. **Decide:** The SLM parses the relevant **mSOP** logic tree to find the correct recovery path.
+4. **Act:** n8n executes the remediation (e.g., "Clear temp cache and restart container").
+
+### 6.3 Escalation: The Handoff to the Handbook
+If the mSOP logic cannot resolve the issue, the system transitions from "Autonomous" to "Assisted" mode.
+* **Incident Handover:** The NetSentinel ceases all automated write-actions to prevent further system instability.
+* **Contextual Alerting:** An **ntfy** notification is sent to the human operator. This alert includes a direct link to the specific **SovrIT Handbook** page and the printed binder section required to fix the persistent issue.
+* **Audit Trail:** The system provides the operator with a "Summary of Failed Attempts," detailing which mSOP branches were already tried and why they failed.
+
+### 6.4 Health Check Standards
+To support the mSOP layer, all services must provide "Visibility Hooks":
+* **Web Services:** Standardized `/health` endpoints.
+* **Substrate Nodes:** Real-time resource metrics via **Netdata**.
+* **Integrity Checks:** Scheduled ZFS "scrub" and "trim" results must be readable by the NetSentinel.
+
+---
 
 ## 7. Resilience & High Availability
-### 7.1 The Ghost Mirror (VPS)
-* Minimum specs and hardening requirements.
-* Failover orchestration logic for Identity (Authentik) and Vault services.
-### 7.2 Automated Recovery Pipelines
-* Use cases for n8n-driven container redeployment and state restoration.
+
+This section defines the survival strategies for "Sovereign Life-Line Services." The goal is a **120-second RTO (Recovery Time Objective)** for identity and credentials during a home-base outage.
+
+### 7.1 The Ghost Mirror (VPS) Specifications
+The Ghost Mirror is a geographically distant, hardened node that acts as a "Warm Standby."
+* **Minimum Specifications:** 2 vCPU / 4GB RAM / 50GB NVMe.
+* **Hardening Standards:** Strictly mesh-only SSH access via NetBird; host-level hardening via NixOS security profiles.
+* **Redundancy Role:** Provides 24/7 availability for Identity (Authentik) and Password Vault (Vaultwarden) services.
+
+### 7.2 Failover Orchestration: The Life-Line Gate
+* **Monitoring:** The VPS runs a light **Uptime Kuma** instance monitoring the Home Node’s mesh IP.
+* **The Handover Logic:** If the Home Node is unreachable for >120 seconds, the VPS triggers a local activation script to point DNS and Traefik routing to its local "Warm" copies of life-line services.
+
+### 7.3 Automated Recovery & State Restoration
+When a service fails beyond a simple restart, the system triggers a dual-source restoration:
+* **The Blueprint (Forgejo):** The system pulls the "Last Known Good" configuration code from the internal **Forgejo** instance (or a mirrored git repo on the VPS). This ensures the service is rebuilt with the exact environment variables and dependencies intended.
+* **The State (Kopia-S3):** Once the container/service is provisioned via the git blueprint, it pulls the most recent database dump or file-system snapshot from the **Kopia-S3** repository to "hydrate" the service with current data.
+
+### 7.4 The "Nuclear" Option: Site Reconstruction
+In the event of total hardware loss at home, the Reconstruction Pipeline is as follows:
+1. **Bootstrap:** Install base NixOS on new hardware and join the NetBird mesh.
+2. **Clone:** Pull the master system configuration from **Forgejo**.
+3. **Key Injection:** Re-authorize the new hardware via a trusted mesh device.
+4. **Hydrate:** Execute the "Sovereign Restore" script to pull the entire ZFS hierarchy and service state from Kopia-S3.
+5. **Rebuild:** Run the master `nixos-rebuild switch` to restore all VLANs, firewalls, and 40+ self-hosted services to their exact state at the time of the last commit.
+
+---
 
 ## 8. Operational Continuity (The Living Handbook)
 ### 8.1 Documentation Standards
