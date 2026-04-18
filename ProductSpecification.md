@@ -199,30 +199,35 @@ To support the mSOP layer, all services must provide "Visibility Hooks":
 
 ## 7. Resilience & High Availability
 
-This section defines the survival strategies for "Sovereign Life-Line Services." The goal is a **120-second RTO (Recovery Time Objective)** for identity and credentials during a home-base outage.
+This section defines the survival strategies for "Sovereign Life-Line Services." The goal is a **120-second RTO (Recovery Time Objective)** for identity and critical data access during a home-base outage.
 
 ### 7.1 The Ghost Mirror (VPS) Specifications
-The Ghost Mirror is a geographically distant, hardened node that acts as a "Warm Standby."
-* **Minimum Specifications:** 4 vCPU / 6GB RAM / 100GB NVMe / 10TB bandwidth.
+The Ghost Mirror is a geographically distant, hardened node acting as a "Warm Standby." To support the duplication of identity, financial, and medical document services, it must meet these minimums:
+* **Compute:** 4 vCPU / 6GB RAM.
+* **Storage:** 100GB NVMe (Primary OS + High-Priority Life-Line snapshots).
+* **Network:** 10TB Monthly Bandwidth / 1Gbps Port.
 * **Hardening Standards:** Strictly mesh-only SSH access via NetBird; host-level hardening via NixOS security profiles.
-* **Redundancy Role:** Provides 24/7 availability for Identity (Authentik) and Password Vault (Vaultwarden) services.
 
-### 7.2 Failover Orchestration: The Life-Line Gate
+### 7.2 The Blueprint & State Sync
+To ensure a perfect reconstruction, the system separates "How it works" from "The Data."
+* **The Blueprint (Forgejo Mirror):** The master NixOS configuration and mSOP logic trees are hosted on a local **Forgejo** instance and automatically mirrored to a secondary Git repository on the VPS. This ensures the "System DNA" is always available even if the home server is physically destroyed.
+* **The State (Kopia-S3):** Service-specific databases (Actual Budget, Vaultwarden) and document classes (Paperless-ngx) are encrypted client-side and synchronized to S3-compatible storage and the VPS NVMe at 1-4 hour intervals.
+
+### 7.3 Failover Orchestration: The Life-Line Gate
 * **Monitoring:** The VPS runs a light **Uptime Kuma** instance monitoring the Home Node’s mesh IP.
-* **The Handover Logic:** If the Home Node is unreachable for >120 seconds, the VPS triggers a local activation script to point DNS and Traefik routing to its local "Warm" copies of life-line services.
-
-### 7.3 Automated Recovery & State Restoration
-When a service fails beyond a simple restart, the system triggers a dual-source restoration:
-* **The Blueprint (Forgejo):** The system pulls the "Last Known Good" configuration code from the internal **Forgejo** instance (or a mirrored git repo on the VPS). This ensures the service is rebuilt with the exact environment variables and dependencies intended.
-* **The State (Kopia-S3):** Once the container/service is provisioned via the git blueprint, it pulls the most recent database dump or file-system snapshot from the **Kopia-S3** repository to "hydrate" the service with current data.
+* **The Handover Logic:** If the Home Node is unreachable for >120 seconds:
+    1. The VPS triggers a local activation script.
+    2. Local "Warm" instances of Authentik, Vaultwarden, and Paperless-ngx are brought online.
+    3. **NetBird DNS** is updated to route `auth.sovrit.lan` and `vault.sovrit.lan` to the VPS mesh IP.
 
 ### 7.4 The "Nuclear" Option: Site Reconstruction
 In the event of total hardware loss at home, the Reconstruction Pipeline is as follows:
 1. **Bootstrap:** Install base NixOS on new hardware and join the NetBird mesh.
-2. **Clone:** Pull the master system configuration from **Forgejo**.
-3. **Key Injection:** Re-authorize the new hardware via a trusted mesh device.
-4. **Hydrate:** Execute the "Sovereign Restore" script to pull the entire ZFS hierarchy and service state from Kopia-S3.
-5. **Rebuild:** Run the master `nixos-rebuild switch` to restore all VLANs, firewalls, and 40+ self-hosted services to their exact state at the time of the last commit.
+2. **Clone:** Pull the master system configuration from the **Forgejo Mirror** on the VPS.
+3. **Key Injection:** Re-authorize the new hardware via a trusted mesh device (Mobile/Laptop).
+4. **Hydrate:** Execute the "Sovereign Restore" script to pull the ZFS hierarchy and service state from Kopia-S3.
+5. **Rebuild:** Run `nixos-rebuild switch` to restore the entire 40+ service ecosystem to its exact pre-disaster state.
+
 
 ---
 
