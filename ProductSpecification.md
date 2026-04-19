@@ -255,34 +255,39 @@ To prevent documentation rot, the substrate utilizes a dedicated **Visual AI Age
 
 ## 9. Hardware Tiers & Performance Benchmarks
 
-The SovrIT PTI hardware architecture is divided into three functional tiers to ensure compute-heavy AI tasks do not impact core service stability or data integrity.
+The hardware architecture is divided into three functional tiers to ensure compute-heavy tasks do not impact core service stability or data integrity.
 
-### 9.1 The Edge Tier (Networking Perimeter)
-Provides the physical and logical "Moat" for the environment using accessible, prosumer-grade hardware.
-* **Gateway Hardware:** Multi-VLAN capable router (e.g., TP-Link Omada ER605 / Ubiquiti EdgeRouter).
+### 9.1 The Network Tier
+Provides the physical and logical "Moat" using accessible, prosumer-grade hardware.
+* **Gateway Hardware:** Multi-VLAN capable router (e.g., TP-Link Omada ER605 or equivalent).
 * **WAP Infrastructure:** Wi-Fi 6 Access Points with hardware-level SSID-to-VLAN mapping.
-* **Benchmark:** * **Internal LAN:** Must support 1Gbps "Wire-Speed" switching within the same VLAN.
-    * **Inter-VLAN Routing:** Must maintain a minimum of **300-500 Mbps** throughput when routing between CORE and TRUSTED zones with basic firewall rules active. This ensures that internal backups and media streaming do not saturate the gateway's CPU.
+* **Benchmark (Internal):** Must support 1Gbps wire-speed switching within the same VLAN.
+* **Benchmark (Inter-VLAN):** Must maintain a minimum of **300–500 Mbps** throughput when routing between CORE and TRUSTED zones with basic firewall rules active.
 
 ### 9.2 The Core Node (Storage & Substrate)
-The "Heart" of the system, optimized for 24/7 service uptime and data sovereignty.
+The "Heart" of the system, optimized for 24/7 uptime and data sovereignty.
 * **Hardware Profile:** High-efficiency x86_64 nodes.
-* **Storage Standard:** Minimum 2x mirrored SATA/NVMe drives for the Core substrate.
-* **Performance Benchmark:**
-    * **I/O Latency:** <10ms for ZFS writes.
-    * **RTO (Recovery Time):** Must be able to restore the 5GB "Life-Line" state from local snapshots in <60 seconds.
+* **Storage Standard:** Minimum 2x mirrored drives for the Core substrate.
 
-### 9.3 The Compute Node (Sovereign Intelligence)
+### 9.3 The Compute Node (LLM/Sovereign Intelligence)
 The "Brain," dedicated to local inference, the NetSentinel, and the SovrIT Assistant.
-* **Hardware Profile:** High-bandwidth Unified Memory architecture (Apple Silicon / M-Series Pro, Max, or Studio) to leverage high tokens-per-second for real-time agents.
+* **Hardware Profile:** High-bandwidth/high VRAM architecture (Apple Silicon / M-Series Pro, Max, or Studio for its Unified Memory / Metal architecture) to support real-time local agents.
 * **Inference Benchmarks:**
     * **NetSentinel (8B Model):** >30 tokens/sec for real-time log triage.
     * **Visual Agent (VLM):** <5 second processing time for UI audit screenshots.
-    * **Voice Assistant:** <500ms time-to-first-token (TTFT) for seamless interaction.
 
-### 9.4 Environmental Hardening
-* **Thermal Policy:** Active cooling (even if its external) is mandatory; nodes must maintain a T-junction temperature below 65°C.
-* **Power Conditioning:** All Tiers must be backed by a UPS or  "dumb"/solar battery backup with Nut/USB integration to trigger an orderly ZFS export and shutdown when battery life reaches <20%.
+### 9.4 Environmental Resilience & Power Protection
+Hardware must be protected against environmental hazards and unconditioned power to prevent data corruption.
+* **Thermal & Atmospheric Policy:** Systems must operate within hardware-specified thermal limits. In sites with extreme heat, humidity, or dust, active cooling and atmospheric filtration are mandatory.
+* **Power Continuity Objective:** Every node must be capable of an orderly **ZFS export** and system shutdown before total battery depletion.
+* **Monitoring Tiers:**
+    * **Tier 1 (Direct):** Use of a "Smart UPS" with USB/HID integration (via **NUT**).
+    * **Tier 2 (Simulated):** For "dumb" battery backups, the system shall utilize **Calculated Depletion Logic** to maximize uptime.
+    * **AC-Sense Mechanism:** The system monitors a "Sacrifice Device" (e.g., a Zigbee smartplug) plugged directly into unconditioned wall power.
+    * **Simulated State of Charge (SSOC):** 1. **Calibration:** The user must perform a one-time "Discharge Test" to determine the total runtime of the battery under a typical SovrIT load (e.g., 180 minutes).
+        2. **Tracking:** Upon AC loss detection, a persistent timer tracks the "Minutes on Battery."
+        3. **Logic:** The system calculates the remaining percentage: `(Total Runtime - Minutes Elapsed) / Total Runtime`.
+    * **Trigger:** An orderly ZFS export and shutdown sequence is initiated only when the **SSOC reaches 15%**. If AC power is restored before this threshold, the timer is reset, and the shutdown is aborted.
 
 ---
 
