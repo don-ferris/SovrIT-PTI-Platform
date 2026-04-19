@@ -292,7 +292,101 @@ Hardware must be protected against environmental hazards and unconditioned power
 ---
 
 ## 10. Service Directory & Engine Selection
-*(Detailed technical justification for every tool listed in the README Acknowledgements—e.g., "Why Silverbullet over Obsidian?" or "Why Stalwart over Mailcow?").*
+
+Every tool in the SovrIT ecosystem is selected based on three criteria: **Data Portability**, **SSO Compatibility (OIDC/SAML)**, and **Resource Efficiency**. This section provides the technical justification for the selected engines and explains why common alternatives were rejected.
+
+### 10.1 SovrIT Core (Runtime Substrate)
+
+#### 10.1.1 Networking & Security
+* **NetBird:** Considered Tailscale, ZeroTier, and Headscale. While Tailscale is the market leader, its control plane is proprietary and cloud-hosted. Headscale (an open-source Tailscale control plane) was rejected due to its lack of a native, integrated web UI and the complexity of its OIDC integration. NetBird was selected for its native, high-performance peer-to-peer mesh, integrated Authentik support, and its ability to act as a complete "Sovereign VPN" without third-party dependencies.
+* **AdGuard Home + Unbound:** Considered Pi-hole and standard upstream DNS (Google/Cloudflare). Pi-hole lacks the native recursive capabilities provided by Unbound. Standard upstream providers were rejected because they log DNS queries, creating a privacy leak. This pairing ensures that DNS resolution happens locally at the "Root" level, making the user invisible to ISP tracking.
+* **NetAlertX:** Considered Arpwatch and Fing. Arpwatch is too primitive for modern network awareness, and Fing is a closed-source, cloud-dependent commercial product. NetAlertX was selected for its deep integration with the network substrate and its ability to provide immediate, context-aware alerts for unauthorized device MAC addresses.
+* **Fail2Ban:** Considered CrowdSec (exclusively). While CrowdSec is the future of behavioral defense, Fail2Ban remains the "Shotgun at the Front Door" for local, signature-based protection. It was selected to provide immediate, low-latency banning for aggressive SSH and Auth attacks, acting as a secondary layer to the broader IPS.
+* **CrowdSec:** Considered standard firewall blacklists (e.g., blocklist.de). Static blacklists are reactive and easily bypassed. CrowdSec was selected as the **Behavioral IPS/IDS** because it utilizes a community-sourced blocklist and local "Scenarios" to identify malicious patterns (like L7 scans) that signature-based tools like Fail2Ban would miss.
+* **AppArmor:** Considered SELinux. SELinux was rejected due to its extreme complexity and "Policy Bloat," which often leads users to disable it entirely. AppArmor was selected for its "Profile-Based" approach, making it more maintainable for the SovrIT administrator while still providing robust service-level sandboxing.
+* **Lynis:** Considered OpenVAS or Nessus. Commercial scanners are resource-heavy and often require cloud subscriptions. Lynis was selected for its lightweight, local-first auditing of the NixOS host, providing a "Hardening Index" that the NetSentinel can monitor for configuration drift.
+* **n8n:** Considered Node-RED and Zapier. Zapier is a cloud-based security nightmare. Node-RED was rejected because it lacks the "Job History" and structured JSON handling required for complex mSOP remediation. n8n provides a superior "Human-in-the-loop" interface, allowing the NetSentinel to execute complex security playbooks with ease.
+
+#### 10.1.2 Access & Identity
+* **Authentik:** Considered Keycloak and Authelia. Keycloak was rejected as "over-engineered" and extremely resource-heavy (Java-based). Authelia was rejected because it lacks a native OIDC/SAML provider UI and sophisticated "Outpost" proxy logic. Authentik provides the best balance of enterprise-grade features, biometric **WebAuthn** support, and a manageable resource footprint.
+* **Step-CA:** Considered Let's Encrypt (exclusively) and OpenSSL (manual). Let's Encrypt requires public DNS/HTTP challenges, which leak internal service names to public transparency logs. Step-CA allows SovrIT to act as its own **Private PKI**, ensuring internal trust without leaking metadata to the public internet.
+* **Traefik:** Considered Nginx Proxy Manager (NPM) and Caddy. NPM was rejected because it requires manual GUI configuration for every service, which breaks the "Self-Healing" automation. Caddy is excellent but Traefik’s "Dynamic Discovery" via labels makes it the superior choice for a high-availability substrate that must automatically recognize and secure new services.
+
+#### 10.1.3 Storage & Resilience
+* **Kopia:** Considered Restic and Borg. Restic and Borg are excellent but lack a native, high-performance GUI and multi-backend S3 support as robust as Kopia's. Kopia’s content-addressable deduplication and client-side encryption make it the primary "Fortitude" engine for the 3-2-1-0 strategy.
+* **Uptime Kuma:** Considered Nagios or Zabbix. Enterprise monitoring tools are too complex for a home-scale environment. Uptime Kuma provides the perfect "Visual Heartbeat" for life-line services with native ntfy/webhook support for the NetSentinel.
+* **Chrony:** Considered standard `ntpd`. Chrony was selected for its superior performance in environments with intermittent internet connectivity (e.g., outages), ensuring that cryptographic keys and MFA tokens remain synchronized even when the "High-Stratum" clock is unreachable.
+* **NixOS:** Considered Ubuntu Server and Debian. Standard distros suffer from "State Decay" over time. NixOS was selected because it is **Declarative**. The entire system is defined in code, allowing for the "Nuclear Option" (Section 7.4) where a server can be perfectly reconstructed from a single config file.
+* **TrueNAS / ZFS:** Considered UnRAID and standard EXT4/LVM. UnRAID lacks the bit-rot protection and instantaneous snapshot capabilities of ZFS. ZFS was selected as the mandatory filesystem for its hardware-agnostic portability and its "Copy-on-Write" architecture, which is the foundation of the system’s data integrity.
+
+---
+
+### 10.2 SovrIT Modules (Applications)
+
+#### 10.2.1 Intelligence & Discovery
+* **Ollama/Whisper/Piper:** Considered OpenAI/Whisper API and Google TTS. Cloud APIs were rejected for violating the Zero-Knowledge mandate. Ollama (LLM), Whisper (STT), and Piper (TTS) provide a completely local, high-performance pipeline for the SovrIT Assistant.
+* **Meilisearch:** Considered Elasticsearch and Solr. These are too resource-intensive for the Core node. Meilisearch provides "Instant Search" capabilities with a tiny memory footprint, allowing for universal discovery across all sovereign data.
+
+#### 10.2.2 Communication & Social
+* **Matrix:** Considered XMPP and Signal. Signal is excellent but tied to a phone number and central servers. XMPP lacks the modern "Bridge" ecosystem of Matrix. Matrix (via Mautrix) allows the user to unify WhatsApp, Signal, and iMessage into a single, sovereign archive.
+* **VitalPBX:** Considered 3CX and FreePBX. 3CX is increasingly closed-source/commercial. FreePBX is aging. VitalPBX provides a modern, secure SIP-TLS/SRTP stack for encrypted sovereign telephony.
+* **Stalwart:** Considered Mailcow and Mail-in-a-Box. Mailcow is a heavy multi-container stack. Stalwart is a single Rust binary that supports **S3-compatible storage natively**, making it the only viable choice for the "Ghost Mirror" geographically redundant mail strategy.
+* **ntfy:** Considered Gotify and Pushover. Pushover is a third-party cloud service. Gotify is excellent but lacks the deep iOS/Android integration and "Actionable Notifications" provided by ntfy.
+
+#### 10.2.3 Productivity & Office
+* **FileBrowser Quantum:** Considered Nextcloud. Nextcloud was rejected for being "Monolithic" and notoriously slow. FileBrowser Quantum provides a lightning-fast, single-binary interface for file management without the bloat.
+* **OnlyOffice:** Considered Collabora (LibreOffice Online). OnlyOffice provides superior compatibility with Microsoft Office formats, which is essential for interacting with the non-sovereign world.
+* **Silverbullet:** Considered Obsidian and Logseq. Obsidian is a local-only app, making server-side AI interaction difficult. Silverbullet is a **Local-First Web Engine** that allows the Assistant to query the note library as a database.
+* **Radicale:** Considered Baikal and Nextcloud Calendar. Radicale was selected for its extreme simplicity and flat-file storage, ensuring calendars and contacts are easily backed up and restored.
+
+#### 10.2.4 Vital Archives
+* **Actual Budget:** Considered Firefly III and YNAB. YNAB is a cloud subscription. Firefly III lacks a robust offline-first mobile experience. Actual Budget (Local-First) ensures transactions can be entered without internet and merged later.
+* **Paperless-ngx:** Considered Mayan EDMS. Mayan is too complex for home use. Paperless-ngx provides the best OCR and auto-tagging experience for medical and legal archives.
+* **Immich:** Considered Google Photos and Nextcloud Photos. Immich is the only self-hosted gallery that matches the UX and AI-tagging speed of Google Photos while maintaining absolute privacy.
+
+#### 10.2.5 Media & Lifestyle
+* **Jellyfin:** Considered Plex and Emby. Plex and Emby are proprietary and require "Phoning Home" to central servers. Jellyfin is strictly sovereign and open-source.
+* **Home Assistant:** Considered OpenHAB and Apple HomeKit. Home Assistant is the gold standard for "Local-Only" automation, supporting the **Zigbee Sacrifice Device** logic required for Section 9.4.
+* **Vaultwarden:** Considered the official Bitwarden RS. Vaultwarden is a lightweight Rust implementation that provides full feature parity with Bitwarden while running in a fraction of the memory.
+
+---
+
+## 11. Implementation Roadmap
+
+Refer to **ProjectPlan.md** for the detailed, four-phase implementation roadmap, including hardware provisioning and service deployment timelines.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
