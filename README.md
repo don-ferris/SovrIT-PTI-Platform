@@ -44,10 +44,6 @@ The foundational layer responsible for the execution environment, security, and 
 * **SovrIT Fortitude:** The resilience engine managing immutable backups and self-healing.
 * **SovrIT AppKernels:** Declarative provisioning and mission-critical encrypted storage management via **Nix flakes and systemd-nspawn** containers means no virtualization overhead and absolute minimal systems on an app/service to app/service basis, resulting in "AppKernels" that a) are as lean/efficient as possible, and b) have the smallest possible attack surface.
 
----
-
-## 🕰️ The Clockwork Recovery: Why Nix & systemd-nspawn?
-
 To understand how SovrIT stays reliable, imagine you have a high-precision, state-of-the-art mechanical watch that synchronizes its time wirelessly with reference time servers on the Internet. 
 
 Now imagine that anytime the watch has the slightest problem, you can simply push a button so that the watch **explodes** — all the gears and jewels pop out, and then a high-precision robotic arm reassembles it **PERFECTLY** (thereby addressing the problem) and resynchronizes the time with the internet time servers — all in a matter of seconds. 
@@ -58,6 +54,7 @@ That is exactly how the SovrIT architecture works:
 * **The Containers (systemd-nspawn):** Every service lives in its own high-security container called a "systemd-nspawn" container. It’s like a tiny, isolated vault that keeps each part of the watch from interfering with the others. _Even the Linux kernel is optimized, removing non-essential kernel modules, and core utilities like ssh, ls, echo, sed, and awk - without which a hacker or malicious code is unable to change anything _even if it could somehow manage to get in_.
 * **The Rebuild:** If a service breaks, the system doesn't try to "fix" it. It simply deletes the container and instantly re-grows a new one from the Blueprint. Because your data is stored separately, the service wakes up "Factory New" and perfect in seconds.
 * **The Data Layer:** 
+[Explanation of how the data (that changes as the user makes any sort of changes) are backed up to/restored from Forgejo repos]
 
 ---
 
