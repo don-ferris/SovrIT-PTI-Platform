@@ -18,7 +18,7 @@ True digital sovereignty requires that your data, your communications, and your 
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
 No third party holds the keys or has access to your data, identity, or mesh network. Where your data passes through servers that are not under your control (e.g. phone calls from a mobile device), they do so in encrypted form.
 ### 2. Autonomous Functional Resiliency
-The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate rebuilds or relaunches. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
+The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 ### 3. Global High Availability & Failover Redundancy
 SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
 ### 4. Invisible & Active Security
@@ -27,7 +27,7 @@ Security is integrated into the user flow via biometrics (**WebAuthn**) and self
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
 All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
-### 7. Operational Continuity - The Living Handbook
+### 7. Operational Continuity - The SovrIT Handbook
 Comprehensive "Human-Centric" documentation walks users through procedures consisting of annotated screenshots. "Click the gear icon shown circled in red." An AI agent regularly reviews, autonomously updates, increments the revision number, and alerts the user when a new revision is available to be printed. This ensures the Handbook always matches precisely what the user sees on-screen-layout, menus, and dialog options - ensuring stress-free success and future confidence. This provides non-technical family members with a clear, visual roadmap to maintain and operate the system if the family IT person is unavailable.
 
 ---
@@ -42,10 +42,21 @@ The foundational layer responsible for the execution environment, security, and 
 * **SovrIT NetSentinel:** AI-driven SecOps orchestrating active defense and automated remediation.
 * **SovrIT Access:** Centralized identity, biometric gatekeeping, and sovereign ingress.
 * **SovrIT Fortitude:** The resilience engine managing immutable backups and self-healing.
-* **Core Ops:** Declarative provisioning and mission-critical encrypted storage management.
+* **Core Ops:** Declarative provisioning and mission-critical encrypted storage management via **Nix flakes and systemd-nspawn**.
 
-> [!TIP]
-> For a deep dive into specific engine selections (NixOS, Traefik, Authentik, etc.) and low-level service configurations, see the [Product Specification](./ProductSpecification.md).
+---
+
+## 🕰️ The Clockwork Recovery: Why Nix & systemd-nspawn?
+
+To understand how SovrIT stays reliable, imagine you have a high-precision, state-of-the-art mechanical watch that synchronizes its time wirelessly with reference time servers on the Internet. 
+
+Now imagine that anytime the watch has the slightest problem, you can push a button so that the watch **explodes** — all the gears and jewels pop out, and then a high-precision robotic arm reassembles it **PERFECTLY** (thereby addressing the problem) and resynchronizes the time with the internet time servers — all in a matter of seconds. 
+
+That is exactly how the SovrIT architecture works:
+
+* **The Blueprint (Nix Flakes):** Instead of manually installing software, we use a "Nix flake." This is a perfect, mathematical blueprint of exactly how a service should look.
+* **The Jewel Cases (systemd-nspawn):** Every service lives in its own high-security container called a "systemd-nspawn" container. It’s like a tiny, isolated vault that keeps each part of the watch from interfering with the others.
+* **The Robotic Arm (The Substrate):** If a service breaks, the system doesn't try to "fix" it. It simply deletes the container and instantly re-grows a new one from the Blueprint. Because your data is stored separately, the service wakes up "Factory New" and perfect in seconds.
 
 ---
 
@@ -54,14 +65,11 @@ The foundational layer responsible for the execution environment, security, and 
 SovrIT PTI is designed to be hardware-agnostic, optimized for a high-performance, low-wattage distributed model.
 
 1. **The Network:** Router/Firewall & WAPs providing VLAN-based segmentation.
-2. **The Core/Storage Node:** x86-64 server substrate (NixOS/Proxmox) managing ZFS pools and Core Modules.
+2. **The Core/Storage Node:** x86-64 server substrate (**NixOS**) managing ZFS pools and Core Modules.
 3. **Compute Node (Local LLM):** High-bandwidth hardware (Recommended: Apple Silicon) for real-time AI performance.
 4. **VPS (Ghost Mirror):** Hardened remote failover node for critical service continuity.
 5. **Mobile Endpoints:** Biometric-capable trusted nodes for identity and secure remote access.
 6. **Off-site Archive:** S3-compatible object storage for immutable, geographical data redundancy.
-
-> [!NOTE]
-> Detailed hardware requirements and performance benchmarks are available in the [Product Specification](./ProductSpecification.md).
 
 ---
 
@@ -101,7 +109,7 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Authentik**](https://goauthentik.io/) — centralized identity provider and biometric authentication gateway
 - [**CrowdSec**](https://www.crowdsec.net/) monitors network for malicious patterns across all services and blocks threats at the firewall level.
 - [**chrony**](https://chrony-project.org/) — versatile implementation of the Network Time Protocol (NTP) for local synchronization
-- [**Docker**](https://www.docker.com/) — containerization and modular service deployment
+- [**systemd-nspawn**](https://www.freedesktop.org/software/systemd/man/latest/systemd-nspawn.html) — high-performance Linux containerization and modular service deployment
 - [**Dokuwiki**](https://www.dokuwiki.org/) — lightweight, database-less documentation for maximum resiliency
 - [**Fail2Ban**](https://github.com/fail2ban/fail2ban) - bans attackers that cause multiple authentication errors
 - [**FFmpeg**](https://ffmpeg.org/) — the "Swiss Army knife" of media processing powering Jellyfin, Frigate, and TubeArchivist
@@ -131,7 +139,7 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**Paperless-ngx**](https://docs.paperless-ngx.com/) — powerful document management and OCR indexing
 - [**Piper**](https://github.com/rhasspy/piper) — fast, local text-to-speech synthesis
 - [**Pixelfed**](https://pixelfed.org/) / [**GoToSocial**](https://gotosocial.org/) — privacy-focused, federated social networking
-- [**Proxmox**](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview) — enterprise-grade virtualization and orchestration
+- [**Nix Flakes**](https://nixos.wiki/wiki/Flakes) — hermetic, reproducible build and configuration management
 - [**Python**](https://www.python.org/) — scripting, tooling, and automation logic
 - [**QuickScan**](https://www.quickscanapp.com/) / [**OpenScan**](https://github.com/OpenScan-App/OpenScan) — mobile document capture with local processing
 - [**Radicale**](https://radicale.org/) — lightweight CalDAV/CardDAV for calendars and contacts
