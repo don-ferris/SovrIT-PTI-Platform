@@ -19,8 +19,8 @@ True digital sovereignty requires that your data, your communications, and your 
 No third party holds the keys or has access to your data, identity, or mesh network. Where your data passes through servers that are not under your control (e.g. phone calls from a mobile device), they do so in encrypted form.
 ### 2. Autonomous Functional Resiliency
 The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
-### 3. Global High Availability & Failover Redundancy
-SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
+### 3. Geo-Distributed High Availability (HA)
+SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical services fail over automatically to the VPS if a home-site outage is detected. The VPS verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
 ### 4. Invisible & Active Security
 Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT NetSentinel- a dedicated security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
 ### 5. Sovereign Voice/AI Assistance
@@ -42,7 +42,7 @@ The foundational layer responsible for the execution environment, security, and 
 * **SovrIT NetSentinel:** AI-driven SecOps orchestrating active defense and automated remediation.
 * **SovrIT Access:** Centralized identity, biometric gatekeeping, and sovereign ingress.
 * **SovrIT Fortitude:** The resilience engine managing immutable backups and self-healing.
-* **Core Ops:** Declarative provisioning and mission-critical encrypted storage management via **Nix flakes and systemd-nspawn**.
+* **SovrIT AppKernels:** Declarative provisioning and mission-critical encrypted storage management via **Nix flakes and systemd-nspawn** containers means no virtualization overhead and absolute minimal systems on an app/service to app/service basis, resulting in "AppKernels" that a) are as lean/efficient as possible, and b) have the smallest possible attack surface.
 
 ---
 
@@ -50,13 +50,14 @@ The foundational layer responsible for the execution environment, security, and 
 
 To understand how SovrIT stays reliable, imagine you have a high-precision, state-of-the-art mechanical watch that synchronizes its time wirelessly with reference time servers on the Internet. 
 
-Now imagine that anytime the watch has the slightest problem, you can push a button so that the watch **explodes** — all the gears and jewels pop out, and then a high-precision robotic arm reassembles it **PERFECTLY** (thereby addressing the problem) and resynchronizes the time with the internet time servers — all in a matter of seconds. 
+Now imagine that anytime the watch has the slightest problem, you can simply push a button so that the watch **explodes** — all the gears and jewels pop out, and then a high-precision robotic arm reassembles it **PERFECTLY** (thereby addressing the problem) and resynchronizes the time with the internet time servers — all in a matter of seconds. 
 
 That is exactly how the SovrIT architecture works:
 
-* **The Blueprint (Nix Flakes):** Instead of manually installing software, we use a "Nix flake." This is a perfect, mathematical blueprint of exactly how a service should look.
-* **The Jewel Cases (systemd-nspawn):** Every service lives in its own high-security container called a "systemd-nspawn" container. It’s like a tiny, isolated vault that keeps each part of the watch from interfering with the others.
-* **The Robotic Arm (The Substrate):** If a service breaks, the system doesn't try to "fix" it. It simply deletes the container and instantly re-grows a new one from the Blueprint. Because your data is stored separately, the service wakes up "Factory New" and perfect in seconds.
+* **The Blueprint (Nix Flakes):** Instead of manually installing software, we use a "Nix flake." This is a perfect, mathematical blueprint of exactly how a service should look. It contains only the absolute essentials (including supporting elements of the underlying IS) required to make the service functional. 
+* **The Containers (systemd-nspawn):** Every service lives in its own high-security container called a "systemd-nspawn" container. It’s like a tiny, isolated vault that keeps each part of the watch from interfering with the others. _Even the Linux kernel is optimized, removing non-essential kernel modules, and core utilities like ssh, ls, echo, sed, and awk - without which a hacker or malicious code is unable to change anything _even if it could somehow manage to get in_.
+* **The Rebuild:** If a service breaks, the system doesn't try to "fix" it. It simply deletes the container and instantly re-grows a new one from the Blueprint. Because your data is stored separately, the service wakes up "Factory New" and perfect in seconds.
+* **The Data Layer:** 
 
 ---
 
