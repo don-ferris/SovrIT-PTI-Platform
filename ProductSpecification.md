@@ -818,3 +818,8 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**WebAuthn**](https://webauthn.guide/) — biometric MFA standard for secure, passwordless access
 - [**Whisper**](https://github.com/SYSTRAN/faster-whisper) — high-fidelity local speech-to-text transcription
 - [**ZFS**](https://openzfs.org/) — resilient, hardware-agnostic, and encrypted storage foundations
+
+
+
+
+[View Assist](https://dinki.github.io/View-Assist/) - use any device (with a screen - including Echo Show and old Android phones) as a Home Assistant Voice Assistant endpoint
