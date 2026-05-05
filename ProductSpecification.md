@@ -2,9 +2,9 @@
 
 ## 1. Introduction
 ### 1.1 Purpose
-To reclaim digital autonomy by establishing a local-first, zero-trust infrastructure that replaces cloud-dependent services with a unified, encrypted ecosystem. It is engineered to ensure that your data, communications, and identity remain under your exclusive control, providing a stable and sovereign foundation for digital life that is immune to third-party surveillance or monetization.
+To reclaim digital autonomy by establishing a local-first, zero-trust infrastructure that replaces cloud-dependent services with a unified, encrypted ecosystem. Engineered to ensure that your data, communications, activit, and identity remain under your exclusive control, providing a stable and sovereign foundation for digital life that is immune to third-party surveillance or monetization.
 ### 1.2 Scope
-This specification defines the technical boundaries and operational standards for the SovrIT PTI ecosystem. It encompasses the physical hardware architecture, logical network segmentation (VLANs), and the Runtime Substrate—specifically identity, ingress, and storage layers. The scope extends to the integration of sovereign modules for communication, productivity, and intelligence, as well as the "Ghost Mirror" failover and "SovrIT Handbook" documentation systems. It does not cover the maintenance of third-party ISP bandwidth or the internal development of the open-source engines utilized.
+This specification defines the technical boundaries and operational standards for the SovrIT PTI ecosystem. It encompasses the physical hardware architecture, logical network segmentation (VLANs, mesh overlay), and the Runtime Substrate - specifically identity, ingress, and storage layers. The scope extends to the integration of sovereign modules for communication, productivity, and intelligence, as well as a remote failover node for resiliency and "SovrIT Handbook" documentation systems.
 ### 1.3 Target Audience
 Privacy advocates, advanced self-hosters, technical administrators, and contributors to the SovrIT project.
 
@@ -30,19 +30,19 @@ Data survival must be ensured by employing redundant backups; up-time for critic
 
 ### 2.3 Global High Availability & Failover Redundancy
 Power and internet outages at home must be mitigated to preserve critical services and access to data.
-* **Objective:** Maintain a geographically distant **VPS Ghost Mirror**.
+* **Objective:** Maintain a geographically distant **Remote (VPS) Failover Node**.
 * **Standard:** In the event of a local ISP or power failure, critical "Life-Line" services (Identity, Vault, and Communications) must automatically failover to the VPS to ensure zero downtime for remote users.
 
 ### 2.4 Invisible & Active Security
 Security should be a silent partner, not a series of annoying pop-ups.
-* **Objective:** Orchestrate a "Defense-in-Depth" stack overseen by the **SovrIT NetSentinel** (Security SLM).
-* **Standard:** Utilize **NetAlertX** for intrusion awareness and **CrowdSec** for behavioral blocking. The NetSentinel correlates these signals to autonomously isolate threats and notify the user only when human judgment is required.
+* **Objective:** Orchestrate a "Defense-in-Depth" stack overseen by the **SovrIT Steward** (Security SLM).
+* **Standard:** Utilize **NetAlertX** for intrusion awareness and **CrowdSec** for behavioral blocking. SovrIT Steward correlates these signals to autonomously isolate threats and notify the user only when human judgment is required.
 
 ### 2.5 Sovereign Voice/AI Assistance
 Intelligence must be private, local, and context-aware, utilizing a tiered model approach for different tasks.
 * **Objective:** Process all AI requests (LLM, STT, TTS) on the local **Compute/LLM Node**.
-* **Standard (Reasoning):** Utilize **Phi-4-mini** for high-speed, real-time voice interaction and **Qwen3-8B** for complex, long-context document analysis (RAG).
-* **Standard (Privacy):** No prompt data or personal records shall ever leave the network. The assistant has "Read-Only" access to the universal search index, providing insights from medical/financial documents without exposing raw data to external APIs.
+* **Standard (Reasoning):** Utilize Gemma 4 for local, high-speed, real-time voice interaction and complex, long-context document analysis (RAG).
+* **Standard (Privacy):** No prompt data or personal records shall ever leave the network. The assistant has "Read-Only" access to the universal search index, providing insights from medical/legal/financial documents without exposing raw data to external APIs.
 
 ### 2.6 Decoupled Encryption at Rest
 Physical possession of a server should not equal access to its data.
