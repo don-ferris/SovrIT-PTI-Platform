@@ -20,9 +20,9 @@ No third party holds the keys or has access to your data, identity, or mesh netw
 ### 2. Autonomous Functional Resiliency
 The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery workflows that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 ### 3. Geo-Distributed High Availability (HA)
-SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical services fail over automatically to the VPS if a home-site outage is detected. The VPS verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
+SovrIT utilizes a geographically distant Remote (VPS) Failover Node to provide Ultra High Availability. Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical services fail over automatically to the VPS if a home-site outage is detected. The VPS verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
 ### 4. Invisible & Active Security
-Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT NetSentinel- a dedicated security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
+Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT Steward - a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
 ### 5. Sovereign Voice/AI Assistance
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
@@ -39,7 +39,7 @@ The SovrIT ecosystem is powered by a high-availability runtime substrate that su
 ### SovrIT Core (Runtime Substrate)
 The foundational layer responsible for the execution environment, security, and resiliency of the platform. It includes:
 * **SovrIT SecureNet:** Encrypted P2P mesh networking and private, recursive DNS.
-* **SovrIT NetSentinel:** AI-driven SecOps orchestrating active defense and automated remediation.
+* **SovrIT Steward:** AI-driven SecOps orchestrating active defense and automated remediation.
 * **SovrIT Access:** Centralized identity, biometric gatekeeping, and sovereign ingress.
 * **SovrIT Fortitude:** The resilience engine managing immutable backups and self-healing.
 * **SovrIT AppKernels:** Declarative provisioning and mission-critical encrypted storage management via **Nix flakes and systemd-nspawn** containers means no virtualization overhead and absolute minimal systems on an app/service to app/service basis, resulting in "AppKernels" that a) are as lean/efficient as possible, and b) have the smallest possible attack surface.
@@ -65,7 +65,7 @@ SovrIT PTI is designed to be hardware-agnostic, optimized for a high-performance
 1. **The Network:** Router/Firewall & WAPs providing VLAN-based segmentation.
 2. **The Core/Storage Node:** x86-64 server substrate (**NixOS**) managing ZFS pools and Core Modules.
 3. **Compute Node (Local LLM):** High-bandwidth hardware (Recommended: Apple Silicon) for real-time AI performance.
-4. **VPS (Ghost Mirror):** Hardened remote failover node for critical service continuity.
+4. **Remote (VPS) Failover Node:** Hardened remote failover node for critical service continuity.
 5. **Mobile Endpoints:** Biometric-capable trusted nodes for identity and secure remote access.
 6. **Off-site Archive:** S3-compatible object storage for immutable, geographical data redundancy.
 
