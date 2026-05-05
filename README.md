@@ -18,7 +18,7 @@ True digital sovereignty requires that your data, your communications, and your 
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
 No third party holds the keys or has access to your data, identity, or mesh network. Where your data passes through servers that are not under your control (e.g. phone calls from a mobile device), they do so in encrypted form.
 ### 2. Autonomous Functional Resiliency
-The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
+The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery workflows that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 ### 3. Geo-Distributed High Availability (HA)
 SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical services fail over automatically to the VPS if a home-site outage is detected. The VPS verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
 ### 4. Invisible & Active Security
