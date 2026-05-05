@@ -35,7 +35,7 @@ Power and internet outages at home must be mitigated to preserve critical servic
 
 ### 2.4 Invisible & Active Security
 Security should be a silent partner, not a series of annoying pop-ups.
-* **Objective:** Orchestrate a "Defense-in-Depth" stack overseen by the **SovrIT Steward** (Security SLM).
+* **Objective:** Orchestrate a "Defense-in-Depth" stack overseen by the **SovrIT Steward** (Security LLM).
 * **Standard:** Utilize **NetAlertX** for intrusion awareness and **CrowdSec** for behavioral blocking. SovrIT Steward correlates these signals to autonomously isolate threats and notify the user only when human judgment is required.
 
 ### 2.5 Sovereign Voice/AI Assistance
@@ -155,8 +155,8 @@ This layer monitors the "Wire" and the "Logs" for behavioral anomalies.
 * **Behavioral IPS (CrowdSec):** Acts as the "Immune System." It parses logs across all services to identify distributed brute-force attacks or L7 "scans" and blocks them at the firewall level.
 * **Local Brute-Force Shield (Fail2Ban):** Provides high-speed, local banning for repeated authentication failures on critical infrastructure (SSH, Core Ops).
 
-### 5.3 The SovrIT Steward (Security SLM)
-The SovrIT Steward is a dedicated Security Small Language Model (SLM) that acts as the intelligent "Overseer" of the substrate.
+### 5.3 The SovrIT Steward (Security LLM)
+The SovrIT Steward is a dedicated Security Large Language Model (LLM) that acts as the intelligent "Overseer" of the substrate.
 * **The Intelligence Engine:** Utilizes local, security-tuned models (e.g., **VaultGemma** or **Cyber-Llama**) running on the Compute/LLM Node.
 * **Role: Alert Triage & Correlation:** Instead of flooding the user with raw logs, SovrIT Steward correlates disparate events. 
     * *Example:* Correlating a blocked SSH attempt (Fail2Ban) with a new device on the network (NetAlertX) to elevate the threat level.
@@ -172,7 +172,7 @@ The SovrIT ecosystem utilizes "Self-Healing Logic Trees" to ensure service conti
 
 ### 6.1 The Operational Logic Substrate (mSOPs)
 Automation is governed by structured logic files (mSOPs) stored within the system's version-controlled configuration (NixOS/Git). 
-* **Separation of Concerns:** Unlike the Handbook, mSOPs are formatted for the **SovrIT Steward SLM** and **n8n** to execute. They contain the specific API calls, CLI commands, and logic branches required for autonomous remediation.
+* **Separation of Concerns:** Unlike the Handbook, mSOPs are formatted for the **SovrIT Steward LLM** and **n8n** to execute. They contain the specific API calls, CLI commands, and logic branches required for autonomous remediation.
 * **The "First Responder":** When a failure is detected, the system exclusively references the mSOPs. It only engages the human operator (and by extension, the Handbook) when these automated routines reach a "terminal fail" state.
 
 ### 6.2 The Remediation Loop (Observe-Orient-Decide-Act)
@@ -180,7 +180,7 @@ The SovrIT Steward follows a standardized loop to resolve degradation without hu
 
 1. **Observe:** **Uptime Kuma** or **NetAlertX** detects a service failure.
 2. **Orient:** SovrIT Steward gathers system context (e.g., "Container is running, but logs show 'Out of Memory'").
-3. **Decide:** The SLM parses the relevant **mSOP** logic tree to find the correct recovery path.
+3. **Decide:** The LLM parses the relevant **mSOP** logic tree to find the correct recovery path.
 4. **Act:** n8n executes the remediation (e.g., "Clear temp cache and restart container").
 
 ### 6.3 Escalation: The Handoff to the Handbook
@@ -416,7 +416,7 @@ The system is _self-healing_. Continuous uptime monitoring is tethered to automa
 ### 3. Global High Availability & Failover Redundancy
 SovrIT utilizes a geographically distant Remote (VPS) Failover Node to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
 ### 4. Invisible & Active Security
-Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT Steward- a dedicated security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
+Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT Steward- a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
 ### 5. Sovereign Voice/AI Assistance
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
@@ -433,7 +433,7 @@ Comprehensive "Human-Centric" documentation walks users through procedures consi
 The sovereign execution environment and foundational services:
 
 * **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)), paired with private, recursive DNS resolution ([AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) + [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/)) to eliminate third-party tracking at the query level.
-* **SovrIT Steward (The Security Substrate):** A dedicated, security-focused SLM that orchestrates active defense and employs automated remediation (with logging and user notifications) using:
+* **SovrIT Steward (The Security Substrate):** A dedicated, security-focused LLM that orchestrates active defense and employs automated remediation (with logging and user notifications) using:
     * **Network Intrusion Awareness:** [NetAlertX](https://github.com/jpsenior/netalertx) provides real-time monitoring of the network substrate, alerting immediately to unauthorized or unrecognized devices.
     * **Brute-Force Shield:** [Fail2Ban](https://github.com/fail2ban/fail2ban) provides local, signature-based protection by monitoring log files (SSH, Auth, etc.) and instantly banning IPs that exhibit aggressive login behavior.
     * **Behavioral IPS/IDS:** [CrowdSec](https://www.crowdsec.net/) monitors for malicious patterns across all services and blocks threats at the firewall level.
@@ -526,7 +526,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | **Security Health Audit** | Automated periodic hardening assessments via **Lynis** with **ntfy** alerting. |
 | **Network Entry Sentry** | Real-time discovery and alerting of new local network clients via **Home Assistant**. |
 | **Credential Breach Audit** | Client-side monitoring for leaked vault credentials via **Vaultwarden** (HIBP integration). |
-| **SovrIT Steward** | AI-driven SecOps agent (Local SLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
+| **SovrIT Steward** | AI-driven SecOps agent (Local LLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
 | **Resiliency Engine** | Automated state backups, service monitoring, and self-healing via **Fortitude** (**Kopia** / **n8n**). |
 
 ### 🧠 Sovereign Intelligence
