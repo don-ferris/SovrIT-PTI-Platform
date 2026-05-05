@@ -41,7 +41,7 @@ Security should be a silent partner, not a series of annoying pop-ups.
 ### 2.5 Sovereign Voice/AI Assistance
 Intelligence must be private, local, and context-aware, utilizing a tiered model approach for different tasks.
 * **Objective:** Process all AI requests (LLM, STT, TTS) on the local **Compute/LLM Node**.
-* **Standard (Reasoning):** Utilize Gemma 4 for local, high-speed, real-time voice interaction and complex, long-context document analysis (RAG).
+* **Standard (Reasoning):** Utilize Gemma 4 for 100% local, high-speed, real-time voice interaction and complex, long-context document analysis (RAG).
 * **Standard (Privacy):** No prompt data or personal records shall ever leave the network. The assistant has "Read-Only" access to the universal search index, providing insights from medical/legal/financial documents without exposing raw data to external APIs.
 
 ### 2.6 Decoupled Encryption at Rest
@@ -63,7 +63,7 @@ The system must be maintainable by non-technical users through a perfectly synch
 
 ## 3. Logical Network Architecture
 
-The SovrIT network is a hybrid architecture combining physical isolation (VLANs), an encrypted overlay (NetBird), and a geographically distant (VPS) failover node (The Ghost Mirror).
+The SovrIT network is a hybrid architecture combining physical isolation (VLANs), an encrypted overlay (NetBird), and a geographically distant Remote (VPS) Failover Node (RFN).
 
 ### 3.1 Physical Segmentation (VLAN Schema)
 The local substrate utilizes a "Default Deny" posture between five distinct security zones:
@@ -76,10 +76,10 @@ The local substrate utilizes a "Default Deny" posture between five distinct secu
 | **40** | **IOT** | 172.16.40.x - Isolated hardware (Cameras/Sensors). Zero outbound/inter-VLAN access. |
 | **50** | **GUEST** | 192.168.0.x - Internet-only access. Total client isolation. |
 
-### 3.2 The Sovereign Mesh & Ghost Mirror (Hybrid Topology)
+### 3.2 The Sovereign Mesh & Remote (VPS) Failover Node (Hybrid Topology)
 The network relies on **NetBird** (WireGuard) to bridge the home infrastructure with the remote VPS.
-* **The SecureNet Mesh:** All administrative and inter-node traffic is encapsulated in a peer-to-peer overlay. No service ports are opened on the local home router.
-* **The Ghost Mirror (VPS):** Acts as a hardened, secondary node in the mesh.
+* **The SovrIT Cloud Mesh:** All administrative and inter-node traffic is encapsulated in a peer-to-peer overlay. No service ports are opened on the local home router.
+* **The Remote (VPS) Failover Node:** Acts as a hardened, secondary node in the mesh.
     * **Ingress Role:** Acts as the "Front Porch" for public-facing traffic, proxying requests to the home node via the mesh.
     * **Failover Role (Life-Line Services):** The VPS hosts a "Warm Standby" of critical services (Authentik, Vaultwarden, Actual Budget, Radicale, and Paperless-ngx). 
     * **Data Sync:** Encrypted data stores for these services are synchronized from the Home Node to the VPS at regular intervals (via **Kopia** or **ZFS send** over the mesh). 
@@ -147,7 +147,7 @@ The security substrate is designed to provide proactive defense, isolation, and 
 The underlying OS must be hardened to minimize the attack surface of the physical hardware.
 * **Declarative Hardening (NixOS):** System state is defined in code, disabling unnecessary kernel modules and services by default.
 * **Service Sandboxing (AppArmor):** Mandatory Access Control (MAC) profiles are applied to all high-risk services (e.g., Traefik, Matrix, Stalwart). This ensures that even if a service is compromised, it cannot read the root filesystem or access other service datasets.
-* **Continuous Auditing (Lynis):** Automated security scans run weekly to identify configuration drift, outdated packages, or weak permissions. The "Hardening Index" from Lynis is reported directly to the NetSentinel for health tracking.
+* **Continuous Auditing (Lynis):** Automated security scans run weekly to identify configuration drift, outdated packages, or weak permissions. The "Hardening Index" from Lynis is reported directly to the SovrIT Steward for health tracking.
 
 ### 5.2 Intrusion Awareness & Proactive Defense
 This layer monitors the "Wire" and the "Logs" for behavioral anomalies.
@@ -155,13 +155,13 @@ This layer monitors the "Wire" and the "Logs" for behavioral anomalies.
 * **Behavioral IPS (CrowdSec):** Acts as the "Immune System." It parses logs across all services to identify distributed brute-force attacks or L7 "scans" and blocks them at the firewall level.
 * **Local Brute-Force Shield (Fail2Ban):** Provides high-speed, local banning for repeated authentication failures on critical infrastructure (SSH, Core Ops).
 
-### 5.3 The SovrIT NetSentinel (Security SLM)
-The NetSentinel is a dedicated Security Small Language Model (SLM) that acts as the intelligent "Overseer" of the substrate.
+### 5.3 The SovrIT Steward (Security SLM)
+The SovrIT Steward is a dedicated Security Small Language Model (SLM) that acts as the intelligent "Overseer" of the substrate.
 * **The Intelligence Engine:** Utilizes local, security-tuned models (e.g., **VaultGemma** or **Cyber-Llama**) running on the Compute/LLM Node.
-* **Role: Alert Triage & Correlation:** Instead of flooding the user with raw logs, NetSentinel correlates disparate events. 
+* **Role: Alert Triage & Correlation:** Instead of flooding the user with raw logs, SovrIT Steward correlates disparate events. 
     * *Example:* Correlating a blocked SSH attempt (Fail2Ban) with a new device on the network (NetAlertX) to elevate the threat level.
-* **Role: Autonomous Remediation (SOAR):** NetSentinel executes automated playbooks via **n8n**. 
-    * *Action:* If a service exhibits compromised behavior, NetSentinel can autonomously "Quarantine" the container by dropping its mesh connection and notifying the user via **ntfy**.
+* **Role: Autonomous Remediation (SOAR):** SovrIT Steward executes automated playbooks via **n8n**. 
+    * *Action:* If a service exhibits compromised behavior, SovrIT Steward can autonomously "Quarantine" the container by dropping its mesh connection and notifying the user via **ntfy**.
 * **Role: Log Summarization:** Provides a daily "Security Heartbeat" summary, translating technical log spikes into plain English for the user.
 
 ---
@@ -172,20 +172,20 @@ The SovrIT ecosystem utilizes "Self-Healing Logic Trees" to ensure service conti
 
 ### 6.1 The Operational Logic Substrate (mSOPs)
 Automation is governed by structured logic files (mSOPs) stored within the system's version-controlled configuration (NixOS/Git). 
-* **Separation of Concerns:** Unlike the Handbook, mSOPs are formatted for the **NetSentinel SLM** and **n8n** to execute. They contain the specific API calls, CLI commands, and logic branches required for autonomous remediation.
+* **Separation of Concerns:** Unlike the Handbook, mSOPs are formatted for the **SovrIT Steward SLM** and **n8n** to execute. They contain the specific API calls, CLI commands, and logic branches required for autonomous remediation.
 * **The "First Responder":** When a failure is detected, the system exclusively references the mSOPs. It only engages the human operator (and by extension, the Handbook) when these automated routines reach a "terminal fail" state.
 
 ### 6.2 The Remediation Loop (Observe-Orient-Decide-Act)
-The NetSentinel follows a standardized loop to resolve degradation without human intervention:
+The SovrIT Steward follows a standardized loop to resolve degradation without human intervention:
 
 1. **Observe:** **Uptime Kuma** or **NetAlertX** detects a service failure.
-2. **Orient:** NetSentinel gathers system context (e.g., "Container is running, but logs show 'Out of Memory'").
+2. **Orient:** SovrIT Steward gathers system context (e.g., "Container is running, but logs show 'Out of Memory'").
 3. **Decide:** The SLM parses the relevant **mSOP** logic tree to find the correct recovery path.
 4. **Act:** n8n executes the remediation (e.g., "Clear temp cache and restart container").
 
 ### 6.3 Escalation: The Handoff to the Handbook
 If the mSOP logic cannot resolve the issue, the system transitions from "Autonomous" to "Assisted" mode.
-* **Incident Handover:** The NetSentinel ceases all automated write-actions to prevent further system instability.
+* **Incident Handover:** The SovrIT Steward ceases all automated write-actions to prevent further system instability.
 * **Contextual Alerting:** An **ntfy** notification is sent to the human operator. This alert includes a direct link to the specific **SovrIT Handbook** page and the printed binder section required to fix the persistent issue.
 * **Audit Trail:** The system provides the operator with a "Summary of Failed Attempts," detailing which mSOP branches were already tried and why they failed.
 
@@ -193,7 +193,7 @@ If the mSOP logic cannot resolve the issue, the system transitions from "Autonom
 To support the mSOP layer, all services must provide "Visibility Hooks":
 * **Web Services:** Standardized `/health` endpoints.
 * **Substrate Nodes:** Real-time resource metrics via **Netdata**.
-* **Integrity Checks:** Scheduled ZFS "scrub" and "trim" results must be readable by the NetSentinel.
+* **Integrity Checks:** Scheduled ZFS "scrub" and "trim" results must be readable by the SovrIT Steward.
 
 ---
 
@@ -201,8 +201,8 @@ To support the mSOP layer, all services must provide "Visibility Hooks":
 
 This section defines the survival strategies for "Sovereign Life-Line Services." The goal is a **120-second RTO (Recovery Time Objective)** for identity and critical data access during a home-base outage.
 
-### 7.1 The Ghost Mirror (VPS) Specifications
-The Ghost Mirror is a geographically distant, hardened node acting as a "Warm Standby." To support the duplication of identity, financial, and medical document services, it must meet these minimums:
+### 7.1 The Remote (VPS) Failover Node Specifications
+The Remote Failover Node is a geographically distant, hardened node acting as a "Warm Standby." To support the duplication of identity, financial, and medical document services, it must meet these minimums:
 * **Compute:** 4 vCPU / 6GB RAM.
 * **Storage:** 100GB NVMe (Primary OS + High-Priority Life-Line snapshots).
 * **Network:** 10TB Monthly Bandwidth / 1Gbps Port.
@@ -270,10 +270,10 @@ The "Heart" of the system, optimized for 24/7 uptime and data sovereignty.
 * **Storage Standard:** Minimum 2x mirrored drives for the Core substrate.
 
 ### 9.3 The Compute Node (LLM/Sovereign Intelligence)
-The "Brain," dedicated to local inference, the NetSentinel, and the SovrIT Assistant.
+The "Brain," dedicated to local inference, the SovrIT Steward, and the SovrIT Assistant.
 * **Hardware Profile:** High-bandwidth/high VRAM architecture (Apple Silicon / M-Series Pro, Max, or Studio for its Unified Memory / Metal architecture) to support real-time local agents.
 * **Inference Benchmarks:**
-    * **NetSentinel (8B Model):** >30 tokens/sec for real-time log triage.
+    * **SovrIT Steward (8B Model):** >30 tokens/sec for real-time log triage.
     * **Visual Agent (VLM):** <5 second processing time for UI audit screenshots.
 
 ### 9.4 Environmental Resilience & Power Protection
@@ -301,12 +301,12 @@ Every tool in the SovrIT ecosystem is selected based on three criteria: **Data P
 #### 10.1.1 Networking & Security
 * **NetBird:** Considered Tailscale (the market leader, but its control plane is proprietary and cloud-hosted), Headscale (an open-source Tailscale control plane, rejected due to its lack of a native, integrated web UI and the complexity of its OIDC integration), and ZeroTier. NetBird was selected for its native, high-performance peer-to-peer mesh, integrated Authentik support, and its ability to act as a complete "Sovereign VPN" without third-party dependencies.
 * **AdGuard Home + Unbound:** Considered Pi-hole (lacks the native recursive capabilities provided by Unbound) and standard upstream DNS (Google/Cloudflare - rejected because they log DNS queries, creating a privacy leak). The pairing of AdGuard Home + Unbound ensures that DNS resolution happens locally at the "Root" level, making the user invisible to ISP tracking.
-* **NetAlertX:** Considered WatchYourLAN for its "set-it-and-forget-it" simplicity but was ultimately rejected due to its lack of programmatic depth. NetAlertX provides a robust OpenAPI interface and native **n8n webhook** support, making it the only choice capable of feeding the **NetSentinel** with the high-fidelity telemetry required for autonomous threat remediation. Furthermore, its distributed master-slave architecture allows for seamless monitoring across all five SovrIT VLANs, whereas WatchYourLAN is strictly optimized for small, single-subnet environments.
+* **NetAlertX:** Considered WatchYourLAN for its "set-it-and-forget-it" simplicity but was ultimately rejected due to its lack of programmatic depth. NetAlertX provides a robust OpenAPI interface and native **n8n webhook** support, making it the only choice capable of feeding the **SovrIT Steward** with the high-fidelity telemetry required for autonomous threat remediation. Furthermore, its distributed master-slave architecture allows for seamless monitoring across all five SovrIT VLANs, whereas WatchYourLAN is strictly optimized for small, single-subnet environments.
 * **Fail2Ban:** Considered CrowdSec (exclusively). While CrowdSec is the future of behavioral defense, Fail2Ban remains the "Shotgun at the Front Door" for local, signature-based protection. It was selected to provide immediate, low-latency banning for aggressive SSH and Auth attacks, acting as a secondary layer to the broader IPS.
 * **CrowdSec:** Considered standard firewall blacklists (e.g., blocklist.de) but they are reactive and easily bypassed. CrowdSec was selected as the **Behavioral IPS/IDS** because it utilizes a community-sourced blocklist and local "Scenarios" to identify malicious patterns (like L7 scans) that signature-based tools like Fail2Ban would miss.
 * **AppArmor:** Considered SELinux. SELinux was rejected due to its extreme complexity and "Policy Bloat," which often leads users to disable it entirely. AppArmor was selected for its "Profile-Based" approach, making it more maintainable for the SovrIT administrator while still providing robust service-level sandboxing.
-* **Lynis:** Selected (over resource-heavy commercial scanners which often require cloud subscriptions) for its lightweight, local-first auditing of the NixOS host, providing a "Hardening Index" that the NetSentinel can monitor for configuration drift.
-* **n8n:** Considered Node-RED (rejected because it lacks the "Job History" and structured JSON handling required for complex mSOP remediation) and Zapier (a cloud-based security nightmare). n8n provides a superior "Human-in-the-loop" interface, allowing the NetSentinel to execute complex security playbooks with ease.
+* **Lynis:** Selected (over resource-heavy commercial scanners which often require cloud subscriptions) for its lightweight, local-first auditing of the NixOS host, providing a "Hardening Index" that the SovrIT Steward can monitor for configuration drift.
+* **n8n:** Considered Node-RED (rejected because it lacks the "Job History" and structured JSON handling required for complex mSOP remediation) and Zapier (a cloud-based security nightmare). n8n provides a superior "Human-in-the-loop" interface, allowing the SovrIT Steward to execute complex security playbooks with ease.
 
 #### 10.1.2 Access & Identity
 * **Authentik:** Considered Okta (due to NetBird recommendation) but rejected it as it is a third-party SaaS platform which would constitute an "Identity Leak" to a corporate intermediary. Considered Authelia for its lightweight footprint but rejected due to its limited native OIDC/SAML provider capabilities and lack of a unified "App Portal" interface for non-technical users. Strongly considered Kanidm for its impressive Rust-based security-first architecture but ultimately rejected for its lack of an integrated "Outpost" and "Proxy" ecosystem. Authentik’s ability to secure legacy services that do not natively support modern authentication is essential for maintaining a unified Zero-Trust posture across the entire 40+ service stack. Authentik provides the best balance of enterprise-grade features, biometric **WebAuthn** support, and a manageable resource footprint.
@@ -318,7 +318,7 @@ Every tool in the SovrIT ecosystem is selected based on three criteria: **Data P
 * **TrueNAS / ZFS:** Considered UnRAID and standard EXT4/LVM. UnRAID lacks the bit-rot protection and instantaneous snapshot capabilities of ZFS. ZFS was selected as the mandatory filesystem for its hardware-agnostic portability, "Copy-on-Write" architecture, which is the foundation of the system’s data integrity, and it's suitability for encryption at rest.
 #### 10.1.4 Resilience
 * **Kopia:** Considered Restic and Borg - both excellent but lacking a native, high-performance GUI and multi-backend S3 support as robust as Kopia's. Kopia’s content-addressable deduplication and client-side encryption make it the primary "Fortitude" engine for the 3-2-1-0 strategy.
-* **Uptime Kuma:** Considered Nagios and Zabbix (Enterprise monitoring tools that are too complex for a home-scale environment) and Peekaping (for its lightweight focus on network latency and ICMP monitoring) but rejected it because it lacks the application-level depth (HTTP keyword checks, DNS resolution, and Docker health) required to trigger the NetSentinel's mSOP logic. Uptime Kuma's ability to serve as a visual "Status Dashboard" for non-technical users while providing a robust notification API for n8n makes it the superior choice for operational continuity.
+* **Uptime Kuma:** Considered Nagios and Zabbix (Enterprise monitoring tools that are too complex for a home-scale environment) and Peekaping (for its lightweight focus on network latency and ICMP monitoring) but rejected it because it lacks the application-level depth (HTTP keyword checks, DNS resolution, and Docker health) required to trigger the SovrIT Steward's mSOP logic. Uptime Kuma's ability to serve as a visual "Status Dashboard" for non-technical users while providing a robust notification API for n8n makes it the superior choice for operational continuity.
 * **Chrony:** Considered standard `ntpd`. Chrony was selected for its superior performance in environments with intermittent internet connectivity (e.g., outages), ensuring that cryptographic keys and MFA tokens remain synchronized even when the "High-Stratum" clock is unreachable.
 
 ---
@@ -332,7 +332,7 @@ Every tool in the SovrIT ecosystem is selected based on three criteria: **Data P
 #### 10.2.2 Communication & Social
 * **Matrix:** Considered XMPP and Signal. Signal is excellent but tied to a phone number and central servers. XMPP lacks the modern "Bridge" ecosystem of Matrix. Matrix (via Mautrix) allows the user to unify WhatsApp, Signal, and iMessage into a single, sovereign archive.
 * **VitalPBX:** Considered 3CX and FreePBX. 3CX is increasingly closed-source/commercial. FreePBX is aging. VitalPBX provides a modern, secure SIP-TLS/SRTP stack for encrypted sovereign telephony.
-* **Stalwart:** Considered Mailcow and Mail-in-a-Box. Mailcow is a heavy multi-container stack. Stalwart is a single Rust binary that supports **S3-compatible storage natively**, making it the only viable choice for the "Ghost Mirror" geographically redundant mail strategy.
+* **Stalwart:** Considered Mailcow and Mail-in-a-Box. Mailcow is a heavy multi-container stack. Stalwart is a single Rust binary that supports **S3-compatible storage natively**, making it the only viable choice for the "Remote Failover" geographically redundant mail strategy.
 * **ntfy:** Considered Gotify and Pushover. Pushover is a third-party cloud service. Gotify is excellent but lacks the deep iOS/Android integration and "Actionable Notifications" provided by ntfy.
 
 #### 10.2.3 Productivity & Office
@@ -414,9 +414,9 @@ No third party holds the keys or has access to your data, identity, or mesh netw
 ### 2. Autonomous Functional Resiliency
 The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery pipelines that detect service degradation and trigger immediate rebuilds or relaunches. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 ### 3. Global High Availability & Failover Redundancy
-SovrIT utilizes a geographically distant VPS Ghost Mirror to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
+SovrIT utilizes a geographically distant Remote (VPS) Failover Node to provide Ultra High Availability. Through automatic failover orchestration, critical services and data remain accessible even during local power outages, ISP failures, or catastrophic physical events like fire or theft.
 ### 4. Invisible & Active Security
-Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT NetSentinel- a dedicated security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
+Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing,  proactive defense by SovrIT Steward- a dedicated security-focused Small Language Model (SLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
 ### 5. Sovereign Voice/AI Assistance
 The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as  both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection
 ### 6. Decoupled Encryption at Rest
@@ -433,7 +433,7 @@ Comprehensive "Human-Centric" documentation walks users through procedures consi
 The sovereign execution environment and foundational services:
 
 * **SovrIT SecureNet:** Encrypted overlay network and sovereign VPN ([Netbird](https://netbird.io/)), paired with private, recursive DNS resolution ([AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) + [Unbound](https://www.nlnetlabs.nl/projects/unbound/about/)) to eliminate third-party tracking at the query level.
-* **SovrIT NetSentinel (The Security Substrate):** A dedicated, security-focused SLM that orchestrates active defense and employs automated remediation (with logging and user notifications) using:
+* **SovrIT Steward (The Security Substrate):** A dedicated, security-focused SLM that orchestrates active defense and employs automated remediation (with logging and user notifications) using:
     * **Network Intrusion Awareness:** [NetAlertX](https://github.com/jpsenior/netalertx) provides real-time monitoring of the network substrate, alerting immediately to unauthorized or unrecognized devices.
     * **Brute-Force Shield:** [Fail2Ban](https://github.com/fail2ban/fail2ban) provides local, signature-based protection by monitoring log files (SSH, Auth, etc.) and instantly banning IPs that exhibit aggressive login behavior.
     * **Behavioral IPS/IDS:** [CrowdSec](https://www.crowdsec.net/) monitors for malicious patterns across all services and blocks threats at the firewall level.
@@ -499,7 +499,7 @@ SovrIT PTI is designed to be hardware-agnostic but is currently optimized for a 
 * **Recommended Hardware:** Apple Silicon - M1 or greater Pro or Max CPU with 16GB+ Unified Memory.
 * **Benefit:** Unified Memory Architecture allows LLMs and Speech-to-Text engines to stay "hot" in memory, providing instant responses while drawing as little as 30W.
 
-### 4. VPS (Ghost Mirror)
+### 4. Remote (VPS) Failover Node
 * **Recommended Configuration:** 4+ VCores, 6+ GB RAM, 100+ GB Disk space, 10+ TB Bandwidth, NixOS.
 * **Benefit:** Hardened failover node for critical service continuity.
 
@@ -526,7 +526,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | **Security Health Audit** | Automated periodic hardening assessments via **Lynis** with **ntfy** alerting. |
 | **Network Entry Sentry** | Real-time discovery and alerting of new local network clients via **Home Assistant**. |
 | **Credential Breach Audit** | Client-side monitoring for leaked vault credentials via **Vaultwarden** (HIBP integration). |
-| **SovrIT NetSentinel** | AI-driven SecOps agent (Local SLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
+| **SovrIT Steward** | AI-driven SecOps agent (Local SLM) that triages alerts and executes automated SOAR playbooks via **n8n**. |
 | **Resiliency Engine** | Automated state backups, service monitoring, and self-healing via **Fortitude** (**Kopia** / **n8n**). |
 
 ### 🧠 Sovereign Intelligence
@@ -591,7 +591,7 @@ The following table outlines the specific capabilities of the SovrIT platform an
 | :--- | :--- |
 | **Insta-Restore Engine** | Automated rebuild pipelines for core services using [n8n](https://n8n.io/) and [Ansible](https://www.ansible.com/). |
 | **Immutable Backups** | Hourly, encrypted client-side backups to offsite storage via [Kopia](https://kopia.io/). |
-| **Remote Failover Mirror** | High-availability "Ghost Mirror" on a remote VPS for Identity and Vault access. |
+| **Remote Failover Node** | High-availability "Remote Failover" on a remote VPS for Identity and Vault access. |
 | **Graceful Power Safety** | Automated UPS-triggered shutdown sequences for storage and compute nodes. |
 | **Versioned Infrastructure** | State reproducibility using configurations stored in a private ([Forgejo](https://forgejo.org/)) instance. |
 | **The SovrIT Handbook** | Database-less, human-centric documentation maintained in [Dokuwiki](https://www.dokuwiki.org/). |
@@ -670,7 +670,7 @@ A setup guide with equipment selection considerations is forthcoming but for a *
 | **Max (M1–M5 Max)** | **400 – 614 GB/s** | **High Performance.** Runs 30B–70B models at human reading speeds. |
 
 ### 2. Operational Expenditure (The Ongoing Cost)
-* **The Ghost Mirror:** A remote VPS is required for failover orchestration. While monthly plans from providers like Hostinger or DigitalOcean typically run **$5–$15**, bargain nodes (2vCPU/4GB RAM) can be found via annual promotional deals for as little as **$45–$60/year**.
+* **The Remote Failover:** A remote VPS is required for failover orchestration. While monthly plans from providers like Hostinger or DigitalOcean typically run **$5–$15**, bargain nodes (2vCPU/4GB RAM) can be found via annual promotional deals for as little as **$45–$60/year**.
 * **Immutable Backups:** Offsite S3-compatible storage ([Backblaze B2](https://www.backblaze.com/cloud-storage) or [Wasabi](https://wasabi.com/)) costs roughly **$0.005/GB**. To model costs including ingress and egress fees, consult [The 2026 Cloud Storage Pricing Guide](https://www.cloudzero.com/blog/cloud-storage-pricing/).
 * **Electricity:** A 4-node stack idles at **50W–70W**, typically costing **less than $10/month**.
 
@@ -687,7 +687,7 @@ Cloud subscriptions (Google Workspace, iCloud+, Dropbox, Netflix, Spotify, and A
 ### 4. Strategy for Minimizing Costs
 * **Used Enterprise Gear:** Thin clients like the Dell Wyse 5070 or HP T640 are designed for 24/7 operation and are much more efficient than consumer PCs. Ranging in price from $60 – $150, these high efficiency devices are perfect for core substrate services with an excellent balance of modern CPU and low idle power.
 * **"Cracked" Brains:** Search for M1 Pro MacBooks with "cracked screens" or "broken LCDs." In 2026, these sell for **$300–$400**, providing enterprise-grade AI compute at a 60% discount. As a bonus, they have their own built in UPS!
-* **Start Small:** Launch the **SovrIT Core** on two nodes (Core/Storage + Compute/LLM) first. Add the Ghost Mirror once you have the Core up. High Availability is a great goal but not a Day 1 requirement.
+* **Start Small:** Launch the **SovrIT Core** on two nodes (Core/Storage + Compute/LLM) first. Add the Remote Failover once you have the Core up. High Availability is a great goal but not a Day 1 requirement.
 
 ---
 
