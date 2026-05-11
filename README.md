@@ -68,6 +68,7 @@ SovrIT PTI is designed to be hardware-agnostic, optimized for a high-performance
 4. **Remote (VPS) Failover Node:** Hardened remote failover node for critical service continuity.
 5. **Mobile Endpoints:** Biometric-capable trusted nodes for identity and secure remote access.
 6. **Off-site Archive:** S3-compatible object storage for immutable, geographical data redundancy.
+7. **Local/Remote Beacons:** ESP32-based devices serving as indicators for whether it is safe for a server to boot up (and decrypt data on the encrypted-at-rest ZFS volumes) after an unplanned power outage (indicating a possible theft/seizure).
 
 ---
 
@@ -76,19 +77,19 @@ SovrIT PTI is designed to be hardware-agnostic, optimized for a high-performance
 | Feature Category | Capabilities & Integrated Services |
 | :--- | :--- |
 | **Infrastructure & Security** | Mesh networking, Universal SSO (WebAuthn), Private PKI, and AI-driven Active Defense. |
-| **Sovereign Intelligence** | Local Private LLM (Ollama), Universal Data Search, and AI-powered NVR (Frigate). |
+| **Sovereign Intelligence** | Local Private LLM (llama.cpp), Universal Data Search, and AI-powered NVR (Frigate). |
 | **Communication & Social** | Unified Messenger Hub (Matrix), Sovereign Mail/Telephony, and Private Federated Social. |
 | **Productivity & Knowledge** | Collaborative Office, Flat-file Markdown Notes, and Permanent Web Archiving. |
 | **Vital Archives** | Financial Auditing, OCR-indexed Records, and AI-driven Media/Photo Management. |
 
 ---
 
-## 💰 Cost of Sovereignty
+## 💰 The Cost of Sovereignty
 
-You build a Digital Fortress because you value privacy and data integrity, not to find a bargain. While SovrIT can eliminate "subscription creep," it requires initial capital expenditure.
+You build a Digital Fortress because you value privacy and data integrity, not to save money. While SovrIT can eliminate "subscription creep," it requires initial capital expenditure and ongoing costs.
 * **Initial Setup:** A 2-node entry-level stack typically ranges from **$600 to $1,000**.
-* **Operational OpEx:** Ongoing costs include a remote VPS ($5–$15/mo) and S3-compatible cloud storage ($0.005/GB).
-* **Efficiency:** Utilizing used enterprise thin clients and "cracked-screen" laptops can significantly reduce costs while maintaining high-performance compute.
+* **Operational OpEx:** Ongoing costs include a remote VPS ($5–$10/mo) and S3-compatible cloud storage ($0.003/GB - $0.005/GB).
+* **Efficiency:** Utilizing used enterprise thin clients, "N100" mini-computers, and "cracked-screen" laptops can significantly reduce costs - both up-front and electrical consumption - while maintaining high-performance compute.
 
 ---
 
