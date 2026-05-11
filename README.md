@@ -50,7 +50,7 @@ Now imagine that anytime the watch has the slightest problem, you can simply pus
 
 That is exactly how the SovrIT architecture works:
 
-* **The Blueprint (Nix Flakes):** Instead of manually installing software, we use a "Nix flake." This is a perfect, mathematical blueprint of exactly how a service should look. It contains only the absolute essentials (including supporting elements of the underlying IS) required to make the service functional. 
+* **The Blueprint (Nix Flakes):** Instead of manually installing software, we use a "Nix flake." This is a perfect, mathematical blueprint of exactly how a service should look. It contains only the absolute essentials (including supporting elements of the underlying OS) required to make the service functional. 
 * **The Containers (systemd-nspawn):** Every service lives in its own high-security container called a "systemd-nspawn" container. It’s like a tiny, isolated vault that keeps each part of the watch from interfering with the others. _Even the Linux kernel is optimized, removing non-essential kernel modules, and core utilities like ssh, ls, echo, sed, and awk - without which a hacker or malicious code is unable to change anything _even if it could somehow manage to get in_.
 * **The Rebuild:** If a service breaks, the system doesn't try to "fix" it. It simply deletes the container and instantly re-grows a new one from the Blueprint. Because your data is stored separately, the service wakes up "Factory New" and perfect in seconds.
 * **The Data Layer:** 
