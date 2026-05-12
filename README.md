@@ -14,7 +14,7 @@ True digital sovereignty requires that your data, your communications, and your 
 
 ---
 
-## The Seven Architectural Pillars of SovrIT PTI
+## 🏛️ The Seven Architectural Pillars of SovrIT PTI
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
 No third party holds the keys or has access to your data, identity, or mesh network. Where your data passes through servers that are not under your control (e.g. phone calls from a mobile device), they do so in encrypted form.
 ### 2. Autonomous Functional Resiliency
@@ -53,8 +53,7 @@ That is exactly how the SovrIT architecture works:
 * **The Blueprint (Nix Flakes):** Instead of manually installing software, we use a "Nix flake." This is a perfect, mathematical blueprint of exactly how a service should look. It contains only the absolute essentials (including supporting elements of the underlying OS) required to make the service functional. 
 * **The Containers (systemd-nspawn):** Every service lives in its own high-security container called a "systemd-nspawn" container. It’s like a tiny, isolated vault that keeps each part of the watch from interfering with the others. _Even the Linux kernel is optimized, removing non-essential kernel modules, and core utilities like ssh, ls, echo, sed, and awk - without which a hacker or malicious code is unable to change anything _even if it could somehow manage to get in_.
 * **The Rebuild:** If a service breaks, the system doesn't try to "fix" it. It simply deletes the container and instantly re-grows a new one from the Blueprint. Because your data is stored separately, the service wakes up "Factory New" and perfect in seconds.
-* **The Data Layer:** 
-[Explanation of how the data (that changes as the user makes any sort of changes) are backed up to/restored from Forgejo repos]
+* **The Data Layer:** While the watch can explode and rebuild, the time must remain correct. Your personal data ("the time") is persisted in a private Forgejo repository, and every time you make a change, your data is versioned and mirrored to the repository. Once "the watch" is rebuilt, "the time" is simply "plugged in" from the repo. This ensures that your digital life resumes exactly where it left off, perfectly preserved and up-to-date.
 
 ---
 
@@ -74,13 +73,60 @@ SovrIT PTI is designed to be hardware-agnostic, optimized for a high-performance
 
 ## 🗺️ Functionality Map
 
-| Feature Category | Capabilities & Integrated Services |
+### 1. Identity & Security
+| **SovrIT Service** | **Replaces (Third-Party / Corporate Service)**|
 | :--- | :--- |
-| **Infrastructure & Security** | Mesh networking, Universal SSO (WebAuthn), Private PKI, and AI-driven Active Defense. |
-| **Sovereign Intelligence** | Local Private LLM (llama.cpp), Universal Data Search, and AI-powered NVR (Frigate). |
-| **Communication & Social** | Unified Messenger Hub (Matrix), Sovereign Mail/Telephony, and Private Federated Social. |
-| **Productivity & Knowledge** | Collaborative Office, Flat-file Markdown Notes, and Permanent Web Archiving. |
-| **Vital Archives** | Financial Auditing, OCR-indexed Records, and AI-driven Media/Photo Management. |
+| **Authentik** | Okta, Auth0, Google/Microsoft SSO, Authelia |
+| **Vaultwarden** | 1Password, LastPass, Dashlane, Bitwarden Cloud |
+| **NetBird / WireGuard** | NordVPN, ExpressVPN, Tailscale, ZeroTier |
+| **Step-CA** | **The Private Identity Engine:** Replaces Public CAs (GoDaddy) and static SSH keys. Enables **Encrypted Machine Handshakes (mTLS)**, automated "identity rotation," and short-lived access certificates that ensure the network remains secure even if the internet is down. |
+| **CrowdSec / AppArmor / Fail2Ban / Lynis / NetAlertX** | **Comprehensive Personal Security System:** Replaces reactive ISP firewalls and "Black-Box" security suites with active behavioral defense and hardware-level network monitoring. |
+
+### 2. Communication, Mobility & Location
+| **SovrIT Service** | **Replaces (Third-Party / Corporate Service)**|
+| :--- | :--- |
+| **VitalPBX (Encrypted SIP)** | **Universal Telephony:** Replaces Google Voice, Landlines, and **Mobile Carrier Voice**. By routing calls via **encrypted SIP trunks** over sovereign infrastructure, it ensures all voice traffic and call metadata remain private and shielded from carrier surveillance. |
+| **Stalwart / SnappyMail** | Gmail, Outlook.com, ProtonMail, Yahoo Mail |
+| **Matrix / Mautrix** | WhatsApp, Slack, Discord, Telegram, iMessage |
+| **MapLibre / Traccar** | Google Maps, Apple Maps, Life360, "Find My" services |
+| **ntfy** | Pushover, Pushbullet, Firebase Cloud Messaging (FCM) |
+
+### 3. Knowledge, Productivity & Web
+| **SovrIT Service** | **Replaces (Third-Party / Corporate Service)**|
+| :--- | :--- |
+| **Silverbullet / Dokuwiki** | Notion, Obsidian Sync, Evernote, Confluence, OneNote |
+| **Readeck / Immich** | **Pinterest:** Replaces visual inspiration boards and web-clipping. Readeck captures visual links and metadata permanently, while Immich provides gallery-style organization for curated image sets. |
+| **Readeck** | Pocket, Instapaper, Wallabag, Browser Bookmarks |
+| **ArchiveBox** | **Unique Advantage:** Searchable, permanent archive of your entire personal web history (No 3rd party equivalent). |
+| **MeiliSearch** | **Unique Advantage:** A "Universal Search" engine that indexes every corner of your digital life—notes, records, and metadata (No 3rd party equivalent). |
+| **OnlyOffice** | Google Docs, Microsoft Office 365, LibreOffice |
+| **Static Sites / Blogs** | WordPress, Wix, Squarespace, Medium |
+
+### 4. Vital Archives & Legacy
+| **SovrIT Service** | **Replaces (Third-Party / Corporate Service)**|
+| :--- | :--- |
+| **Aeterna** | **Unique Advantage:** Digital dead-man switch ensuring automated handover of "keys to the kingdom" to heirs (No 3rd party equivalent). |
+| **Actual Budget** | YNAB (You Need A Budget), Mint, Monarch Money |
+| **Paperless-ngx** | Physical Filing Cabinets, Docusign (Storage), Adobe Scan |
+| **Immich** | Google Photos, iCloud Photos, Amazon Photos |
+
+### 5. Intelligence & Media
+| **SovrIT Service** | **Replaces (Third-Party / Corporate Service)**|
+| :--- | :--- |
+| **SovrIT Assistant (Ollama)** | ChatGPT Plus, Siri, Alexa, Google Gemini |
+| **Jellyfin** | Netflix, Disney+, Hulu, Plex (Cloud-dependent auth) |
+| **Audiobookshelf / Kavita** | Audible, Kindle Cloud, Libby, ComiXology |
+| **TubeArchivist** | YouTube Premium, Watch Later playlists |
+| **Frigate** | Nest Cam, Ring, Arlo, SimpliSafe Video |
+
+### 6. Infrastructure & Resilience
+| **SovrIT Service** | **Replaces (Third-Party / Corporate Service)**|
+| :--- | :--- |
+| **Forgejo** | GitHub, GitLab, Bitbucket. Replaces external repositories by hosting the "System DNA" (Nix flakes/mSOPs) locally for disaster recovery. |
+| **Kopia** | Backblaze Personal, Carbonite, iCloud Backup, Google One. Manages encrypted, deduplicated off-site snapshots. |
+| **AdGuard Home** | ISP Default DNS, Pi-hole (Cloud-managed versions) |
+| **n8n** | Zapier, Make.com (formerly Integromat), IFTTT |
+| **Uptime Kuma** | BetterStack, StatusCake, PagerDuty (Basic) |
 
 ---
 
