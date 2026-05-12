@@ -52,7 +52,7 @@ The sovereign execution environment and foundational services:
 * **SovrIT Time:** Internal high-stratum time authority ([chrony](https://chrony-project.org/)) to ensure cryptographic and MFA synchronization during outages.
 * **Core Ops:** Provisioning and lifecycle management utilizing NixOS for declarative system state, [TrueNAS CE](https://www.truenas.com/) for mission-critical encrypted storage (**ZFS**). Active defense is maintained via behavioral IP blocking (**CrowdSec**), mandatory access control (**AppArmor**), and automated security auditing (**Lynis**).
 
-### SovrIT Modules
+### SovrIT Workspace
 The user-facing applications that fulfill the functional requirements:
 
 #### Intelligence & Discovery:
