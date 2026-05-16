@@ -17,7 +17,7 @@ True digital sovereignty requires that your data, your communications, and your 
 ## 🏛️ The Seven Architectural Pillars of SovrIT PTI
 
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
-You hold 100% exclusive control of your data, _metadata_, identity, and encryption keys. On networks you do not own, all communication is end-to-end encrypted. To ensure total privacy, your entire internet connection is wrapped in a "Metadata Cloak" (full-tunnel VPN). This prevents ISPs and mobile carriers from seeing which websites you visit; they see only a single, unreadable stream to your private gateway. This defense is completed by resolving web addresses directly from the internet’s root sources, bypassing commercial companies that log and monetize your browsing history.
+You hold 100% exclusive control of your data, _metadata_, identity, encryption keys, and communications. On networks you do not own, all communication is end-to-end encrypted. To ensure total privacy, your entire internet connection is wrapped in a "Metadata Cloak" (full-tunnel VPN). This prevents ISPs and mobile carriers from seeing which websites you visit; they see only a single, unreadable stream to your private gateway. This defense is completed by resolving web addresses directly from the internet’s root sources, bypassing commercial companies that log and monetize your browsing history.
 
 ### 2. Autonomous Functional Resiliency
 The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery workflows that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
@@ -25,14 +25,16 @@ The system is _self-healing_. Continuous uptime monitoring is tethered to automa
 ### 3. Geo-Distributed High Availability (HA)
 SovrIT utilizes a geographically distant Remote (VPS) Failover Node to provide Ultra High Availability. Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical services fail over automatically to the VPS if a home-site outage is detected. The VPS verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
 
-### 4. Invisible & Active Security
-Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing, proactive defense by SovrIT Steward - a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats.
-
-### 5. Sovereign Voice/AI Assistance
-The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection.
-
-### 6. Decoupled Encryption at Rest
+### 4. Decoupled Encryption at Rest
 All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
+
+### 5. Invisible, Active, and Physical Security
+Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing, proactive defense by SovrIT Steward - a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats. Security extends to physical protection as well with  SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) which integrates SovrIT Sentry (a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc.) and other means to protect critical user data by protecting the phytsical devices on which it resides.
+
+
+
+### 6. Sovereign Voice/AI Assistance
+The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection.
 
 ### 7. Operational Continuity - The SovrIT Handbook and  SovrIT Scribe
 Comprehensive "Human-Centric" documentation walks non-technical users through remedial and maintenance procedures when the primary admin user is unavailable. The **SovrIT Handbook**, a physical and digital manual of annotated, screenshot-based procedures ("Click the gear icon shown circled in red") is maintained by **SovrIT Scribe**, a fine-tuned local AI that audits all procedures in a sandboxed environment whenever an app or service is updated. Scribe verifies UI parity (icons, buttons, and layouts), updates screenshots, increments revision numbers, and automatically prints the updated pages. This ensures the Handbook always matches exactly what the user sees on the screen, reducing anxiety and ensuring successful manual intervention. 
@@ -186,8 +188,8 @@ SovrIT PTI is designed to be hardware-agnostic, optimized for a high-performance
 
 You build a Digital Fortress because you value privacy and data integrity, not to save money. While SovrIT can eliminate "subscription creep," it requires initial capital expenditure and ongoing costs.
 
-* **Initial Setup:** A 2-node entry-level stack typically ranges from **$600 to $1,000**. The required "prosumer" grade networking equipment will add (depending on your bargain-hunting skills and patience) another $300-400 - so a starting budget of $1500 or so is advised although you may be able to do it for as little as $1000 or less.
-* **Operational OpEx:** Ongoing costs include a remote VPS ($5–$10/mo) and S3-compatible cloud storage ($0.003/GB - $0.005/GB).
+* **Initial Setup:** A 2-node entry-level stack typically ranges from **$600 to $1,000**. The required "prosumer" grade networking equipment will add (depending on your bargain-hunting skills and patience) another $300-400 - so a starting budget of $1500 or so is advised although you may be able to do it for as little as $1000 or less. Lastly, to the extent that the systems encompassed by SovrIT are to be "mission critical" in your day-to-day life, you may also want to invest in a UPS or battery backup system thgat will keep your SovrIT ecosystem on/running in the even of a power outage and/or some sort of 4G/5G WAN failover device for internet outages. 
+* **Operational OpEx:** Ongoing costs include a remote VPS ($5–$10/mo), service for a 4G/5G WAN failover device, and S3-compatible cloud storage ($0.003/GB - $0.005/GB).
 * **Efficiency:** Utilizing used enterprise thin clients, "N100" mini-computers, and "cracked-screen" laptops can significantly reduce costs - both up-front and on monthly electricity bills - while maintaining high-performance compute.
 
 ---
