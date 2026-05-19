@@ -1,8 +1,8 @@
 # SovrIT Trust Hierarchy & Recovery Model
-## Trust, Identity, Continuity, and Recovery in a Sovereign Digital Environment
+_Trust, Identity, Continuity, and Recovery in a Sovereign Digital Environment_
 
 ### Foundational Trust & Recovery Document
-### Part of the SovrIT PTI Ecosystem
+#### Part of the SovrIT PTI Ecosystem
 
 ---
 
