@@ -33,7 +33,7 @@ SovrIT is designed to be self-healing.
 
 Continuous monitoring systems detect service degradation, infrastructure instability, or operational failure and automatically trigger recovery procedures such as restarts, rebuilds, failover operations, or infrastructure rollback.
 
-The goal is to maintain operational continuity without requiring constant manual intervention.
+This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 
 ---
 
