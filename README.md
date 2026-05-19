@@ -14,6 +14,91 @@ True digital sovereignty requires that your data, your communications, and your 
 
 ---
 
+# The Seven Architectural Pillars of SovrIT PTI
+
+## 1. Absolute Sovereignty & Zero-Trust Privacy
+
+No third party holds the keys to your data, identity, or private network.
+
+All critical services are designed around encryption, local ownership, and zero-trust principles. Even when data passes through infrastructure not under your control, it does so in encrypted form.
+
+Privacy is not treated as a feature.
+It is treated as foundational infrastructure.
+
+---
+
+## 2. Autonomous Functional Resiliency
+
+SovrIT is designed to be self-healing.
+
+Continuous monitoring systems detect service degradation, infrastructure instability, or operational failure and automatically trigger recovery procedures such as restarts, rebuilds, failover operations, or infrastructure rollback.
+
+The goal is to maintain operational continuity without requiring constant manual intervention.
+
+---
+
+## 3. Global High Availability & Failover Redundancy
+
+Critical infrastructure can automatically fail over to a geographically distant remote node during:
+- power outages
+- ISP failures
+- hardware failures
+- theft
+- fire
+- natural disasters
+
+This allows core services and encrypted data to remain available even during catastrophic local events.
+
+---
+
+## 4. Invisible & Active Security
+
+Security should not create friction.
+
+SovrIT integrates modern identity technologies such as biometrics and WebAuthn to simplify secure authentication while continuously monitoring infrastructure health and security posture behind the scenes.
+
+A dedicated AI security steward continuously reviews logs, alerts, device activity, and operational telemetry in order to proactively identify anomalies and assist with remediation.
+
+---
+
+## 5. Sovereign Voice & AI Assistance
+
+The SovrIT Assistant acts as the primary interface to the platform through both voice and chat interaction.
+
+Powered entirely by local large language models and local speech processing systems, the assistant can:
+- answer questions
+- automate workflows
+- search personal records
+- assist with troubleshooting
+- provide operational guidance
+- coordinate smart-home functions
+- perform research tasks
+
+All processing occurs locally and privately without transmitting personal data to third-party AI providers.
+
+---
+
+## 6. Decoupled Encryption at Rest
+
+All sensitive data is encrypted using hardware-independent encryption systems.
+
+Encryption keys are intentionally separated from physical hardware so that stolen devices or seized servers reveal only encrypted, unreadable data.
+
+This allows infrastructure hardware to be replaced, rebuilt, or relocated without compromising security.
+
+---
+
+## 7. Operational Continuity — The SovrIT Handbook
+
+Technology should remain operable even when the primary technical user is unavailable.
+
+The SovrIT Handbook provides continuously updated, human-centered operational documentation using annotated screenshots, step-by-step guidance, and plain-language instructions.
+
+An AI documentation system continuously reviews and updates the Handbook so that instructions always reflect the current system state and interface layout.
+
+This ensures that family members or non-technical users can confidently maintain and operate critical infrastructure during emergencies or long-term continuity scenarios.
+
+
 ## 🏛️ The Seven Architectural Pillars of SovrIT PTI
 
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
