@@ -14,20 +14,19 @@ True digital sovereignty requires that your data, your communications, and your 
 
 ---
 
-# The Seven Architectural Pillars of SovrIT PTI
+## 🏛️ The Seven Architectural Pillars of SovrIT PTI
 
-## 1. Absolute Sovereignty & Zero-Trust Privacy
+### 1. Absolute Sovereignty & Zero-Trust Privacy
 
 No third party holds the keys to your data, identity, or private network.
 
-All critical services are designed around encryption, local ownership, and zero-trust principles. Even when data passes through infrastructure not under your control, it does so in encrypted form.
+All services are designed around encryption, local ownership, and zero-trust principles. Even when data passes through infrastructure not under your control, it does so in encrypted form.
 
-Privacy is not treated as a feature.
-It is treated as foundational infrastructure.
+Privacy is not treated as a feature. It is treated as foundational infrastructure.
 
 ---
 
-## 2. Autonomous Functional Resiliency
+### 2. Autonomous Functional Resiliency
 
 SovrIT is designed to be self-healing.
 
@@ -37,7 +36,7 @@ This ensures that the infrastructure maintains its own integrity without requiri
 
 ---
 
-## 3. Global High Availability & Failover Redundancy
+### 3. Geo-Distributed, Global High Availability & Failover Redundancy
 
 Critical infrastructure can automatically fail over to a geographically distant remote node during:
 - power outages
@@ -51,13 +50,13 @@ This allows core services and encrypted data to remain available even during cat
 
 ---
 
-## 4. Invisible & Active Security
+### 4. Invisible, Active, & Physical Security
 
-Security should not create friction.
+Effortless decurity is seamlessly integrated into the user flow via smartphone-based biometrics (WebAuthn) coupled with self-auditing, proactive defense by a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats. Security extends to physical protection as well with SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) which integrates SovrIT Sentry (a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc.) and other means to protect critical user data by protecting the phytsical devices on which it resides.
 
-SovrIT integrates modern identity technologies such as biometrics and WebAuthn to simplify secure authentication while continuously monitoring infrastructure health and security posture behind the scenes.
+A dedicated security-focused AI   continuously reviews logs, alerts, device activity, and operational telemetry in order to proactively identify anomalies and assist with remediation.
 
-A dedicated AI security steward continuously reviews logs, alerts, device activity, and operational telemetry in order to proactively identify anomalies and assist with remediation.
+SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) integrates a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc. to protect critical user data by protecting the phytsical devices on which it resides.
 
 ---
 
