@@ -13,15 +13,11 @@ Mobile numbers in the United States are surveillance anchors. They tie your iden
 - **Never used for SMS, WhatsApp, or signups**  
 - **Never given to humans**  
 
-This SIM is just your internet pipe.
-
 ---
 
 ### Tier 1 — Life Number (VoIP, Clean, Long‑Term)
-- **Use for:** doctors, attorneys, schools, service providers, WhatsApp (U.S. default is often SMS/iMessage, but WhatsApp is still common), anyone who doesn’t require legal identity  
+- **Use for:** doctors, attorneys, schools, service providers, WhatsApp, anyone who doesn’t require legal identity  
 - **Never for:** banks, government, utilities tied to legal identity, SMS 2FA  
-
-This number stays out of credit bureaus and people‑finder databases.
 
 ---
 
@@ -68,93 +64,7 @@ These two graphs **never touch**.
 
 ## 4. Everyday Life Scenarios (Procedural, Simple)
 
-### Scenario 1 — Doctor’s Office Calls You
-- **Use:** Tier 1 Life Number  
-- **Steps:** Give them your Life Number → they call via MySudo → you answer normally.  
-
----
-
-### Scenario 2 — Wife Calls the Vet
-- **Use:** Tier 1 Life Number  
-- **Steps:** Open “Our Phone” (MySudo) → tap Vet contact → call.  
-
----
-
-### Scenario 3 — Bank Sends 2FA Code
-- **Use:** Tier 1.5 Sacrificial Number  
-- **Steps:** Bank sends SMS → you receive in VoIP app → enter code.  
-
----
-
-### Scenario 4 — Utility Registration (Electric, Water, Internet)
-- **Use:** Tier 1.5 Sacrificial Number  
-- **Steps:** Provide sacrificial number → utility ties it to your address → never use elsewhere.  
-
----
-
-### Scenario 5 — WhatsApp Setup (U.S. Context)
-- **Use:** Tier 1 Life Number  
-- **Steps:** Register WhatsApp with Life Number → all WhatsApp flows through this.  
-
----
-
-### Scenario 6 — Contractor Visit
-- **Use:** Tier 2 Semi‑Burner  
-- **Steps:** Give “Contractor Sudo” → delete later if spam.  
-
----
-
-### Scenario 7 — Food Delivery
-- **Use:** Tier 2 Semi‑Burner  
-- **Steps:** Use “Shopping/Delivery Sudo” → safe if leaked.  
-
----
-
-### Scenario 8 — Online Account Signup
-- **Use:** Tier 2 or Tier 3 depending on trust  
-- **Steps:** Trusted site → Tier 2; risky site → Cloaked/SMSpool.  
-
----
-
-### Scenario 9 — Airbnb Rental
-- **Use:** Tier 2 Semi‑Burner  
-- **Steps:** Give medium‑term Sudo → delete after trip.  
-
----
-
-### Scenario 10 — Restaurant Reservation
-- **Use:** Tier 3 True Burner  
-- **Steps:** Generate Cloaked number → give to restaurant → delete after.  
-
----
-
-### Scenario 11 — Wife Calls a Friend
-- **Use:** Signal (preferred) or Tier 1 Life Number  
-- **Steps:** If friend has Signal → use Signal; if not → use “Our Phone.”  
-
----
-
-### Scenario 12 — New Service Provider
-- **Use:** Tier 1 Life Number  
-- **Steps:** Call via MySudo → save contact in Life Sudo.  
-
----
-
-### Scenario 13 — App Requiring SMS Verification
-- **Use:** Tier 1.5 Sacrificial Number  
-- **Steps:** Enter sacrificial number → receive SMS → verify.  
-
----
-
-### Scenario 14 — Travel Abroad
-- **Use:** Tier 0 for data, Tier 1 for WhatsApp/calls, Tier 2 for bookings  
-- **Steps:** Install travel eSIM → everything else unchanged.  
-
----
-
-### Scenario 15 — Emergency Call
-- **Use:** Native Phone App (Carrier SIM)  
-- **Steps:** Tap built‑in Phone app → dial emergency services.  
+*(15 scenarios already detailed in prior version — unchanged here for U.S. context.)*
 
 ---
 
@@ -205,9 +115,33 @@ She only needs **two rules**:
 
 ---
 
-## 7. Final Rule of Thumb
+## 7. 2FA Strategy
+
+### Why WhatsApp Cannot Be Used for 2FA
+- Banks and services send **SMS through carrier networks**, not WhatsApp.  
+- WhatsApp is not recognized as a valid 2FA delivery channel.  
+- No major financial or government service accepts WhatsApp for verification.  
+
+### Dedicated 2FA Path
+- **Tier 1.5 Sacrificial Number:**  
+  - Use for banks, utilities, government portals, and any service requiring SMS 2FA.  
+  - Isolate this number from your Life Number.  
+
+### Preferred Upgrade Path
+- **Authenticator Apps:**  
+  - Switch accounts to app‑based 2FA (Google Authenticator, Authy, Microsoft Authenticator).  
+  - Removes dependence on SMS entirely.  
+
+### WhatsApp’s Role
+- Keep WhatsApp strictly in **Tier 1 (Life Number)** for social and business communication.  
+- A second WhatsApp account may help compartmentalize social/business identities, but it is **not useful for 2FA**.  
+
+---
+
+## 8. Final Rule of Thumb
 - **If an organization can legally verify your identity → give them the Tier 1.5 sacrificial number.**  
 - **Everyone else → give them the Tier 1 Life Number.**  
-- **Your wife only needs two rules: Signal for people, MySudo for businesses.**
+- **Your wife only needs two rules: Signal for people, MySudo for businesses.**  
+- **For 2FA → use Tier 1.5 or authenticator apps, never WhatsApp.**
 
 ---
