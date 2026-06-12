@@ -3,7 +3,8 @@
 
 ---
 
-_This guide uses a Cradlepoint W1850 modem/router with a Panorama WMM4G‑6‑60‑05NJ 4x4 MIMO LPDA Antenna (both available on eBay at reasonable prices) for high bandwisth. Other antennas and 5G modems/routers could be used but at the time this guide was written, those two products seemed to offer the "best bang for the buck".
+_This guide uses a Cradlepoint W1850 modem/router with a Panorama WMM4G‑6‑60‑05NJ 4x4 MIMO LPDA Antenna (both available on eBay at reasonable prices) for high bandwisth. Other antennas and 5G modems/routers could be used but at the time this guide was written, those two products seemed to offer the "best bang for the buck"._
+
 # 1. Complete Parts List
 
 | **Item (with link placeholder)** | **Qty** | **Approx. Price (each)** | **Description** |
