@@ -9,8 +9,8 @@ _This guide uses a Cradlepoint W1850 modem/router with a Panorama WMM4G‑6‑60
 
 | **Item** | **Qty** | **Approx. Price (each)** | **Description** |
 |----------------------------------|---------|---------------------------|-----------------|
-| [**Cradlepoint W1850 5G Router + Antenna S5A325A**](https://cradlepoint.com/product/endpoints/w1850-series/)** | 1 | [$76](https://ebay.io/m/PRQ9uk) | 5G modem/router CPE. |
-| [**Panorama WMM4G‑6‑60‑05NJ Antenna**](https://panorama-antennas.com/wp-content/uploads/2022/11/Datasheet-WMM4G-6-60-5.pdf) | 1 | — | 4×4 MIMO directional 5G/LTE antenna with 4 × N‑Female ports. |
+| [**Cradlepoint W1850 5G Router + Antenna S5A325A**](https://cradlepoint.com/product/endpoints/w1850-series/) | 1 | [$76](https://ebay.io/m/PRQ9uk) | 5G modem/router CPE. |
+| [**Panorama WMM4G‑6‑60‑05NJ Antenna**](https://panorama-antennas.com/wp-content/uploads/2022/11/Datasheet-WMM4G-6-60-5.pdf) | 1 | [$110](https://ebay.io/m/7NlSat) | 4×4 MIMO directional 5G/LTE antenna with 4 × N‑Female ports. |
 | **N‑Male → N‑Female Lightning Arrestor (50Ω, DC–3GHz)** | 4 | ~$7–$20 | Screws directly into antenna N‑Female port. No jumpers needed. |
 | **LMR‑240 N‑Male → SMA‑Male Coax (20 ft)** | 4 | — | Main low‑loss coax runs from arrestors to W1850 SMA ports. |
 | **802.3at PoE+ Injector (Gigabit, 48 V)** | 1 | — | Powers W1850 over Ethernet. |
