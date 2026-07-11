@@ -1,11 +1,16 @@
 # SovrIT PTI
+
 **SovrIT PTI** (Personal Technology Infrastructure) is a high-performance, local-first infrastructure designed to reclaim digital sovereignty. It replaces the _**entire**_ suite of modern cloud-dependent services—identity, authentication, email/text communication, calendar, contacts, office/documents, medical/legal/financial records, media, even telephony and location services (and more)—with a unified, encrypted, and self-hosted Platform. 
 SovrIT replaces reliance on ISP, mobile carrier, and third-party cloud services with a modular Platform you operate yourself—engineered to be used, understood, and maintained by anyone in your home.
+
 ---
+
 ## 🌱 Purpose & Mission
 Most personal data today lives inside third‑party clouds you do not control. It is routinely inspected, analyzed, monetized, and used by the companies that store it, as well as by government agencies that increasingly disregard the spirit and intent of constitutional privacy protections. SovrIT exists to break that dependency by providing a stable, sovereign foundation for digital life — engineered and maintained with the same safeguards, discipline, and mission‑critical mindset found in enterprise IT environments.
 True digital sovereignty requires that your data, your communications, and your daily digital operations be protected end‑to‑end. SovrIT enables you to become your own ISP and mobile carrier, paying traditional providers only for the raw bandwidth required to move encrypted data. Your information should belong to and be visible only to you.
+
 ---
+
 ## 🏛️ The Seven Architectural Pillars of SovrIT PTI
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
 No third party holds the keys to your data, identity, or private network.
