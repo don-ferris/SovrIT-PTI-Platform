@@ -18,23 +18,15 @@ True digital sovereignty requires that your data, your communications, and your 
 
 ### 1. Absolute Sovereignty & Zero-Trust Privacy
 
-No third party holds the keys to your data, identity, or private network.
-
-All services are designed around encryption, local ownership, and zero-trust principles. Even when data passes through infrastructure not under your control, it does so in encrypted form.
-
-Privacy is not treated as a feature. It is treated as foundational infrastructure.
+You hold exclusive control of your data, _metadata_, identity, encryption keys, and communications. Even when your data passes through infrastructure that is not under your control, it does so in encrypted form. To ensure total privacy, your entire internet connection is wrapped in a "Metadata Cloak" (full-tunnel VPN). This prevents ISPs and mobile carriers from seeing which websites you visit; they see only a single, unreadable stream to your private gateway. This defense is completed by resolving web addresses directly from the internet’s root sources, bypassing commercial companies that log and monetize your browsing history.
 
 ### 2. Autonomous Functional Resiliency
 
-SovrIT is designed to be self-healing.
-
-Continuous monitoring systems detect service degradation, infrastructure instability, or operational failure and automatically trigger recovery procedures such as restarts, rebuilds, failover operations, or infrastructure rollback.
-
-This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
+SovrIT is _self-healing_. SovrIT Steward, an AI-based continuous monitoring system, detect service degradation, infrastructure instability, or operational failure and automatically triggers recovery procedures such as restarts, rebuilds, failover operations, or infrastructure rollback. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
 
 ### 3. Geo-Distributed, Global High Availability & Failover Redundancy
 
-Critical infrastructure can automatically fail over to a geographically distant remote node during:
+Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical infrastructure can automatically fail over to a geographically distant remote (VPS) node during:
 - power outages
 - ISP failures
 - hardware failures
@@ -42,21 +34,17 @@ Critical infrastructure can automatically fail over to a geographically distant 
 - fire
 - natural disasters
 
-This allows core services and encrypted data to remain available even during catastrophic local events.
+The Remote Failover Node (RFN) verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
 
-### 4. Invisible, Active, & Physical Security
+### 4. Invisible, Active, and Physical Security
 
-Effortless decurity is seamlessly integrated into the user flow via smartphone-based biometrics (WebAuthn) coupled with self-auditing, proactive defense by a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats. Security extends to physical protection as well with SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) which integrates SovrIT Sentry (a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc.) and other means to protect critical user data by protecting the phytsical devices on which it resides.
+Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing, proactive defense by SovrIT Steward - a dedicated, security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats. 
 
-A dedicated security-focused AI   continuously reviews logs, alerts, device activity, and operational telemetry in order to proactively identify anomalies and assist with remediation.
+Security extends to physical protection with SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) which integrates SovrIT Sentry (a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc.) and other means to protect critical user data by protecting the phytsical devices on which it resides.
 
-SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) integrates a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc. to protect critical user data by protecting the phytsical devices on which it resides.
+### 5. Sovereign Voice/AI Assistance
 
----
-
-## 5. Sovereign Voice & AI Assistance
-
-The SovrIT Assistant acts as the primary interface to the platform through both voice and chat interaction.
+The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as both a voice and chat-based AI assistant. 
 
 Powered entirely by local large language models and local speech processing systems, the assistant can:
 - answer questions
@@ -67,59 +55,15 @@ Powered entirely by local large language models and local speech processing syst
 - coordinate smart-home functions
 - perform research tasks
 
-All processing occurs locally and privately without transmitting personal data to third-party AI providers.
+This sovereign intelligence is natively integrated with SovrIT Search, the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records without transmitting personal data to third-party AI providers.
 
----
+### 6. Decoupled Encryption at Rest
 
-## 6. Decoupled Encryption at Rest
+All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised. 
 
-All sensitive data is encrypted using hardware-independent encryption systems.
+### 7. Operational Continuity - The SovrIT Handbook and SovrIT Scribe
 
-Encryption keys are intentionally separated from physical hardware so that stolen devices or seized servers reveal only encrypted, unreadable data.
-
-This allows infrastructure hardware to be replaced, rebuilt, or relocated without compromising security.
-
----
-
-## 7. Operational Continuity — The SovrIT Handbook
-
-Technology should remain operable even when the primary technical user is unavailable.
-
-The SovrIT Handbook provides continuously updated, human-centered operational documentation using annotated screenshots, step-by-step guidance, and plain-language instructions.
-
-An AI documentation system continuously reviews and updates the Handbook so that instructions always reflect the current system state and interface layout.
-
-This ensures that family members or non-technical users can confidently maintain and operate critical infrastructure during emergencies or long-term continuity scenarios.
-
-## 🏛️ The Seven Architectural Pillars of SovrIT PTI
-
-### 1. Absolute Sovereignty & Zero-Trust Privacy
-
-You hold 100% exclusive control of your data, _metadata_, identity, encryption keys, and communications. On networks you do not own, all communication is end-to-end encrypted. To ensure total privacy, your entire internet connection is wrapped in a "Metadata Cloak" (full-tunnel VPN). This prevents ISPs and mobile carriers from seeing which websites you visit; they see only a single, unreadable stream to your private gateway. This defense is completed by resolving web addresses directly from the internet’s root sources, bypassing commercial companies that log and monetize your browsing history.
-
-### 2. Autonomous Functional Resiliency
-
-The system is _self-healing_. Continuous uptime monitoring is tethered to automated recovery workflows that detect service degradation and trigger immediate **atomic rebuilds**. This ensures that the infrastructure maintains its own integrity without requiring manual intervention for routine failures.
-
-### 3. Geo-Distributed High Availability (HA)
-
-SovrIT utilizes a geographically distant Remote (VPS) Failover Node to provide Ultra High Availability. Through a Netbird-based overlay and real-time state synchronization via Syncthing, critical services fail over automatically to the VPS if a home-site outage is detected. The VPS verifies the outage by confirming its own public internet connectivity while home nodes remain unreachable, ensuring continuity even during total local power or ISP failures.
-
-### 4. Decoupled Encryption at Rest
-
-All data is secured using hardware-agnostic, filesystem-level encryption (AES-256-GCM). By decoupling encryption keys from physical hardware, the system ensures that data remains mathematically indistinguishable from noise if the servers are physically seized or compromised.
-
-### 5. Invisible, Active, and Physical Security
-
-Security is integrated into the user flow via biometrics (**WebAuthn**) and self-auditing, proactive defense by SovrIT Steward - a dedicated security-focused Large Language Model (LLM) that monitors system logs and NetAlertX heartbeats to identify and autonomously remediate complex threats. Security extends to physical protection as well with  SovrIT SANCTUM (Sovereign Attestation Network for Conditional Trust & Unlock Management) which integrates SovrIT Sentry (a vision-based LLM that uses cameras and AI to detect physical intrusion by thieves, raids by state agencies, etc.) and other means to protect critical user data by protecting the phytsical devices on which it resides.
-
-### 6. Sovereign Voice/AI Assistance
-
-The SovrIT Assistant serves as the primary gateway to the system's intelligence, serving as both a voice and chat-based AI assistant. By utilizing local Large Language Models (LLMs) and high-fidelity speech-to-text engines, the assistant processes complex intents, performs multi-step research, and executes system automations entirely within the private network. This sovereign intelligence is natively integrated with the universal search index, allowing the SovrIT Assistant to provide context-aware insights from personal records while remaining 100% private and immune to third-party data collection.
-
-### 7. Operational Continuity - The SovrIT Handbook and  SovrIT Scribe
-
-Comprehensive "Human-Centric" documentation walks non-technical users through remedial and maintenance procedures when the primary admin user is unavailable. The **SovrIT Handbook**, a physical and digital manual of annotated, screenshot-based procedures ("Click the gear icon shown circled in red") is maintained by **SovrIT Scribe**, a fine-tuned local AI that audits all procedures in a sandboxed environment whenever an app or service is updated. Scribe verifies UI parity (icons, buttons, and layouts), updates screenshots, increments revision numbers, and automatically prints the updated pages. This ensures the Handbook always matches exactly what the user sees on the screen, reducing anxiety and ensuring successful manual intervention. 
+Comprehensive, "Human-Centric" documentation that walks non-technical users through remedial and maintenance procedures when the primary admin user is unavailable, The **SovrIT Handbook** is a physical and digital manual of annotated, screenshot-based procedures ("Click the gear icon shown circled in red"). Maintained by **SovrIT Scribe**, a fine-tuned local AI documentation system that continuously reviews and updates the Handbook so that instructions always reflect the current system state and interface layout. This ensures that family members or non-technical users can confidently maintain and operate critical infrastructure during emergencies or long-term continuity scenarios.
 
 ---
 
