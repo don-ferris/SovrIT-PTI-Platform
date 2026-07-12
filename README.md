@@ -1,4 +1,4 @@
-_**NOTE:** This (Platform) repository is a meta-repo, serving as an overview for the platform as well as a [Table Of Contents](#platform-table-of-contents), linking to individual and sub-meta repos (functional groupings of individual repos). 
+_**NOTE:** This (Platform) repository is a meta-repo, serving as an overview for the platform as well as a [Table Of Contents](#platform-table-of-contents), linking to individual and sub-meta repos (functional groupings of individual repos)._
 
 # SovrIT PTI
 
