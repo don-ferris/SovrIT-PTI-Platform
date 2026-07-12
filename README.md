@@ -4,6 +4,8 @@
 
 SovrIT replaces reliance on ISP, mobile carrier, and third-party cloud services with a modular Platform you operate yourself—engineered to be used, understood, and maintained by anyone in your home.
 
+rit ecosystem.
+
 ---
 
 ## 🌱 Purpose & Mission
