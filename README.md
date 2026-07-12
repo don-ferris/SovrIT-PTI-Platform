@@ -1,10 +1,10 @@
+_**NOTE:** This (Platform) repository is a meta-repo, serving as an overview for the platform as well as a [Table Of Contents](#platform-table-of-contents), linking to individual and sub-meta repos (functional groupings of individual repos). 
+
 # SovrIT PTI
 
 **SovrIT PTI** (Personal Technology Infrastructure) is a high-performance, local-first infrastructure designed to reclaim digital sovereignty. It replaces the _**entire**_ suite of modern cloud-dependent services—identity, authentication, email/text communication, calendar, contacts, office/documents, medical/legal/financial records, media, even telephony and location services (and more)—with a unified, encrypted, and self-hosted Platform. 
 
 SovrIT replaces reliance on ISP, mobile carrier, and third-party cloud services with a modular Platform you operate yourself—engineered to be used, understood, and maintained by anyone in your home.
-
-rit ecosystem.
 
 ---
 
@@ -393,4 +393,6 @@ SovrIT stands firmly on the shoulders of giants. It would not exist without the 
 - [**WebAuthn**](https://webauthn.guide/) — biometric MFA standard for secure, passwordless access
 - [**Whisper**](https://github.com/SYSTRAN/faster-whisper) — high-fidelity local speech-to-text transcription
 - [**ZFS**](https://openzfs.org/) — resilient, hardware-agnostic, and encrypted storage foundations
+
+## PLATFORM TABLE OF CONTENTS
 
