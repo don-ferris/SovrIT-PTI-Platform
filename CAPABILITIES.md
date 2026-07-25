@@ -1,4 +1,6 @@
-> Implementation evolves. Capabilities persist.
+# SovrIT PTI Capabilities
+
+> _Implementation evolves. Capabilities persist._
 
 
 Capability
