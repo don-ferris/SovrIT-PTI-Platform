@@ -15,6 +15,8 @@ It is not a NAS.
 
 It is not a cloud replacement.
 
+A Personal Technology Infrastructure is more than a collection of self-hosted services. It is an infrastructure that supports the ongoing activities of a person’s life.
+
 SovrIT is a unified, encrypted, geographically distributed,
 highly-available Personal Technology Infrastructure designed to preserve
 the digital sovereignty of the household it serves.
