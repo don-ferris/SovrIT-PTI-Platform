@@ -1,9 +1,9 @@
 # SovrIT Constitution
 
-> "SovrIT is not the collection of software from which it is built.
+> _"SovrIT is not the collection of software from which it is built.
 > SovrIT is the enduring capability to provide sovereign personal
 > technology services, regardless of how those capabilities are
-> implemented over time."
+> implemented over time."_
 
 ---
 
