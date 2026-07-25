@@ -1,11 +1,11 @@
 # SovrIT SANCTUM
-## Sovereign Attestation Network for Conditional Trust & Unlock Management
-### A Context-Aware Distributed Trust System for Physical Compromise Detection and Conditional Key Release 
-_Protecting critical user data by protecting the phytsical devices on which it resides._
+> _Sovereign Attestation Network for Conditional Trust & Unlock Management_
+> _A Context-Aware Distributed Trust System for Physical Compromise Detection and Conditional Key Release _
+> _Protecting critical user data by protecting the phytsical devices on which it resides._
 
 ---
 
-# Abstract
+### Abstract
 
 Modern encrypted storage systems are highly effective against remote compromise, but remain vulnerable to a critical class of attacks:
 - physical seizure,
@@ -35,9 +35,9 @@ The result is a sovereignty-oriented architecture capable of resisting real-worl
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
-## 1.1 The Problem
+### 1.1 The Problem
 
 Traditional encrypted storage systems answer a binary question:
 
@@ -69,13 +69,13 @@ but also:
 
 ---
 
-# 2. Design Philosophy
+## 2. Design Philosophy
 
 SANCTUM operates according to six foundational principles.
 
 ---
 
-# 2.1 Trust Must Be Distributed
+### 2.1 Trust Must Be Distributed
 
 No single component may independently authorize decryption.
 
@@ -89,7 +89,7 @@ Trust is distributed across:
 
 ---
 
-# 2.2 Human Authorization is Strongly Preferred — But Not Universally Required
+### 2.2 Human Authorization is Strongly Preferred — But Not Universally Required
 
 Human authorization is the highest-trust signal available to SANCTUM.
 
@@ -108,7 +108,7 @@ This intentionally sets a very high bar.
 
 ---
 
-# 2.3 Planned Operational Continuity Matters
+### 2.3 Planned Operational Continuity Matters
 
 A declared and expected reboot event significantly increases trust.
 
@@ -123,7 +123,7 @@ If a planned reboot declaration exists and all supporting continuity checks succ
 
 ---
 
-# 2.4 All Signals Are Potentially Compromised
+### 2.4 All Signals Are Potentially Compromised
 
 Attackers are assumed to:
 - understand SANCTUM,
@@ -137,7 +137,7 @@ Therefore:
 
 ---
 
-# 2.5 The System Must Fail Closed
+### 2.5 The System Must Fail Closed
 
 False positives are catastrophic.
 
@@ -148,7 +148,7 @@ Operational inconvenience is preferable to compromise of sovereign data.
 
 ---
 
-# 2.6 Rapid Cryptographic Evaporation
+### 2.6 Rapid Cryptographic Evaporation
 
 If compromise is suspected while systems are running:
 - active encryption keys are destroyed,
@@ -160,7 +160,7 @@ This reduces exposure during live seizure events.
 
 ---
 
-# 3. High-Level Architecture
+## 3. High-Level Architecture
 
 | Component | Function |
 |---|---|
@@ -174,7 +174,7 @@ This reduces exposure during live seizure events.
 
 ---
 
-# 4. SANCTUM Engine
+## 4. SANCTUM Engine
 
 The SANCTUM Engine is the core policy and trust evaluation subsystem.
 
@@ -194,7 +194,7 @@ The engine determines whether:
 
 ---
 
-# 5. SovrIT Steward & Fortitude
+## 5. SovrIT Steward & Fortitude
 
 Steward and Fortitude are trusted operational orchestration systems responsible for:
 - maintenance coordination,
@@ -205,7 +205,7 @@ Steward and Fortitude are trusted operational orchestration systems responsible 
 
 One of their most important functions within SANCTUM is the publication of:
 
-# Planned Reboot Declarations
+#### Planned Reboot Declarations
 
 These declarations indicate:
 - an expected reboot,
@@ -220,7 +220,7 @@ from:
 
 ---
 
-# 5.1 Planned Reboot Trust Elevation
+### 5.1 Planned Reboot Trust Elevation
 
 A valid planned reboot declaration may significantly increase trust if:
 - the reboot occurs within the expected time window,
@@ -234,7 +234,7 @@ Under sufficiently safe conditions:
 
 ---
 
-# 6. SovrIT Sentry
+## 6. SovrIT Sentry
 
 Sentry is the environmental awareness subsystem.
 
@@ -253,7 +253,7 @@ It is intentionally non-authoritative.
 
 ---
 
-# 6.1 Positive Indicators
+### 6.1 Positive Indicators
 
 Examples include:
 - expected occupancy patterns,
@@ -263,7 +263,7 @@ Examples include:
 
 ---
 
-# 6.2 Negative Indicators
+### 6.2 Negative Indicators
 
 Examples include:
 - forced entry,
@@ -275,7 +275,7 @@ Examples include:
 
 ---
 
-# 7. Anchors
+## 7. Anchors
 
 Anchors are concealed local continuity beacons.
 
@@ -297,7 +297,7 @@ Their purpose is to help determine whether infrastructure remains within its exp
 
 ---
 
-# 8. Relays
+## 8. Relays
 
 Relays are geographically distributed friend nodes.
 
@@ -318,7 +318,7 @@ Their purpose is observational and corroborative.
 
 ---
 
-# 9. Custodian
+## 9. Custodian
 
 Custodian is the conditional key authority.
 
@@ -334,7 +334,7 @@ Instead:
 
 ---
 
-# 10. BlackFlag
+## 10. BlackFlag
 
 BlackFlag is the coercion and duress subsystem.
 
@@ -351,7 +351,7 @@ Duress responses may:
 
 ---
 
-# 11. Trust Evaluation Model
+## 11. Trust Evaluation Model
 
 SANCTUM uses:
 - weighted contextual trust scoring,
@@ -361,7 +361,7 @@ SANCTUM uses:
 
 ---
 
-# 11.1 Trust Categories
+### 11.1 Trust Categories
 
 | Category | Examples |
 |---|---|
@@ -374,7 +374,7 @@ SANCTUM uses:
 
 ---
 
-# 11.2 Human Authorization Weighting
+### 11.2 Human Authorization Weighting
 
 Human authorization remains the highest-confidence trust factor.
 
@@ -391,91 +391,91 @@ This permits:
 
 ---
 
-# 12. Example Scenarios
+## 12. Example Scenarios
 
 ---
 
-# 12.1 Planned Autonomous Rebuild
+### 12.1 Planned Autonomous Rebuild
 
-## Conditions
+#### Conditions
 - Steward publishes planned reboot declaration,
 - reboot occurs within expected window,
 - anchors remain present,
 - relays observe expected continuity,
 - no intrusion indicators detected.
 
-## Result
+#### Result
 - unattended decryption permitted.
 
 ---
 
-# 12.2 User Traveling With No Connectivity
+### 12.2 User Traveling With No Connectivity
 
-## Conditions
+#### Conditions
 - user unreachable,
 - expected outage occurs,
 - planned reboot declaration exists,
 - environmental continuity appears normal,
 - no threat indicators observed.
 
-## Result
+#### Result
 - unattended decryption permitted.
 
 ---
 
-# 12.3 Neighborhood Power Outage
+### 12.3 Neighborhood Power Outage
 
-## Conditions
+#### Conditions
 - UPS exhausted,
 - ordinary outage characteristics,
 - no intrusion indicators,
 - continuity beacons remain present.
 
-## Result
+#### Result
 - decryption permitted.
 
 ---
 
-# 12.4 Theft
+### 12.4 Theft
 
-## Conditions
+#### Conditions
 - abrupt movement,
 - loss of anchors,
 - suspicious motion detected,
 - no continuity corroboration,
 - network disruption.
 
-## Result
+#### Result
 - decryption denied.
 
 ---
 
-# 12.5 Coordinated Seizure
+### 12.5 Coordinated Seizure
 
-## Conditions
+#### Conditions
 - live infrastructure removal,
 - environmental anomalies,
 - user enters duress PIN.
 
-## Result
+#### Result
 - deceptive unlock behavior initiated,
 - operational datasets remain protected.
 
 ---
 
-# 12.6 ISP Severed Before Entry
+### 12.6 ISP Severed Before Entry
 
-## Conditions
+#### Conditions
 - ISP disruption,
 - power remains online,
 - suspicious environmental activity detected.
 
-## Result
+#### Result
 - emergency cryptographic evaporation initiated.
 
 ---
 
-# 13. Rapid Cryptographic Evaporation
+## 13. Rapid Cryptographic Evaporation
 
 If active compromise is suspected:
 - encryption keys are destroyed,
@@ -488,7 +488,7 @@ This minimizes exposure during active compromise scenarios.
 
 ---
 
-# 14. Cryptographic Model
+## 14. Cryptographic Model
 
 SANCTUM uses:
 - layered encryption,
@@ -508,7 +508,7 @@ Contextual trust evaluation remains central to the architecture.
 
 ---
 
-# 15. Privacy & Sovereignty Goals
+## 15. Privacy & Sovereignty Goals
 
 SANCTUM aligns with the broader SovrIT mission:
 - local-first infrastructure,
@@ -524,7 +524,7 @@ The architecture intentionally avoids:
 
 ---
 
-# 16. Limitations
+## 16. Limitations
 
 SANCTUM is not designed to guarantee perfect protection against:
 - already-mounted datasets,
@@ -540,7 +540,7 @@ Instead, SANCTUM is designed to:
 
 ---
 
-# 17. Future Research Directions
+## 17. Future Research Directions
 
 Potential future capabilities include:
 - RF environmental fingerprinting,
@@ -553,7 +553,7 @@ Potential future capabilities include:
 
 ---
 
-# 18. Conclusion
+## 18. Conclusion
 
 Traditional encrypted storage systems ask:
 
@@ -578,7 +578,7 @@ The objective is contextual trust under adversarial conditions.
 
 ---
 
-# Appendix A — Example Unlock Flow
+## Appendix A — Example Unlock Flow
 
 ```text
 System Boot
@@ -625,29 +625,29 @@ ZFS Pools Decrypt
 
 ---
 
-# Appendix B — Example Hardware
+## Appendix B — Example Hardware
 
-## Core Infrastructure
+### Core Infrastructure
 - TrueNAS SCALE
 - NixOS
 - ZFS
 - WireGuard
 - UPS systems
 
-## Anchors
+### Anchors
 - ESP32-S3
 - ATECC608 secure elements
 - concealed embedded devices
 - PoE microcontrollers
 
-## Relays
+### Relays
 - Raspberry Pi Zero 2 W
 - GL.iNet micro routers
 - embedded WireGuard nodes
 
 ---
 
-# Appendix C — Example Security Principles
+## Appendix C — Example Security Principles
 
 | Principle | Description |
 |---|---|
