@@ -2,6 +2,26 @@
 
 > Implementations evolve. Capabilities endure.
 
+# Platform Functions
+
+---
+---
+## 
+## Networking
+### Why it Belongs
+because... DUH?!
+### Supports
+- Computers talking tomeach other
+- etc.
+
+---
+
+# Functional Capabilities
+
+
+# Implementations
+
+
 ## 
 ## [FUNCTION]
 ```text
