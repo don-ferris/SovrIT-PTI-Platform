@@ -61,3 +61,30 @@
 > - This capability encompasses multiple hardening techniques and technologies that work together to reduce the attack surface of PTI servers.
 > - SELinux is intentionally omitted pending further evaluation.
 ---
+## Service Continuity
+> **Why It Belongs:** Preserve the authoritative artifacts required to restore, migrate, and maintain PTI services. By keeping service definitions, configurations, documentation, and other supporting artifacts together under version control, services can be recreated, evolved, and transferred between platforms with confidence.<br />
+> **Planned Implementation:**<br />
+> - [Forgejo](https://forgejo.org/) ([GitHub](https://github.com/projectforgejo/forgejo))
+> - [GitHub](https://github.com/) (until Forgejo is deployed)<br /><br />
+> **Notes:**<br />
+> - Docker Compose repositories should contain everything practical to recreate a service.
+> - As the PTI transitions to Nix, repositories will increasingly become the authoritative source of declarative service definitions.
+---
+## Versioned Documentation
+> **Why It Belongs:** Preserve engineering documentation alongside the systems it describes, allowing documentation to evolve with the infrastructure while maintaining a complete history of changes. This ensures design decisions, deployment notes, and service documentation remain synchronized with their corresponding implementations.<br />
+> **Planned Implementation:**<br />
+> - [Forgejo](https://forgejo.org/) ([GitHub](https://github.com/projectforgejo/forgejo))
+> - [DokuWiki](https://www.dokuwiki.org/) ([GitHub](https://github.com/dokuwiki/dokuwiki))<br /><br />
+> **Notes:**<br />
+> - Repository documentation should focus on the implementation it accompanies.
+> - Operational procedures intended for human operators are better suited to DokuWiki.
+---
+## Collaborative Knowledge Development
+> **Why It Belongs:** Provide a shared environment for developing, refining, and organizing PTI knowledge, including architecture, documentation, configurations, infrastructure definitions, and related artifacts. Collaboration may occur between human contributors, AI assistants, or both, while maintaining a single authoritative repository under the user's control.<br />
+> **Planned Implementation:**<br />
+> - [Forgejo](https://forgejo.org/) ([GitHub](https://github.com/projectforgejo/forgejo))
+> - [GitHub](https://github.com/) (until Forgejo is deployed)<br /><br />
+> **Notes:**<br />
+> - The SovrIT PTI documentation is developed collaboratively and maintained under version control.
+> - The repository serves as the authoritative engineering knowledge base for the PTI.
+---
