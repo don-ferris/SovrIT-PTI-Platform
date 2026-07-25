@@ -8,7 +8,7 @@
 ├── Purpose: Testing long text to see ehat wrapping does to this structure. Testing long text to see ehat wrapping does to this structure. Testing long text to see ehat wrapping does to this structure. Testing long text to see ehat wrapping does to this structure. 
 ├── Current Implementation: 
 ├── Future Candidates: 
-├── Dependencies: 
+├── Requires: 
 ├── Criticality: 
 ├── Failure Modes: 
 └── Success Criteria: 
