@@ -55,8 +55,7 @@
 > - [Lynis](https://cisofy.com/lynis/)
 > - [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks)
 > - [OpenSSH](https://www.openssh.com/) (SSH hardening)
-> - [AppArmor](https://apparmor.net/)<br />
-> <br />
+> - [AppArmor](https://apparmor.net/)<br /><br />
 > **Notes:**<br />
 > - Servers should be hardened to the greatest practical extent without interfering with their intended functionality.
 > - This capability encompasses multiple hardening techniques and technologies that work together to reduce the attack surface of PTI servers.
