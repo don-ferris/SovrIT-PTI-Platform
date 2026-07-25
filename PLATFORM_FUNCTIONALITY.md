@@ -5,18 +5,16 @@
 # PLATFORM FUNCTIONS
 ---
 ## Networking
-> **Description**
-> Provides trusted communication between people, devices, and services participating in the PTI.
-> **Fulfilled By**
+> **Description:** Provides trusted communication between people, devices, and services participating in the PTI.<br />
+> **Fulfilled By:**<br />
 > - TBD
 > 
 > 
 > 
 
 ## Security
-> **Description**
-> Protects what matters by safeguarding people, information, systems, and services against unauthorized access, loss, or harm.
-> **Fulfilled By**
+> **Description:** Protects what matters by safeguarding people, information, systems, and services against unauthorized access, loss, or harm.<br />
+> **Fulfilled By:**<br />
 > - TBD
 > 
 > 
