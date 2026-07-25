@@ -42,7 +42,7 @@
 ## Private Mesh Overlay Network
 > **Why It Belongs:** Extend the PTI beyond the physical home by creating a trusted private network that securely connects users, devices, and remote nodes regardless of their physical location. This allows the PTI to remain the user's primary network whether at home or away, enabling remote failover, data synchronization, and secure access to PTI services while preventing network traffic from being observed by mobile carriers, ISPs, public Wi-Fi providers, or other intermediary networks.<br />
 > **Planned Implementation:**<br />
-> - [NetBird](https://netbird.io/) ([GitHub](https://github.com/netbirdio/netbird))
+> - [NetBird](https://netbird.io/) ([GitHub](https://github.com/netbirdio/netbird))<br />
 > **Notes:**<br />
 > - Enables the Remote Failover Node (RFN) to participate as a full member of the PTI.
 > - Intended to carry all practical traffic from mobile devices so the PTI remains the user's trusted network regardless of location.
@@ -55,7 +55,7 @@
 > - [Lynis](https://cisofy.com/lynis/)
 > - [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks)
 > - [OpenSSH](https://www.openssh.com/) (SSH hardening)
-> - [AppArmor](https://apparmor.net/)
+> - [AppArmor](https://apparmor.net/)<br />
 > **Notes:**<br />
 > - Servers should be hardened to the greatest practical extent without interfering with their intended functionality.
 > - This capability encompasses multiple hardening techniques and technologies that work together to reduce the attack surface of PTI servers.
