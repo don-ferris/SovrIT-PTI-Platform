@@ -3,11 +3,11 @@
 > Implementations evolve. Capabilities endure.
 
 ## [FUNCTION]
-> **Status:** Planned
-
-> **Criticality:** High
-
-> **Requires:** Networking, Identity
+```text
+Status: Planned
+Criticality: High
+Requires: Networking, Identity
+```
 #### Purpose
 Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does...
 #### Failure Modes
@@ -17,11 +17,11 @@ Testing long text to see what wrapping does to this structure. Testing long text
 ...
 
 ## [FUNCTION]
-> **Status:** Planned
-
-> **Criticality:** High
-
-> **Requires:** Networking, Identity
+```text
+Status: Planned
+Criticality: High
+Requires: Networking, Identity
+```
 #### Purpose
 Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does...
 #### Failure Modes
@@ -29,13 +29,12 @@ Testing long text to see what wrapping does to this structure. Testing long text
 #### Success Criteria
 
 ...
-
 ## [FUNCTION]
-> **Status:** Planned
-
-> **Criticality:** High
-
-> **Requires:** Networking, Identity
+```text
+Status: Planned
+Criticality: High
+Requires: Networking, Identity
+```
 #### Purpose
 Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does to this structure. Testing long text to see what wrapping does...
 #### Failure Modes
