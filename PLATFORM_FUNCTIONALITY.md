@@ -88,3 +88,11 @@
 > - The SovrIT PTI documentation is developed collaboratively and maintained under version control.
 > - The repository serves as the authoritative engineering knowledge base for the PTI.
 ---
+## Home Automation
+> **Why It Belongs:** Automate routine tasks and coordinate devices, services, and notifications to improve safety, comfort, efficiency, and quality of life while minimizing manual intervention. Automations should operate locally whenever practical to preserve privacy, reduce latency, and remain functional without cloud dependencies.<br />
+> **Planned Implementation:**<br />
+> - [Home Assistant](https://www.home-assistant.io/) ([GitHub](https://github.com/home-assistant/core))<br /><br />
+> **Notes:**<br />
+> - Automations may involve physical devices, software services, notifications, voice interactions, or any combination thereof.
+> - Local-first operation is strongly preferred.
+---
